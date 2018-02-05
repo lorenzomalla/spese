@@ -18,7 +18,7 @@ public class Answers {
 	private String page_subtitle;
 	
 	@ManyToOne
-		private Tree_structure tree_structure_id;
+		private TreeStructure tree_structure_id;
 	
 	public int getId() {
 		return id;
@@ -28,27 +28,27 @@ public class Answers {
 		this.id = id;
 	}
 
-	public String getPage_title() {
+	public String getPageTitle() {
 		return page_title;
 	}
 
-	public void setPage_title(String page_title) {
+	public void setPageTitle(String page_title) {
 		this.page_title = page_title;
 	}
 	
-	public String getPage_subtitle() {
+	public String getPageSubtitle() {
 		return page_subtitle;
 	}
 
-	public void setPage_subtitle(String page_subtitle) {
+	public void setPageSubtitle(String page_subtitle) {
 		this.page_subtitle = page_subtitle;
 	}
 	
-	public Tree_structure getTree_structure_id() {
+	public TreeStructure getTreeStructureId() {
 		return tree_structure_id;
 	}
 
-	public void setTree_structure_id(Tree_structure tree_structure_id) {
+	public void setTreeStructureId(TreeStructure tree_structure_id) {
 		this.tree_structure_id = tree_structure_id;
 	}
 }

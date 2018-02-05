@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Cat_templates {
+public class CatTemplates {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -25,7 +25,7 @@ public class Cat_templates {
 		return markup;
 	}
 
-	public void SetMarkup(String markup) {
+	public void setMarkup(String markup) {
 		this.markup = markup;
 	}
 }

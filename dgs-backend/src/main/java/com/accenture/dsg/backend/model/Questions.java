@@ -20,7 +20,7 @@ public class Questions {
 	private String image;
 	
 	@ManyToOne
-		private Tree_structure tree_structure_id;
+		private TreeStructure tree_structure_id;
 	
 	public int getId() {
 		return id;
@@ -54,11 +54,11 @@ public class Questions {
 		this.image = image;
 	}
 	
-	public Tree_structure getTree_structure_id() {
+	public TreeStructure getTreeStructureId() {
 		return tree_structure_id;
 	}
 
-	public void setTree_structure_id(Tree_structure tree_structure_id) {
+	public void setTreeStructureId(TreeStructure tree_structure_id) {
 		this.tree_structure_id = tree_structure_id;
 	}
 }
