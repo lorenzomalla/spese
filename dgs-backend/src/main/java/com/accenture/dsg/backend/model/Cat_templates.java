@@ -6,12 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Prova {
+public class Cat_templates {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	private String prova;
+	private String markup;
 
 	public int getId() {
 		return id;
@@ -21,14 +21,11 @@ public class Prova {
 		this.id = id;
 	}
 
-	public String getProva() {
-		return prova;
+	public String getMarkup() {
+		return markup;
 	}
 
-	public void setProva(String prova) {
-		this.prova = prova;
+	public void SetMarkup(String markup) {
+		this.markup = markup;
 	}
-	
-	
-	
 }
