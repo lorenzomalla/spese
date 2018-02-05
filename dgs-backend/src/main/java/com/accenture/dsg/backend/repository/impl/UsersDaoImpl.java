@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import com.accenture.dsg.backend.model.Users;
+import com.accenture.dsg.backend.configuration.Users;
 import com.accenture.dsg.backend.repository.UsersDao;
 @Repository
 public class UsersDaoImpl implements UsersDao{
