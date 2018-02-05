@@ -13,8 +13,8 @@ public class TemplateAttributes {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne
-	@JoinColumn(name="id")
+//	@ManyToOne
+//	@JoinColumn(name="id")
 		private Templates template_id;
 
 	private String key;

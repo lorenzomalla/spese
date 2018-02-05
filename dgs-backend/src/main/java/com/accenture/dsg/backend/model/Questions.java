@@ -20,8 +20,8 @@ public class Questions {
 
 	private String image;
 	
-	@ManyToOne
-	@JoinColumn(name="id")
+//	@ManyToOne
+//	@JoinColumn(name="id")
 		private TreeStructure tree_structure_id;
 	
 	public int getId() {
