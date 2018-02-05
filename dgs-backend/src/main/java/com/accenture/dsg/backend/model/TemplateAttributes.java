@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -13,6 +14,7 @@ public class TemplateAttributes {
 	private int id;
 	
 	@ManyToOne
+	@JoinColumn(name="id")
 		private Templates template_id;
 
 	private String key;

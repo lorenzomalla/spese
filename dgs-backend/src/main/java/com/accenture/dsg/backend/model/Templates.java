@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -14,9 +15,11 @@ public class Templates {
 	private int id;
 	
 	@ManyToOne
+	@JoinColumn(name="id")
 		private CatTemplates cat_template_id;
 
 	@ManyToOne
+	@JoinColumn(name="id")
 		private Answers answer_id;
 	
 	public int getId() {

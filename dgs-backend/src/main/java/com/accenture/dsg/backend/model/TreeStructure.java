@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -13,9 +14,11 @@ public class TreeStructure {
 	private int id;
 	
 	@ManyToOne
+	@JoinColumn(name="id")
 		private TreeStructure parent_id;
 	
 	@ManyToOne
+	@JoinColumn(name="id")
 		private CatTreeStructureTypes cat_tree_structure_type_id;
 
 	public int getId() {
