@@ -13,12 +13,12 @@ public class TreeStructure {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-//	@ManyToOne
-//	@JoinColumn(name="id")
+	@ManyToOne
+	@JoinColumn(name="id")
 		private TreeStructure parent_id;
 	
-//	@ManyToOne
-//	@JoinColumn(name="id")
+	@ManyToOne
+	@JoinColumn(name="id")
 		private CatTreeStructureTypes cat_tree_structure_type_id;
 
 	public int getId() {

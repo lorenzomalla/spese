@@ -18,8 +18,8 @@ public class Answers {
 	
 	private String page_subtitle;
 	
-	//@ManyToOne
-	//@JoinColumn(name="id")
+	@ManyToOne
+	@JoinColumn(name="id")
 		private TreeStructure tree_structure_id;
 	
 	public int getId() {

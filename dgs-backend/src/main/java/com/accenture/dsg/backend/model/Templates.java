@@ -14,12 +14,12 @@ public class Templates {
 
 	private int id;
 	
-//	@ManyToOne
-//	@JoinColumn(name="id")
+	@ManyToOne
+	@JoinColumn(name="id")
 		private CatTemplates cat_template_id;
 
-//	@ManyToOne
-//	@JoinColumn(name="id")
+	@ManyToOne
+	@JoinColumn(name="id")
 		private Answers answer_id;
 	
 	public int getId() {
