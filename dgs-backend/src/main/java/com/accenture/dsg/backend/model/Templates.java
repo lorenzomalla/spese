@@ -7,8 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.accenture.dsg.backend.configuration.Answers;
-
 @Entity
 public class Templates {
 	@Id

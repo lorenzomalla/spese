@@ -1,4 +1,4 @@
-package com.accenture.dsg.backend.configuration;
+package com.accenture.dsg.backend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,8 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import com.accenture.dsg.backend.model.TreeStructure;
 
 @Entity
 public class Answers {
