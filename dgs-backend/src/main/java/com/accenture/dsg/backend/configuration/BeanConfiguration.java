@@ -13,17 +13,18 @@ import com.accenture.dsg.backend.repository.impl.UsersDaoImpl;
 
 @Configuration
 public class BeanConfiguration {
-
-	//Spring Configuration Bean
-	@Bean
-    public UsersDao accountDaoImpl() {
-        return new UsersDaoImpl();
-    }
-	
 	@Bean
 	@Primary
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
         return DataSourceBuilder.create().build();
     }
+	
+	//Spring Configuration Bean
+	@Bean
+    public UsersDao accountDaoImpl() {
+        return new UsersDaoImpl();
+    }
+	
+	
 }
