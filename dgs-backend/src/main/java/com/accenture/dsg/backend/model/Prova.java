@@ -1,4 +1,4 @@
-package hello;
+package com.accenture.dsg.backend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,14 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Contact{
+public class Prova {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	private String nome;
-	
-	private String cognome;
+	private String prova;
 
 	public int getId() {
 		return id;
@@ -23,20 +21,12 @@ public class Contact{
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getProva() {
+		return prova;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCognome() {
-		return cognome;
-	}
-
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
+	public void setProva(String prova) {
+		this.prova = prova;
 	}
 	
 	

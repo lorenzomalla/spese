@@ -3,8 +3,8 @@ package com.accenture.dsg.backend.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import hello.AccountDao;
-import hello.AccountDaoImpl;
+import com.accenture.dsg.backend.repository.AccountDao;
+import com.accenture.dsg.backend.repository.impl.AccountDaoImpl;
 
 @Configuration
 public class BeanConfiguration {
