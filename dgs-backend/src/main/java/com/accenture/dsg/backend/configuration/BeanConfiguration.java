@@ -17,6 +17,7 @@ public class BeanConfiguration {
 	@Primary
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
+		System.out.println("########################DATASOURCE");
         return DataSourceBuilder.create().build();
     }
 	
