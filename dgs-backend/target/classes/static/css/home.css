@@ -14,15 +14,15 @@ div.logo_bar{
     height: 58px;
     width: 100%;
 }
+
 div.navigation_bar{
     margin: 0px;
-    padding-left: 20px;
-    padding-right: 20px;
     height: 46px;
-    line-height: 46px;
     width: 100%;
     background-color: RGB(240, 240, 240);
     color: RGB(0, 120, 193);
+    padding: 10px;
+    padding-left: 30px;
 }
 
 div.scroll_image_bar{
@@ -33,6 +33,13 @@ div.scroll_image_bar{
     color: white;
 }
 
+.logo{
+    height: 100%;
+    width: 100%;
+	margin: 0px;
+}
+
+
 div.main_body{
     margin: 0px;
     padding: 20px;
@@ -41,21 +48,23 @@ div.main_body{
 
 div.bottom_bar{
     margin: 0px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 70px;
+    padding-right: 70px;
     height: 60px;
     width: 100%;
+	line-height: 60px; 
     background-color: RGB(7, 72, 138);
+	color: white;
 }
 
 .tile {  
     width: 120px;
     height: 120px;
-    display: inline-block;
-	box-sizing: border-box;
 	background: #fff;		
-	padding: 20px;
 	margin-bottom: 30px;
+	justify-content: center;
+	align-items: center;
+	display: inline-flex;
 }
 
 .blue {
@@ -70,3 +79,21 @@ div.bottom_bar{
 .card:hover{
     border-color: RGB(0, 120, 193);
 }
+
+i.question{
+	color: white;
+	font-size: 3em;
+}
+
+.question_card{
+	width: 12rem;
+	height: 16rem;
+	text-align: center;
+	display: inline-block;
+}
+
+.question_col{
+	margin: 15px;
+	display: inline-flex;
+}
+
