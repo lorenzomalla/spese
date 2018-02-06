@@ -26,7 +26,7 @@ public class MainController {
 	@Autowired
 	private UsersCrudRepository repo;
 	
-	@RequestMapping(value={"/home"}, method = RequestMethod.GET)
+	@RequestMapping(value={"/","/home"}, method = RequestMethod.GET)
 	public String home(){
 		return "login";
 	}
