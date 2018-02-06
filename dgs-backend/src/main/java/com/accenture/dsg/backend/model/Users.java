@@ -18,7 +18,7 @@ public class Users implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	private String mail;
+	private String mail; 
 
 	private String password;
 
