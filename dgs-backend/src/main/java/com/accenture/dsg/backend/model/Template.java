@@ -17,7 +17,7 @@ public class Template implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private long id;
 
 	//bi-directional many-to-one association to TemplateAttribute
 	@OneToMany(mappedBy="template")
@@ -35,11 +35,11 @@ public class Template implements Serializable {
 	public Template() {
 	}
 
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

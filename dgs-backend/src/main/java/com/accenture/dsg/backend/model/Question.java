@@ -17,7 +17,7 @@ public class Question implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private long id;
 
 	@Column(name="page_subtitle")
 	private String pageSubtitle;
@@ -33,11 +33,11 @@ public class Question implements Serializable {
 	public Question() {
 	}
 
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

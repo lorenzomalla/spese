@@ -17,7 +17,7 @@ public class CatTemplate implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private long id;
 
 	private String markup;
 
@@ -28,11 +28,11 @@ public class CatTemplate implements Serializable {
 	public CatTemplate() {
 	}
 
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
