@@ -1,0 +1,72 @@
+div.top_bar{
+    margin: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 40px;
+    width: 100%;
+    background-color: RGB(7, 72, 138);
+}
+
+div.logo_bar{
+    margin: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 58px;
+    width: 100%;
+}
+div.navigation_bar{
+    margin: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 46px;
+    line-height: 46px;
+    width: 100%;
+    background-color: RGB(240, 240, 240);
+    color: RGB(0, 120, 193);
+}
+
+div.scroll_image_bar{
+    margin: 0px;
+    height: 306px;
+    width: 100%;
+    background-color: RGB(20, 20, 20);
+    color: white;
+}
+
+div.main_body{
+    margin: 0px;
+    padding: 20px;
+    width: 100%;
+}
+
+div.bottom_bar{
+    margin: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 60px;
+    width: 100%;
+    background-color: RGB(7, 72, 138);
+}
+
+.tile {  
+    width: 120px;
+    height: 120px;
+    display: inline-block;
+	box-sizing: border-box;
+	background: #fff;		
+	padding: 20px;
+	margin-bottom: 30px;
+}
+
+.blue {
+    color: white;
+    background-color: #2672EC;
+}
+
+.blue:hover {
+	background-color: RGB(0, 120, 193);
+}
+
+.card:hover{
+    border-color: RGB(0, 120, 193);
+}
