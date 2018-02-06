@@ -1,25 +1,32 @@
 package com.accenture.dsg.backend.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+import java.io.Serializable;
+import javax.persistence.*;
 
+
+/**
+ * The persistent class for the users database table.
+ * 
+ */
 @Entity
+@Table(name="users")
 @NamedQuery(name="Users.findAll", query="SELECT u FROM Users u")
-public class Users{
+public class Users implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	
 	private int id;
-	
+
 	private String mail;
-	
+
 	private String password;
 
+	public Users() {
+	}
+
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(int id) {
@@ -27,7 +34,7 @@ public class Users{
 	}
 
 	public String getMail() {
-		return mail;
+		return this.mail;
 	}
 
 	public void setMail(String mail) {
@@ -35,13 +42,11 @@ public class Users{
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
+
 }
