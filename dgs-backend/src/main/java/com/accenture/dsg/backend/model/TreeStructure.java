@@ -7,7 +7,9 @@ import com.accenture.dsg.backend.model.Answer;
 import com.accenture.dsg.backend.model.CatTreeStructureType;
 import com.accenture.dsg.backend.model.Question;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -44,8 +46,8 @@ public class TreeStructure implements Serializable {
 
 	//bi-directional many-to-one association to TreeStructure
 	@OneToMany(mappedBy="treeStructure")
-	private List<TreeStructure> treeStructures;
-
+	private Set<TreeStructure> treeStructures = new HashSet<TreeStructure>();;
+	
 	public TreeStructure() {
 	}
 
@@ -118,11 +120,11 @@ public class TreeStructure implements Serializable {
 	}
 
 	public List<TreeStructure> getTreeStructures() {
-		return this.treeStructures;
+		return (List<TreeStructure>) this.treeStructures;
 	}
 
 	public void setTreeStructures(List<TreeStructure> treeStructures) {
-		this.treeStructures = treeStructures;
+		this.treeStructures = (Set<TreeStructure>) treeStructures;
 	}
 
 	public TreeStructure addTreeStructure(TreeStructure treeStructure) {
