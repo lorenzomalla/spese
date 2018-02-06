@@ -1,4 +1,4 @@
-package com.accenture.dsg.backend.configuration;
+package com.accenture.dsg.backend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

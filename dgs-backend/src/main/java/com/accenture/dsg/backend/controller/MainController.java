@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.accenture.dsg.backend.configuration.Users;
-import com.accenture.dsg.backend.repository.UsersDao;
+import com.accenture.dsg.backend.dao.UsersDao;
+import com.accenture.dsg.backend.model.Users;
 
 
 @Controller    // This means that this class is a Controller

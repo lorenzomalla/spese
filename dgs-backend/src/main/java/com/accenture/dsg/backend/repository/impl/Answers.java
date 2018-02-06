@@ -1,4 +1,4 @@
-package com.accenture.dsg.backend.configuration;
+package com.accenture.dsg.backend.repository.impl;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,17 +8,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Questions {
+public class Answers {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	
 	private int id;
 	
-	private String title;
+	private String page_title;
 	
-	private String description;
-
-	private String image;
+	private String page_subtitle;
 	
 	@ManyToOne
 	@JoinColumn(name="id")
@@ -32,28 +30,20 @@ public class Questions {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getPageTitle() {
+		return page_title;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setPageTitle(String page_title) {
+		this.page_title = page_title;
 	}
 	
-	public String getDescription() {
-		return description;
+	public String getPageSubtitle() {
+		return page_subtitle;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
+	public void setPageSubtitle(String page_subtitle) {
+		this.page_subtitle = page_subtitle;
 	}
 	
 	public TreeStructure getTreeStructureId() {
