@@ -12,13 +12,13 @@ public class MailSend {
         this.mailSender = mailSender;
     }
 
-    public void sendMail(String Body,String subject,String Bcc,String Cc,String To) {
+    public void sendMail(String Body,String Subject,String Bcc,String Cc,String To) {
 
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(To);
         msg.setCc(Cc);
         msg.setBcc(Bcc);
-        msg.setSubject(subject);
+        msg.setSubject(Subject);
         msg.setText(Body);
         try{
             this.mailSender.send(msg);
