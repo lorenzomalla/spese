@@ -32,7 +32,7 @@ public class Answer implements Serializable {
 
 	//bi-directional many-to-one association to Template
 	@ManyToOne
-	@JoinColumn(name="id", referencedColumnName="answer_id")
+	@JoinColumn(name="id")
 	private Template template;
 
 	public Answer() {
