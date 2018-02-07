@@ -1,19 +1,19 @@
-div.top_bar{
+div.top-bar{
     height: 40px;
     background-color: RGB(7, 72, 138);
 }
 
-div.logo_bar{
+div.logo-bar{
     height: 58px;
 }
 
-div.navigation_bar{
+div.navigation-bar{
     height: 46px;
     background-color: RGB(240, 240, 240);
     color: RGB(0, 120, 193);
 }
 
-div.scroll_image_bar{
+div.top-image{
     height: 306px;
     background-color: RGB(20, 20, 20);
     color: white;
@@ -25,55 +25,25 @@ div.scroll_image_bar{
 	margin: 0px;
 }
 
-
-div.main_body{
-    margin: 0px;
-    padding: 20px;
-    width: 100%;
-}
-
-div.bottom_bar{
+div.bottom-bar {
     background-color: RGB(7, 72, 138);
 	color: #FFFFFF;
 }
 
-.tile {  
-    width: 120px;
-    height: 120px;
-	background: #fff;		
-	margin-bottom: 30px;
-	justify-content: center;
-	align-items: center;
-	display: flex;
+.card {
+    border-color: RGB(217, 217, 217);
 }
-
-.blue {
-    color: white;
-    background-color: #2672EC;
-}
-
-.blue:hover {
-	background-color: RGB(0, 120, 193);
-}
-
-.card:hover{
+.card:hover {
     border-color: RGB(0, 120, 193);
-
 }
 
-i.question{
-	color: white;
-	font-size: 2em;
+.blue-square {
+    color: #FFFFFF;
+    background-color: #2672EC;
+    padding: 20px;
 }
 
-
-
-.question_col{
-	margin: 15px;
-	display: inline-flex;
-}
-
-.help{
-	text-align: center;
+.card:hover .blue-square {
+	background-color: RGB(0, 120, 193);
 }
 
