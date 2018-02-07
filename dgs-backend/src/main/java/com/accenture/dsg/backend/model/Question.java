@@ -11,7 +11,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="questions")
-@NamedQuery(name="Question.findAll", query="SELECT q FROM Question q")
+@NamedQueries({
+	@NamedQuery(name="Question.findAll", query="SELECT q FROM Question q"),
+	@NamedQuery(name="Question.findByTreeId", query="SELECT q FROM Question q WHERE q.treeStructure = :treeId")
+})
 public class Question implements Serializable {
 	private static final long serialVersionUID = 1L;
 

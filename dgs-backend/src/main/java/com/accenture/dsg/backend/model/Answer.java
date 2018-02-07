@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Table(name="answers")
 @NamedQueries({
 	@NamedQuery(name="Answer.findAll", query="SELECT a FROM Answer a"),
-	@NamedQuery(name="Answer.findByTreeId", query="SELECT a FROM Answer a WHERE a.treeStructure = :treeStructure")
+	@NamedQuery(name="Answer.findByTreeId", query="SELECT a FROM Answer a WHERE a.treeStructure = :treeId")
 })
 public class Answer implements Serializable {
 	private static final long serialVersionUID = 1L;
