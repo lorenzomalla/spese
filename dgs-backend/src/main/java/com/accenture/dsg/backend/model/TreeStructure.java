@@ -20,7 +20,7 @@ import java.util.Set;
 @Table(name="tree_structure")
 @NamedQueries({
 	@NamedQuery(name="TreeStructure.findAll", query="SELECT t FROM TreeStructure t"),
-	@NamedQuery(name="TreeStructure.findByParentId", query="SELECT t FROM TreeStructure t WHERE t.parent_id = :parent_id")
+	@NamedQuery(name="TreeStructure.findByParentId", query="SELECT t FROM TreeStructure t WHERE t.treeStructure = :treeStructure")
 })
 public class TreeStructure implements Serializable {
 	private static final long serialVersionUID = 1L;
