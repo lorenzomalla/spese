@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 
 function createCard(icon, title, description) {
-	$("#cardList").append("<div class=\"offset-3 offset-sm-4 col-2 col-sm-4\">"+
+	$("#cardList").append("<div class=\"offset-sm-4 col-md-3 col-sm-4\">"+
 			                "<div class=\"card text-center\">"+
 			                    "<div class=\"card-body\">"+
 			                        "<div class=\"blue-square\">"+
@@ -16,4 +16,5 @@ function createCard(icon, title, description) {
 			                    "</div>"+
 			                "</div>"+
 			            "</div>");
+	$("#cardList div:first-child").addClass("offset-md-3");
 }
