@@ -86,11 +86,11 @@ public class MainController {
 	}
 	
 	@GetMapping(path="/getNode")
-	public @ResponseBody String getNextNode(@RequestParam Long nodeId) {
+	public @ResponseBody String getNextNode(@RequestParam Long treeId) {
 		// This returns a JSON or XML with the users
 		JsonObject respObj = new JsonObject();
 		System.out.println("---------------------------> START");
-		List<TreeStructure> Trees = treeC.findByParentId(nodeId);
+		List<TreeStructure> Trees = treeC.findByParentId(treeId);
 		respObj.add("Tree", (JsonElement) Trees);
 		
 		String response = respObj.toString();
