@@ -47,9 +47,9 @@ public class TreeStructure implements Serializable {
 	@JoinColumn(name="parent_id", referencedColumnName="Id")
 	private TreeStructure treeStructure;
 
-	//bi-directional many-to-one association to TreeStructure
-	@OneToMany(mappedBy="treeStructure")
-	private Set<TreeStructure> treeStructures = new HashSet<TreeStructure>();;
+//	//bi-directional many-to-one association to TreeStructure
+//	@OneToMany(mappedBy="treeStructure")
+//	private Set<TreeStructure> treeStructures = new HashSet<TreeStructure>();;
 	
 	public TreeStructure() {
 	}
@@ -122,26 +122,26 @@ public class TreeStructure implements Serializable {
 		this.treeStructure = treeStructure;
 	}
 
-	public List<TreeStructure> getTreeStructures() {
-		return (List<TreeStructure>) this.treeStructures;
-	}
+//	public List<TreeStructure> getTreeStructures() {
+//		return (List<TreeStructure>) this.treeStructures;
+//	}
+//
+//	public void setTreeStructures(List<TreeStructure> treeStructures) {
+//		this.treeStructures = (Set<TreeStructure>) treeStructures;
+//	}
 
-	public void setTreeStructures(List<TreeStructure> treeStructures) {
-		this.treeStructures = (Set<TreeStructure>) treeStructures;
-	}
-
-	public TreeStructure addTreeStructure(TreeStructure treeStructure) {
-		getTreeStructures().add(treeStructure);
-		treeStructure.setTreeStructure(this);
-
-		return treeStructure;
-	}
-
-	public TreeStructure removeTreeStructure(TreeStructure treeStructure) {
-		getTreeStructures().remove(treeStructure);
-		treeStructure.setTreeStructure(null);
-
-		return treeStructure;
-	}
+//	public TreeStructure addTreeStructure(TreeStructure treeStructure) {
+//		getTreeStructures().add(treeStructure);
+//		treeStructure.setTreeStructure(this);
+//
+//		return treeStructure;
+//	}
+//
+//	public TreeStructure removeTreeStructure(TreeStructure treeStructure) {
+//		getTreeStructures().remove(treeStructure);
+//		treeStructure.setTreeStructure(null);
+//
+//		return treeStructure;
+//	}
 
 }
