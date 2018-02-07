@@ -35,6 +35,7 @@ div.bottom-bar {
 }
 .card:hover {
     border-color: RGB(0, 120, 193);
+    cursor: pointer;
 }
 
 .blue-square {
