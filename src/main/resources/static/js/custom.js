@@ -1,8 +1,26 @@
+(function(original) {
+        history.pushState = function(state) {
+            change(state);
+            return original.apply(this, arguments);
+        };
+})(history.pushState);
+
 $(document).ready(function() {
-	for(i=0; i<3; i++) {
-		createCard(i, "","Domanda "+i,"Risposta"+i);
-	}
+	$(window).on("popstate", function(e) {
+        change(e.originalEvent.state);
+    });
+
+	randomCards();
 });
+
+function change(state) {
+	randomCards();
+//    if(state === null) {
+//         $("div").text("Original"); 
+//    } else {
+//        $("div").text(state.url);
+//    }
+}
 
 function createCard(id, icon, title, description) {
 	$("#cardList").append("<div class=\"card-column\" data-node-id=\""+id+"\">"+
@@ -18,8 +36,21 @@ function createCard(id, icon, title, description) {
 			            "</div>");
 	$(".card-column").click(function() {
 		var id = $(this).data("id");
-		alert(id);
+		history.pushState({ url: "/" }, "/", "?path="+id);
+//		alert(id);
 	});
-//	$(".card-column:eq(0)").addClass("offset-md-3");
-//	$(".card-column:not(:eq(0))").addClass("offset-md-0");
 }
+
+//remove in prod
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //Il max è escluso e il min è incluso
+}
+function randomCards() {
+	$("#cardList").html("");
+	for(i=0; i<getRandomInt(0, 5); i++) {
+		createCard(i, "","Domanda "+i,"Risposta"+i);
+	}
+}
+
