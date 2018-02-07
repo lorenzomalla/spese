@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 
 function createCard(icon, title, description) {
-	$("#cardList").append("<div class=\"offset-sm-4 col-md-2 col-sm-4 card-column\">"+
+	$("#cardList").append("<div class=\"col-md-2 col-sm-4 card-column\">"+
 			                "<div class=\"card text-center\">"+
 			                    "<div class=\"card-body\">"+
 			                        "<div class=\"blue-square\">"+
@@ -16,6 +16,6 @@ function createCard(icon, title, description) {
 			                    "</div>"+
 			                "</div>"+
 			            "</div>");
-	$(".card-column:eq(0)").addClass("offset-md-3");
-	$(".card-column:not(:eq(0))").addClass("offset-md-0");
+//	$(".card-column:eq(0)").addClass("offset-md-3");
+//	$(".card-column:not(:eq(0))").addClass("offset-md-0");
 }
