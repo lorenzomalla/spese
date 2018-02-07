@@ -21,9 +21,8 @@ import com.accenture.dsg.backend.dao.TreeCrudRepository;
 import com.accenture.dsg.backend.dao.UsersCrudRepository;
 import com.accenture.dsg.backend.dao.UsersDao;
 import com.accenture.dsg.backend.model.Users;
-
-import net.minidev.json.JSONObject;
-
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.accenture.dsg.backend.model.Answer;
 import com.accenture.dsg.backend.model.Question;
 import com.accenture.dsg.backend.model.TreeStructure;
@@ -83,11 +82,9 @@ public class MainController {
 	@GetMapping(path="/getNode")
 	public @ResponseBody String getNextNode(@RequestParam Long nodeId) {
 		// This returns a JSON or XML with the users
-		JSONObject respObj = new JSONObject();
+		JsonObject respObj = new JsonObject();
 		List<TreeStructure> Trees = treeC.findByParentId(nodeId);
-//		List<Answer> Answers;
-//		List<Question> Questions;
-		respObj.putAll((Map<? extends String, ? extends Object>) Trees);
+		respObj.add("Tree", (JsonElement) Trees);
 		
 		String response = respObj.toString();
 		
