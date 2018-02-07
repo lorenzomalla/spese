@@ -91,8 +91,9 @@ public class MainController {
 		JsonObject respObj = new JsonObject();
 		System.out.println("---------------------------> START");
 		List<TreeStructure> Trees = treeC.findByParentId(treeId);
+		System.out.println("---------------------------> JSON");
 		respObj.add("Tree", (JsonElement) Trees);
-		
+		System.out.println("---------------------------> TOSTRING");
 		String response = respObj.toString();
 		System.out.println("--------------------------->"+response);
 		return response;
