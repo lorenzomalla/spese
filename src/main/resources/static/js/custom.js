@@ -1,9 +1,11 @@
-$(document).ready(function() {
-	history.pushState = function(state) {
-		change(state);
-		return original.apply(this, arguments);
-	};
+(function(original) {
+        history.pushState = function(state) {
+            change(state);
+            return original.apply(this, arguments);
+        };
+})(history.pushState);
 
+$(document).ready(function() {
 	$(window).on("popstate", function(e) {
         change(e.originalEvent.state);
     });
@@ -46,7 +48,9 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min; //Il max è escluso e il min è incluso
 }
 function randomCards() {
+	$("#cardList").html("");
 	for(i=0; i<getRandomInt(0, 5); i++) {
 		createCard(i, "","Domanda "+i,"Risposta"+i);
 	}
 }
+
