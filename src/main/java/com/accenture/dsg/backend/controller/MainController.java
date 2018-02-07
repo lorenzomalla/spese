@@ -89,6 +89,7 @@ public class MainController {
 	public @ResponseBody String getNextNode(@RequestParam Long nodeId) {
 		// This returns a JSON or XML with the users
 		JsonObject respObj = new JsonObject();
+		System.out.println("---------------------------> START");
 		List<TreeStructure> Trees = treeC.findByParentId(nodeId);
 		respObj.add("Tree", (JsonElement) Trees);
 		
