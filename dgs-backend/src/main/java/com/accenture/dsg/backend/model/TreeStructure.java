@@ -18,7 +18,10 @@ import java.util.Set;
  */
 @Entity	
 @Table(name="tree_structure")
-@NamedQuery(name="TreeStructure.findAll", query="SELECT t FROM TreeStructure t")
+@NamedQueries({
+	@NamedQuery(name="TreeStructure.findAll", query="SELECT t FROM TreeStructure t"),
+	@NamedQuery(name="TreeStructure.findByParentId", query="SELECT t FROM TreeStructure t WHERE t.parent_id = :parent_id")
+})
 public class TreeStructure implements Serializable {
 	private static final long serialVersionUID = 1L;
 

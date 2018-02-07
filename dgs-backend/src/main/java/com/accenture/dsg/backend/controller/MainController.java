@@ -1,6 +1,9 @@
 package com.accenture.dsg.backend.controller;
 
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -14,6 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.accenture.dsg.backend.dao.UsersCrudRepository;
 import com.accenture.dsg.backend.dao.UsersDao;
 import com.accenture.dsg.backend.model.Users;
+import com.accenture.dsg.backend.model.Answer;
+import com.accenture.dsg.backend.model.Question;
+import com.accenture.dsg.backend.model.TreeStructure;
 
 
 
@@ -46,7 +52,7 @@ public class MainController {
 		dao.persist(user);
 		return "Salvato";
 	}
-	
+		
 	@GetMapping(path="/checkLogin")
 	public @ResponseBody String getAllUsers(@RequestParam String email,
 											@RequestParam String password){
