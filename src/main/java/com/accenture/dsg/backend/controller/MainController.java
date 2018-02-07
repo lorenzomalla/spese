@@ -79,6 +79,12 @@ public class MainController {
 		return repo.findAll();
 	}
 	
+	@GetMapping(path="/allTree")
+	public @ResponseBody Iterable<TreeStructure> getAllTree() {
+		// This returns a JSON or XML with the users
+		return treeC.findAll();
+	}
+	
 	@GetMapping(path="/getNode")
 	public @ResponseBody String getNextNode(@RequestParam Long nodeId) {
 		// This returns a JSON or XML with the users
