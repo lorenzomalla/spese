@@ -20,7 +20,7 @@ import java.util.Set;
 @Table(name="tree_structure")
 @NamedQueries({
 	@NamedQuery(name="TreeStructure.findAll", query="SELECT t FROM TreeStructure t"),
-	@NamedQuery(name="TreeStructure.findByParentId", query="SELECT t FROM TreeStructure t WHERE t.treeStructure.parent_id = :treeId")
+	@NamedQuery(name="TreeStructure.findByParentId", query="SELECT t FROM TreeStructure t WHERE t.parent_id = :treeId")
 })
 public class TreeStructure implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -45,7 +45,7 @@ public class TreeStructure implements Serializable {
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne
 	@JoinColumn(name="parent_id", referencedColumnName="Id")
-	private TreeStructure treeStructure;
+	private TreeStructure parent_id;
 
 //	//bi-directional many-to-one association to TreeStructure
 //	@OneToMany(mappedBy="treeStructure")
@@ -114,12 +114,12 @@ public class TreeStructure implements Serializable {
 		this.catTreeStructureType = catTreeStructureType;
 	}
 
-	public TreeStructure getTreeStructure() {
-		return this.treeStructure;
+	public TreeStructure getParentId() {
+		return this.parent_id;
 	}
 
-	public void setTreeStructure(TreeStructure treeStructure) {
-		this.treeStructure = treeStructure;
+	public void setParentId(TreeStructure parent_id) {
+		this.parent_id = parent_id;
 	}
 
 //	public List<TreeStructure> getTreeStructures() {
