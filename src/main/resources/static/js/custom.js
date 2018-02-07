@@ -1,11 +1,11 @@
 $(document).ready(function() {
 	for(i=0; i<3; i++) {
-		createCard("","Domanda "+i,"Risposta"+i);
+		createCard(i, "","Domanda "+i,"Risposta"+i);
 	}
 });
 
-function createCard(icon, title, description) {
-	$("#cardList").append("<div class=\"col-md-2 col-sm-4 card-column\">"+
+function createCard(id, icon, title, description) {
+	$("#cardList").append("<div class=\"card-column\" data-node-id=\""+id+"\">"+
 			                "<div class=\"card text-center\">"+
 			                    "<div class=\"card-body\">"+
 			                        "<div class=\"blue-square\">"+
@@ -16,6 +16,10 @@ function createCard(icon, title, description) {
 			                    "</div>"+
 			                "</div>"+
 			            "</div>");
+	$(".card-column").click(function() {
+		var id = $(this).data("id");
+		alert(id);
+	});
 //	$(".card-column:eq(0)").addClass("offset-md-3");
 //	$(".card-column:not(:eq(0))").addClass("offset-md-0");
 }
