@@ -21,6 +21,7 @@ import com.accenture.dsg.backend.dao.TreeCrudRepository;
 import com.accenture.dsg.backend.dao.UsersCrudRepository;
 import com.accenture.dsg.backend.dao.UsersDao;
 import com.accenture.dsg.backend.model.Users;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.accenture.dsg.backend.model.Answer;
@@ -89,10 +90,11 @@ public class MainController {
 	public @ResponseBody String getNextNode(@RequestParam Long treeId) {
 		// This returns a JSON or XML with the users
 		JsonObject respObj = new JsonObject();
+		Gson gson = new Gson();  
 		System.out.println("---------------------------> START");
 		List<TreeStructure> Trees = treeC.findByParentId(treeId);
 		System.out.println("---------------------------> JSON");
-		respObj.add("Tree", (JsonElement) Trees);
+		respObj.add("Tree", gson.toJsonTree(Trees));
 		System.out.println("---------------------------> TOSTRING");
 		String response = respObj.toString();
 		System.out.println("--------------------------->"+response);
