@@ -3,6 +3,7 @@ package com.accenture.dsg.backend.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,9 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.accenture.dsg.backend.dao.AnswerCrudRepository;
+import com.accenture.dsg.backend.dao.QuestionCrudRepository;
+import com.accenture.dsg.backend.dao.TreeCrudRepository;
 import com.accenture.dsg.backend.dao.UsersCrudRepository;
 import com.accenture.dsg.backend.dao.UsersDao;
 import com.accenture.dsg.backend.model.Users;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.accenture.dsg.backend.model.Answer;
 import com.accenture.dsg.backend.model.Question;
 import com.accenture.dsg.backend.model.TreeStructure;
@@ -31,6 +37,10 @@ public class MainController {
 	
 	@Autowired
 	private UsersCrudRepository repo;
+	
+	@Autowired
+	private TreeCrudRepository treeC;
+
 	
 	@RequestMapping(value={"/","/home"}, method = RequestMethod.GET)
 	public String home(){
@@ -69,6 +79,16 @@ public class MainController {
 		return repo.findAll();
 	}
 	
-	
+	@GetMapping(path="/getNode")
+	public @ResponseBody String getNextNode(@RequestParam Long nodeId) {
+		// This returns a JSON or XML with the users
+		JsonObject respObj = new JsonObject();
+		List<TreeStructure> Trees = treeC.findByParentId(nodeId);
+		respObj.add("Tree", (JsonElement) Trees);
+		
+		String response = respObj.toString();
+		
+		return response;
+	}
 	
 }
