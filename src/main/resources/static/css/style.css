@@ -48,3 +48,6 @@ div.bottom-bar {
 	background-color: RGB(0, 120, 193);
 }
 
+#cardList {
+	justify-content: center;
+}
