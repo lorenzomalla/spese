@@ -16,5 +16,5 @@ function createCard(icon, title, description) {
 			                    "</div>"+
 			                "</div>"+
 			            "</div>");
-	$("#cardList div:first-child").addClass("offset-md-3");
+	$("#cardList:first-child").addClass("offset-md-3");
 }
