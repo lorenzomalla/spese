@@ -35,7 +35,7 @@ function createCard(id, icon, title, description) {
 			                "</div>"+
 			            "</div>");
 	$(".card-column").click(function() {
-		var id = $(this).data("id");
+		var id = $(this).data("node-id");
 		history.pushState({ url: "/" }, "/", "?path="+id);
 //		alert(id);
 	});
@@ -49,7 +49,7 @@ function getRandomInt(min, max) {
 }
 function randomCards() {
 	$("#cardList").html("");
-	for(i=0; i<getRandomInt(0, 5); i++) {
+	for(i=0; i<getRandomInt(1, 6); i++) {
 		createCard(i, "","Domanda "+i,"Risposta"+i);
 	}
 }
