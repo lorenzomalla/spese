@@ -44,7 +44,7 @@ public class TreeStructure implements Serializable {
 
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne
-	@JoinColumn(name="parent_id")
+	@JoinColumn(name="parent_id", referencedColumnName="Id")
 	private TreeStructure treeStructure;
 
 	//bi-directional many-to-one association to TreeStructure
