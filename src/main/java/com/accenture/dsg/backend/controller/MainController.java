@@ -2,6 +2,7 @@ package com.accenture.dsg.backend.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,6 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.accenture.dsg.backend.dao.AnswerCrudRepository;
+import com.accenture.dsg.backend.dao.CatTemplateCrudRepository;
+import com.accenture.dsg.backend.dao.CatTreeCrudRepository;
+import com.accenture.dsg.backend.dao.QuestionCrudRepository;
+import com.accenture.dsg.backend.dao.TempAttrCrudRepository;
+import com.accenture.dsg.backend.dao.TemplateCrudRepository;
 import com.accenture.dsg.backend.dao.TreeCrudRepository;
 import com.accenture.dsg.backend.dao.UsersCrudRepository;
 import com.accenture.dsg.backend.dao.UsersDao;
@@ -18,21 +25,30 @@ import com.accenture.dsg.backend.model.Users;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-@RestController 
+@Controller 
 public class MainController {
 	@Autowired 
 	private UsersDao dao;
-	
 	@Autowired
 	private UsersCrudRepository repo;
-	
 	@Autowired
 	private TreeCrudRepository treeC;
-
+	@Autowired
+	private AnswerCrudRepository answerC;
+	@Autowired
+	private QuestionCrudRepository questionC;
+	@Autowired
+	private TemplateCrudRepository templateC;
+	@Autowired
+	private CatTemplateCrudRepository catTemplateC;
+	@Autowired
+	private CatTreeCrudRepository catTreeC;
+	@Autowired
+	private TempAttrCrudRepository attrC;
 	
 	@RequestMapping(value={"/","/home"}, method = RequestMethod.GET)
-	public ModelAndView home(){
-		return new ModelAndView("login");
+	public String home(){
+		return "login";
 	}
 	
 	@RequestMapping(value={"/error"}, method = RequestMethod.GET)
