@@ -17,7 +17,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.accenture.dsg.backend.model.TreeStructure;
 
-@RestController 
+@Controller 
 public class MainController {
 	@Autowired 
 	private UsersDao dao;
