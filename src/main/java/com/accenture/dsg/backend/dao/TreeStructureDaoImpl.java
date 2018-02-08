@@ -52,6 +52,13 @@ public class TreeStructureDaoImpl implements TreeStructureDao{
 		}
 		return tree;
 	}
+
+	@Override
+	public void persistTreeStructure(TreeStructure tree) {
+		em.persist(tree);
+	}
+
+	
 	
 
 }

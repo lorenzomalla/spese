@@ -5,17 +5,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.accenture.dsg.backend.dao.AnswersDao;
+import com.accenture.dsg.backend.dao.QuestionsDao;
 import com.accenture.dsg.backend.dao.TreeStructureDao;
 import com.accenture.dsg.backend.dao.UsersDao;
+import com.accenture.dsg.backend.model.Answer;
+import com.accenture.dsg.backend.model.Question;
 import com.accenture.dsg.backend.model.TreeStructure;
 import com.accenture.dsg.backend.model.User;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 @Controller 
 public class MainController {
@@ -24,6 +27,13 @@ public class MainController {
 	
 	@Autowired
 	private TreeStructureDao dao;
+	
+	@Autowired
+	private QuestionsDao questionDao;
+	
+	@Autowired
+	private AnswersDao answerDao;
+	
 
 
 	
@@ -81,4 +91,31 @@ public class MainController {
 			}
 		return tree;
 	}
-}
+	
+	@RequestMapping(value="/addTree" , method = RequestMethod.POST)
+	public @ResponseBody String persistTreeStructure(@RequestBody TreeStructure tree){
+		if(tree != null){
+			dao.persistTreeStructure(tree);
+			return "Salvato";
+		}
+			return "Errore";
+	}
+
+	@RequestMapping(value="/persistAnswer" , method = RequestMethod.POST)
+	public @ResponseBody String persistAnswer(@RequestBody Answer answer){
+		if(answer != null){
+			answerDao.persistAnswers(answer);
+			return "salvato";
+		}else
+			return "errore";
+	}
+	
+	@RequestMapping(value="/persistQuestion" , method = RequestMethod.POST)
+	public @ResponseBody String persistQuestion(@RequestBody Question question){
+		if(question != null){
+			questionDao.persistQuestions(question);
+			return "Salvato";
+		}else
+			return "Errore";
+		}
+	}

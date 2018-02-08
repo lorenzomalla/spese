@@ -9,5 +9,6 @@ public interface TreeStructureDao{
 	public List<TreeStructure> getAllLista();
 	public TreeStructure getFindById(int id);
 	public TreeStructure getTree();
+	public void persistTreeStructure(TreeStructure tree);
 
 }
