@@ -64,4 +64,16 @@ div.bottom-bar {
 div.navigation-bar{
     font-family: tim-font;
 }
+h3{
+	font-family: tim-font;
+}
+div.card-column{
+	font-family: tim-font;
+}
+.card-title{
+	font-family: tim-font;
+}
+.card-subtitle{
+	font-family: tim-font;
+}
 
