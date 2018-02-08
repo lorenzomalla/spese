@@ -10,11 +10,18 @@ $(document).ready(function() {
         change(e.originalEvent.state);
     });
 
-	randomCards();
+	getCards();
 });
 
+function getCards() {
+	$("#cardList").html("");
+	for(i=0; i<getRandomInt(1, 6); i++) {
+		createCard(i, "","Domanda "+i,"Risposta"+i);
+	}
+}
+
 function change(state) {
-	randomCards();
+	getCards();
 //    if(state === null) {
 //         $("div").text("Original"); 
 //    } else {
@@ -27,7 +34,7 @@ function createCard(id, icon, title, description) {
 			                "<div class=\"card text-center\">"+
 			                    "<div class=\"card-body\">"+
 			                        "<div class=\"blue-square\">"+
-			                            "<h3 class=\"title\"><i class=\"fa fa-wrench\"></i></h3>"+
+			                            "<h3 class=\"title\"><i class=\"fas fa-wrench\"></i></h3>"+
 			                        "</div>"+
 			                        "<h5 class=\"card-title\">"+title+"</h5>"+
 			                        "<h6 class=\"card-subtitle mb-2 text-muted\">"+description+"</h6>"+
@@ -46,11 +53,5 @@ function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //Il max è escluso e il min è incluso
-}
-function randomCards() {
-	$("#cardList").html("");
-	for(i=0; i<getRandomInt(1, 6); i++) {
-		createCard(i, "","Domanda "+i,"Risposta"+i);
-	}
 }
 
