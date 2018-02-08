@@ -3,13 +3,6 @@ package com.accenture.dsg.backend.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.accenture.dsg.backend.model.Answer;
-import com.accenture.dsg.backend.model.CatTreeStructureType;
-import com.accenture.dsg.backend.model.Question;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 
 /**
@@ -29,27 +22,10 @@ public class TreeStructure implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 
-	//bi-directional many-to-one association to Answer
-	@OneToMany(mappedBy="treeStructure")
-	private List<Answer> answers;
-
-	//bi-directional many-to-one association to Question
-	@OneToMany(mappedBy="treeStructure")
-	private List<Question> questions;
-
-	//bi-directional many-to-one association to CatTreeStructureType
-	@ManyToOne
-	@JoinColumn(name="cat_tree_structure_type_id")
-	private CatTreeStructureType catTreeStructureType;
-
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne
-	@JoinColumn(name="parent_id", referencedColumnName="Id")
+	@JoinColumn(name="parent_id")
 	private TreeStructure parent_id;
-
-	//bi-directional many-to-one association to TreeStructure
-	@OneToMany(mappedBy="parent_id")
-	private Set<TreeStructure> treeStructures = new HashSet<TreeStructure>();;
 	
 	public TreeStructure() {
 		super();
@@ -63,57 +39,6 @@ public class TreeStructure implements Serializable {
 		this.id = id;
 	}
 
-	public List<Answer> getAnswers() {
-		return this.answers;
-	}
-
-	public void setAnswers(List<Answer> answers) {
-		this.answers = answers;
-	}
-
-	public Answer addAnswer(Answer answer) {
-		getAnswers().add(answer);
-		answer.setTreeStructure(this);
-
-		return answer;
-	}
-
-	public Answer removeAnswer(Answer answer) {
-		getAnswers().remove(answer);
-		answer.setTreeStructure(null);
-
-		return answer;
-	}
-
-	public List<Question> getQuestions() {
-		return this.questions;
-	}
-
-	public void setQuestions(List<Question> questions) {
-		this.questions = questions;
-	}
-
-	public Question addQuestion(Question question) {
-		getQuestions().add(question);
-		question.setTreeStructure(this);
-
-		return question;
-	}
-
-	public Question removeQuestion(Question question) {
-		getQuestions().remove(question);
-		question.setTreeStructure(null);
-
-		return question;
-	}
-
-	public CatTreeStructureType getCatTreeStructureType() {
-		return this.catTreeStructureType;
-	}
-
-	public void setCatTreeStructureType(CatTreeStructureType catTreeStructureType) {
-		this.catTreeStructureType = catTreeStructureType;
-	}
 
 	public TreeStructure getParentId() {
 		return this.parent_id;
@@ -121,28 +46,6 @@ public class TreeStructure implements Serializable {
 
 	public void setParentId(TreeStructure parent_id) {
 		this.parent_id = parent_id;
-	}
-
-	public List<TreeStructure> getTreeStructures() {
-		return (List<TreeStructure>) this.treeStructures;
-	}
-
-	public void setTreeStructures(TreeStructure treeStructure) {
-		this.treeStructures = (Set<TreeStructure>) treeStructure;
-	}
-
-	public TreeStructure addTreeStructure(TreeStructure treeStructure) {
-		getTreeStructures().add(treeStructure);
-		treeStructure.setTreeStructures(this);
-
-		return treeStructure;
-	}
-
-	public TreeStructure removeTreeStructure(TreeStructure treeStructure) {
-		getTreeStructures().remove(treeStructure);
-		treeStructure.setTreeStructures(null);
-
-		return treeStructure;
 	}
 
 }

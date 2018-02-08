@@ -1,23 +1,12 @@
 package com.accenture.dsg.backend.controller;
-import java.net.URI;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import com.accenture.dsg.backend.dao.TreeCrudRepository;
 import com.accenture.dsg.backend.dao.UsersCrudRepository;
 import com.accenture.dsg.backend.dao.UsersDao;
@@ -73,51 +62,6 @@ public class MainController {
 		return repo.findAll();
 	}
 	
-	@GetMapping("/allTree")
-	public @ResponseBody List<TreeStructure> retrieveAllTree() {
-		return treeC.findAll();
-	}
-
-	@GetMapping("/treeStructure/{id}")
-	public @ResponseBody TreeStructure retrieveTree(@PathVariable long id) throws Exception {
-		Optional<TreeStructure> tree = treeC.findById(id);
-
-		if (!tree.isPresent())
-			throw new Exception("id-" + id);
-
-		return tree.get();
-	}
-
-	@DeleteMapping("/treeStructure/{id}")
-	public void deleteTree(@PathVariable long id) {
-		treeC.deleteById(id);
-	}
-
-	@PostMapping("/treeStructure")
-	public @ResponseBody ResponseEntity<TreeStructure> createTree(@RequestBody TreeStructure tree) {
-		TreeStructure savedTree = treeC.save(tree);
-
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(savedTree.getId()).toUri();
-
-		return ResponseEntity.created(location).build();
-
-	}
-	
-	@PutMapping("/treeStructure/{id}")
-	public @ResponseBody ResponseEntity<TreeStructure> updateTree(@RequestBody TreeStructure tree, @PathVariable long id) {
-
-		Optional<TreeStructure> treeOptional = treeC.findById(id);
-
-		if (!treeOptional.isPresent())
-			return ResponseEntity.notFound().build();
-
-		tree.setId(id);
-		
-		treeC.save(tree);
-
-		return ResponseEntity.noContent().build();
-	}
 	
 	@GetMapping(path="/getNode")
 	public @ResponseBody String getNextNode(@RequestParam Long treeId) {
