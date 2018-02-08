@@ -52,6 +52,7 @@ public class TreeStructure implements Serializable {
 	private Set<TreeStructure> treeStructures = new HashSet<TreeStructure>();;
 	
 	public TreeStructure() {
+		super();
 	}
 
 	public long getId() {
