@@ -30,7 +30,7 @@ function change(state) {
 }
 
 function createCard(id, icon, title, description) {
-	$("#cardList").append("<div class=\"col-xs-12 col-md-4 col-lg-2 card-column\" data-node-id=\""+id+"\">"+
+	$("#cardList").append("<div class=\"card-column\" data-node-id=\""+id+"\">"+
 			                "<div class=\"card text-center\">"+
 			                    "<div class=\"card-body\">"+
 			                        "<div class=\"blue-square\">"+
