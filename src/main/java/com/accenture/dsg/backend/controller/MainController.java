@@ -74,12 +74,12 @@ public class MainController {
 	}
 	
 	@GetMapping("/allTree")
-	public List<TreeStructure> retrieveAllTree() {
+	public @ResponseBody List<TreeStructure> retrieveAllTree() {
 		return treeC.findAll();
 	}
 
 	@GetMapping("/treeStructure/{id}")
-	public TreeStructure retrieveTree(@PathVariable long id) throws Exception {
+	public @ResponseBody TreeStructure retrieveTree(@PathVariable long id) throws Exception {
 		Optional<TreeStructure> tree = treeC.findById(id);
 
 		if (!tree.isPresent())
@@ -94,7 +94,7 @@ public class MainController {
 	}
 
 	@PostMapping("/treeStructure")
-	public ResponseEntity<TreeStructure> createTree(@RequestBody TreeStructure tree) {
+	public @ResponseBody ResponseEntity<TreeStructure> createTree(@RequestBody TreeStructure tree) {
 		TreeStructure savedTree = treeC.save(tree);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -105,7 +105,7 @@ public class MainController {
 	}
 	
 	@PutMapping("/treeStructure/{id}")
-	public ResponseEntity<TreeStructure> updateTree(@RequestBody TreeStructure tree, @PathVariable long id) {
+	public @ResponseBody ResponseEntity<TreeStructure> updateTree(@RequestBody TreeStructure tree, @PathVariable long id) {
 
 		Optional<TreeStructure> treeOptional = treeC.findById(id);
 
