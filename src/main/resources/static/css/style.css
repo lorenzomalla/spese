@@ -40,7 +40,7 @@ div.bottom-bar {
 }
 
 .card {
-	width: 220px;
+	width: 160px;
 }
 
 .card {
@@ -54,7 +54,7 @@ div.bottom-bar {
 .blue-square {
     color: #FFFFFF;
     background-color: #2672EC;
-    padding: 40px;
+    padding: 25px;
 }
 
 .card:hover .blue-square {
