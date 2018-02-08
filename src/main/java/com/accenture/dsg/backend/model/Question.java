@@ -3,6 +3,7 @@ package com.accenture.dsg.backend.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -11,16 +12,12 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="questions")
-@NamedQueries({
-	@NamedQuery(name="Question.findAll", query="SELECT q FROM Question q"),
-	@NamedQuery(name="Question.findByTreeId", query="SELECT q FROM Question q WHERE q.treeStructure = :treeId")
-})
+@NamedQuery(name="Question.findAll", query="SELECT q FROM Question q")
 public class Question implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private String id;
 
 	@Column(name="page_subtitle")
 	private String pageSubtitle;
@@ -31,16 +28,17 @@ public class Question implements Serializable {
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne
 	@JoinColumn(name="tree_structure_id")
+	@JsonIgnore
 	private TreeStructure treeStructure;
 
 	public Question() {
 	}
 
-	public long getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

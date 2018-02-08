@@ -3,31 +3,29 @@ package com.accenture.dsg.backend.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.accenture.dsg.backend.model.Answer;
-import com.accenture.dsg.backend.model.CatTreeStructureType;
-import com.accenture.dsg.backend.model.Question;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.HashSet;
+import java.math.BigInteger;
 import java.util.List;
-import java.util.Set;
 
 
 /**
  * The persistent class for the tree_structure database table.
  * 
  */
-@Entity	
+@Entity
 @Table(name="tree_structure")
 @NamedQueries({
-	@NamedQuery(name="TreeStructure.findAll", query="SELECT t FROM TreeStructure t"),
-	@NamedQuery(name="TreeStructure.findByParentId", query="SELECT t, a, q FROM TreeStructure t JOIN t.parent_id p JOIN t.answers a JOIN  t.questions q WHERE p.id = :treeId")
+@NamedQuery(name="TreeStructure.findAll", query="SELECT t FROM TreeStructure t"),
 })
 public class TreeStructure implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private int id;
+
+	@Column(name="cat_structure_type_id")
+	private BigInteger catStructureTypeId;
 
 	//bi-directional many-to-one association to Answer
 	@OneToMany(mappedBy="treeStructure")
@@ -37,31 +35,34 @@ public class TreeStructure implements Serializable {
 	@OneToMany(mappedBy="treeStructure")
 	private List<Question> questions;
 
-	//bi-directional many-to-one association to CatTreeStructureType
-	@ManyToOne
-	@JoinColumn(name="cat_tree_structure_type_id")
-	private CatTreeStructureType catTreeStructureType;
-
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne
-	@JoinColumn(name="parent_id", referencedColumnName="Id")
-	private TreeStructure parent_id;
+	@JoinColumn(name="parent_id")
+	@JsonIgnore
+	private TreeStructure treeStructure;
 
 	//bi-directional many-to-one association to TreeStructure
-	@OneToMany(mappedBy="parent_id")
-	private Set<TreeStructure> treeStructures = new HashSet<TreeStructure>();;
-	
+	@OneToMany(mappedBy="treeStructure")
+	private List<TreeStructure> treeStructures;
+
 	public TreeStructure() {
 	}
 
-	public long getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
+	public BigInteger getCatStructureTypeId() {
+		return this.catStructureTypeId;
+	}
+
+	public void setCatStructureTypeId(BigInteger catStructureTypeId) {
+		this.catStructureTypeId = catStructureTypeId;
+	}
 	public List<Answer> getAnswers() {
 		return this.answers;
 	}
@@ -83,7 +84,6 @@ public class TreeStructure implements Serializable {
 
 		return answer;
 	}
-
 	public List<Question> getQuestions() {
 		return this.questions;
 	}
@@ -106,40 +106,31 @@ public class TreeStructure implements Serializable {
 		return question;
 	}
 
-	public CatTreeStructureType getCatTreeStructureType() {
-		return this.catTreeStructureType;
+	public TreeStructure getTreeStructure() {
+		return this.treeStructure;
 	}
 
-	public void setCatTreeStructureType(CatTreeStructureType catTreeStructureType) {
-		this.catTreeStructureType = catTreeStructureType;
+	public void setTreeStructure(TreeStructure treeStructure) {
+		this.treeStructure = treeStructure;
 	}
-
-	public TreeStructure getParentId() {
-		return this.parent_id;
-	}
-
-	public void setParentId(TreeStructure parent_id) {
-		this.parent_id = parent_id;
-	}
-
 	public List<TreeStructure> getTreeStructures() {
-		return (List<TreeStructure>) this.treeStructures;
+		return this.treeStructures;
 	}
 
-	public void setTreeStructures(TreeStructure treeStructure) {
-		this.treeStructures = (Set<TreeStructure>) treeStructure;
+	public void setTreeStructures(List<TreeStructure> treeStructures) {
+		this.treeStructures = treeStructures;
 	}
 
 	public TreeStructure addTreeStructure(TreeStructure treeStructure) {
 		getTreeStructures().add(treeStructure);
-		treeStructure.setTreeStructures(this);
+		treeStructure.setTreeStructure(this);
 
 		return treeStructure;
 	}
 
 	public TreeStructure removeTreeStructure(TreeStructure treeStructure) {
 		getTreeStructures().remove(treeStructure);
-		treeStructure.setTreeStructures(null);
+		treeStructure.setTreeStructure(null);
 
 		return treeStructure;
 	}

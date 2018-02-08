@@ -1,28 +1,30 @@
 package com.accenture.dsg.backend.controller;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.accenture.dsg.backend.dao.TreeCrudRepository;
-import com.accenture.dsg.backend.dao.UsersCrudRepository;
+
+import com.accenture.dsg.backend.dao.TreeStructureDao;
 import com.accenture.dsg.backend.dao.UsersDao;
 import com.accenture.dsg.backend.model.TreeStructure;
-import com.accenture.dsg.backend.model.Users;
+import com.accenture.dsg.backend.model.User;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 @Controller 
 public class MainController {
 	@Autowired 
-	private UsersDao dao;
+	private UsersDao userDao;
+	
 	@Autowired
-	private UsersCrudRepository repo;
-	@Autowired
-	private TreeCrudRepository treeC;
+	private TreeStructureDao dao;
+
 
 	
 	@RequestMapping(value={"/","/home"}, method = RequestMethod.GET)
@@ -39,43 +41,44 @@ public class MainController {
 	@GetMapping(path="/add") // Map ONLY GET Requests
 	public @ResponseBody String addNewUser (@RequestParam String email ,
 											@RequestParam String password) {
-		Users user = new Users();
+		User user = new User();
 		user.setMail(email);
 		user.setPassword(password);
-		dao.persist(user);
+		userDao.persist(user);
 		return "Salvato";
 	}
 		
 	@GetMapping(path="/checkLogin")
 	public @ResponseBody String getAllUsers(@RequestParam String email,
 											@RequestParam String password){
-		Users user = dao.checkLogin(email, password);
+		User user = userDao.checkLogin(email, password);
 		if(user != null){
 			return "login";
 		}else
 			return "errato";
 	}
 	
-	@GetMapping(path="/all")
-	public @ResponseBody Iterable<Users> getAllUsers() {
-		// This returns a JSON or XML with the users
-		return repo.findAll();
+	@RequestMapping(value="/getAllList", method = RequestMethod.GET)
+	public @ResponseBody List<TreeStructure> getAllList(){
+		List<TreeStructure> list = dao.getAllLista();
+		list.toString();
+		return list;
 	}
 	
-	
-	@GetMapping(path="/getNode")
-	public @ResponseBody String getNextNode(@RequestParam Long treeId) {
-		// This returns a JSON or XML with the users
-		JsonObject respObj = new JsonObject();
-		Gson gson = new Gson();  
-		System.out.println("---------------------------> START");
-		List<TreeStructure> Trees = treeC.findByParentId(treeId);
-		System.out.println("---------------------------> JSON");
-		respObj.add("Tree", gson.toJsonTree(Trees));
-		System.out.println("---------------------------> TOSTRING");
-		String response = respObj.toString();
-		System.out.println("--------------------------->"+response);
-		return response;
+	@RequestMapping(value="/getTree", method = RequestMethod.GET)
+	public @ResponseBody TreeStructure getTree(){
+		TreeStructure tree = dao.getTree();
+		List<TreeStructure> listaVuota = new ArrayList<>();
+		tree.setTreeStructures(listaVuota);
+		return tree;
 	}
 	
+	@RequestMapping(value="/getNodeById/{id}", method = RequestMethod.GET)
+	public @ResponseBody TreeStructure getFindById(@PathVariable("id") int id){
+		TreeStructure tree = dao.getFindById(id);
+		for (TreeStructure t : tree.getTreeStructures()) {
+				t.setTreeStructures(null);				
+			}
+		return tree;
+	}
 }
