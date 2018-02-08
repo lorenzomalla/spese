@@ -33,11 +33,6 @@ public class Answer implements Serializable {
 	@JoinColumn(name="tree_structure_id")
 	private TreeStructure treeStructure;
 
-	//bi-directional many-to-one association to Template
-	@ManyToOne
-	@JoinColumn(name="answer_id")
-	private Template template;
-
 	public Answer() {
 	}
 
@@ -79,14 +74,6 @@ public class Answer implements Serializable {
 
 	public void setTreeStructure(TreeStructure treeStructure) {
 		this.treeStructure = treeStructure;
-	}
-
-	public Template getTemplate() {
-		return this.template;
-	}
-
-	public void setTemplate(Template template) {
-		this.template = template;
 	}
 
 }

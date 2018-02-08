@@ -52,18 +52,4 @@ public class CatTemplate implements Serializable {
 		this.templates = templates;
 	}
 
-	public Template addTemplate(Template template) {
-		getTemplates().add(template);
-		template.setCatTemplate(this);
-
-		return template;
-	}
-
-	public Template removeTemplate(Template template) {
-		getTemplates().remove(template);
-		template.setCatTemplate(null);
-
-		return template;
-	}
-
 }
