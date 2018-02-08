@@ -67,9 +67,9 @@ public class MainController {
 	}
 	
 	@GetMapping(path="/allTree")
-	public List<TreeStructure> getAllTree() {
+	public @ResponseBody List<TreeStructure> getAllTree() {
 		// This returns a JSON or XML with the users
-		return treeC.findAll();
+		return (List<TreeStructure>) treeC.findAll();
 	}
 	
 	@GetMapping(path="/getNode")
