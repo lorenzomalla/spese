@@ -1,10 +1,10 @@
 @font-face {
-    font-family: tim-font;
-    src: url(/font/TIMSans-Light.ttf);
+    font-family: TIMSans-Light;
+    src: url(/css/font/TIMSans-Light.ttf);
 }
 
-* {
-    font-family: tim-font !important;
+body {
+    font-family: TIMSans-Light;
 }
 
 div.top-bar{
@@ -65,3 +65,6 @@ div.bottom-bar {
 	justify-content: center;
 }
 
+.card-column {
+    margin: 10px;
+}
