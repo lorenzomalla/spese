@@ -29,10 +29,10 @@ public class MainController {
 	private TreeCrudRepository treeC;
 
 	
-	@RequestMapping(value={"/","/home"}, method = RequestMethod.GET)
-	public String home(){
-		return "login";
-	}
+//	@RequestMapping(value={"/","/home"}, method = RequestMethod.GET)
+//	public String home(){
+//		return "login";
+//	}
 	
 	@RequestMapping(value={"/error"}, method = RequestMethod.GET)
 	public String errore(){
