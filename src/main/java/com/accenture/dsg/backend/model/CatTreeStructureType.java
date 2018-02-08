@@ -54,4 +54,18 @@ public class CatTreeStructureType implements Serializable {
 		this.treeStructures = treeStructures;
 	}
 
+	public TreeStructure addTreeStructure(TreeStructure treeStructure) {
+		getTreeStructures().add(treeStructure);
+		treeStructure.setCatTreeStructureType(this);
+
+		return treeStructure;
+	}
+
+	public TreeStructure removeTreeStructure(TreeStructure treeStructure) {
+		getTreeStructures().remove(treeStructure);
+		treeStructure.setCatTreeStructureType(null);
+
+		return treeStructure;
+	}
+
 }
