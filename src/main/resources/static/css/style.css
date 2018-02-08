@@ -1,3 +1,12 @@
+@font-face {
+    font-family: tim-font;
+    src: url(/font/TIMSans-Light.ttf);
+}
+
+* {
+    font-family: tim-font !important;
+}
+
 div.top-bar{
     height: 40px;
     background-color: RGB(7, 72, 138);
@@ -54,29 +63,5 @@ div.bottom-bar {
 
 #cardList {
 	justify-content: center;
-}
-
-@font-face {
-    font-family: tim-font;
-    src: url(/font/TIMSans-Light.ttf);
-}
-
-div.navigation-bar{
-    font-family: tim-font;
-}
-h3{
-	font-family: tim-font;
-}
-div.card-column{
-	font-family: tim-font;
-}
-.card-title{
-	font-family: tim-font;
-}
-.card-subtitle{
-	font-family: tim-font;
-}
-div.bottom-bar{
-	font-family: tim-font;
 }
 

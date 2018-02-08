@@ -1,21 +1,22 @@
 package com.accenture.dsg.backend.controller;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.accenture.dsg.backend.dao.TreeCrudRepository;
 import com.accenture.dsg.backend.dao.UsersCrudRepository;
 import com.accenture.dsg.backend.dao.UsersDao;
+import com.accenture.dsg.backend.model.TreeStructure;
 import com.accenture.dsg.backend.model.Users;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.accenture.dsg.backend.model.TreeStructure;
 
 @Controller 
 public class MainController {
@@ -30,8 +31,8 @@ public class MainController {
 
 	
 	@RequestMapping(value={"/","/home"}, method = RequestMethod.GET)
-	public String home(){
-		return "login";
+	public ModelAndView home(){
+		return new ModelAndView("login");
 	}
 	
 	@RequestMapping(value={"/error"}, method = RequestMethod.GET)
