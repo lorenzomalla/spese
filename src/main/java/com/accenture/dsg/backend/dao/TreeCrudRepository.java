@@ -9,6 +9,5 @@ import com.accenture.dsg.backend.model.TreeStructure;
 @Component
 public interface TreeCrudRepository extends CrudRepository<TreeStructure, Long>{
 
-	List<TreeStructure> findAll();
 	List<TreeStructure> findByParentId(@Param("treeId") Long treeId);
 }
