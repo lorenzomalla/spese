@@ -12,7 +12,7 @@ public class MailSend {
         this.mailSender = mailSender;
     }
 
-    public void sendMail(String Body,String Subject,String Bcc,String Cc,String To) {
+    public boolean sendMail(String Body,String Subject,String Bcc,String Cc,String To) {
 
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(To);
@@ -24,10 +24,10 @@ public class MailSend {
             this.mailSender.send(msg);
         }
         catch (MailException ex) {
-            // simply log it and go on...
             System.err.println(ex.getMessage());
+            return false;
         }
+        return true;
     }
-
 }
 
