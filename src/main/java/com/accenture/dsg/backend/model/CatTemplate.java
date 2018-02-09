@@ -25,7 +25,7 @@ public class CatTemplate implements Serializable {
 
 	private String templatename;
 	
-	@Column(columnDefinition="LONGTEXT")
+	@Column(columnDefinition="TEXT")
 	private String markup;
 
 	//bi-directional many-to-one association to Template

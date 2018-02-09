@@ -1,6 +1,9 @@
 package com.accenture.dsg.backend.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -28,6 +31,10 @@ public class Template implements Serializable {
 	@JsonIgnore
 	private CatTemplate catTemplate;
 
+	//bi-directional many-to-one association to Answer
+	@OneToMany(mappedBy="template", cascade=CascadeType.ALL)
+	private List<Answer> answers = new ArrayList<>();
+	
 	public Template() {
 	}
 
@@ -47,4 +54,25 @@ public class Template implements Serializable {
 		this.catTemplate = catTemplate;
 	}
 
+	public List<Answer> getAnswers() {
+		return this.answers;
+	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
+	}
+
+	public Answer addAnswer(Answer answer) {
+		getAnswers().add(answer);
+		answer.setTemplate(this);
+
+		return answer;
+	}
+
+	public Answer removeAnswer(Answer answer) {
+		getAnswers().remove(answer);
+		answer.setTemplate(null);
+
+		return answer;
+	}
 }
