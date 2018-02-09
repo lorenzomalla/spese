@@ -78,7 +78,7 @@ public class Answer implements Serializable {
 	public TreeStructure getTreeStructure(){  
         return this.treeStructure;  
     }  
-	@JsonProperty(access=Access.WRITE_ONLY) 
+	@JsonProperty(access=Access.READ_WRITE) 
     public void setTreeStructure(TreeStructure treeStructure){  
         this.treeStructure = treeStructure;  
     } 
@@ -86,7 +86,7 @@ public class Answer implements Serializable {
 	public Template getTemplate(){  
         return this.template;  
     }  
-	@JsonProperty(access=Access.WRITE_ONLY) 
+	@JsonProperty(access=Access.READ_WRITE) 
     public void setTemplate(Template template){  
         this.template = template;  
     } 

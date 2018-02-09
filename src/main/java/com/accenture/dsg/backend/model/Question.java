@@ -64,7 +64,7 @@ public class Question implements Serializable {
 	public TreeStructure getTreeStructure() {
 		return this.treeStructure;
 	}
-	@JsonProperty(access=Access.WRITE_ONLY) 
+	@JsonProperty(access=Access.READ_WRITE) 
 	public void setTreeStructure(TreeStructure treeStructure) {
 		this.treeStructure = treeStructure;
 	}

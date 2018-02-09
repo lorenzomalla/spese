@@ -49,7 +49,7 @@ public class Template implements Serializable {
 	public CatTemplate getCatTemplate() {
 		return this.catTemplate;
 	}
-	@JsonProperty(access=Access.WRITE_ONLY) 
+	@JsonProperty(access=Access.READ_WRITE) 
 	public void setCatTemplate(CatTemplate catTemplate) {
 		this.catTemplate = catTemplate;
 	}

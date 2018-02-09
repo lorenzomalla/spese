@@ -68,7 +68,7 @@ public class TreeStructure implements Serializable {
 	public CatTreeStructureType getCatStructureTypeId() {
 		return this.catStructureTypeId;
 	}
-	@JsonProperty(access=Access.WRITE_ONLY) 
+	@JsonProperty(access=Access.READ_WRITE) 
 	public void setCatStructureTypeId(CatTreeStructureType catStructureTypeId) {
 		this.catStructureTypeId = catStructureTypeId;
 	}
@@ -143,7 +143,7 @@ public class TreeStructure implements Serializable {
 		return this.treeStructure;
 	}
 	
-	@JsonProperty(access=Access.WRITE_ONLY) 
+	@JsonProperty(access=Access.READ_WRITE) 
 	public void setTreeStructure(TreeStructure treeStructure) {
 		this.treeStructure = treeStructure;
 	}
