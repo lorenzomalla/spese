@@ -1,7 +1,12 @@
 package com.accenture.dsg.backend.controller;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +38,9 @@ public class MainController {
 	
 	@Autowired
 	private AnswersDao answerDao;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 	
 
 
@@ -117,5 +125,27 @@ public class MainController {
 			return "Salvato";
 		}else
 			return "Errore";
-		}
 	}
+	
+	@RequestMapping(value="/sendEmail",method = RequestMethod.POST)
+	public String doSendEmail(HttpServletRequest request) {
+		try{
+		    String recipientAddress = request.getParameter("recipient");
+		    String subject = request.getParameter("subject");
+		    String message = request.getParameter("message");
+		     
+		    System.out.println("To: " + recipientAddress);
+		    System.out.println("Subject: " + subject);
+		    System.out.println("Message: " + message);
+		     
+		    SimpleMailMessage email = new SimpleMailMessage();
+		    email.setTo(recipientAddress);
+		    email.setSubject(subject);
+		    email.setText(message);
+		    mailSender.send(email);
+			}catch(Exception e){
+				e.printStackTrace();
+		}
+	    	return "Inviata Correttamente";
+	}
+}
