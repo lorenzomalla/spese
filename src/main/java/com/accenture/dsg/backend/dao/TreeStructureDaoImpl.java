@@ -33,7 +33,7 @@ public class TreeStructureDaoImpl implements TreeStructureDao{
 		TreeStructure tree = null;
 		try{
 			tree = (TreeStructure) em.createQuery("SELECT t FROM TreeStructure t LEFT JOIN t.answers a LEFT JOIN a.template templ LEFT JOIN t.questions q "
-					+ " WHERE t.id = '"+String.valueOf(id)+"' AND a.treeStructure.id = t.id AND a.template.id = templ.id AND q.treeStructure.id = t.id").getSingleResult();
+					+ " WHERE t.id = '"+id+"' AND a.treeStructure.id = t.id AND a.template.id = templ.id AND q.treeStructure.id = t.id").getSingleResult();
 		}catch(Exception e){
 			System.err.println("Errore");
 			e.printStackTrace();
