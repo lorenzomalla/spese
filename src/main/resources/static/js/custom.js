@@ -15,6 +15,7 @@ $(document).ready(function() {
 
 function getCards() {
 	$("#cardList").html("");
+	var rootNodeId = 0;
 	var params = {};
 	if(location.search!="") {
 		location.search.substr(1)
@@ -23,10 +24,16 @@ function getCards() {
 			params[curr[0]] = curr[1]; 
 		});
 	} else {
-		params["path"] = 0;
+		params["path"] = rootNodeId;
 	}
 	
-//	$.get("URL", params, function(data) {
+//	if(params["path"]==rootNodeId) {
+//		$("#logo-row").addClass("d-md-flex");
+//	} else {
+//		$("#logo-row").removeClass("d-md-flex");
+//	}
+	
+//	$.get("/getNodeById/"+params["path"], function(data) {
 //		console.log(data);
 //		$.each(data, function(index, element) {
 //			var answer = element[0];
@@ -43,8 +50,10 @@ function change(state) {
 	getCards();
     if(state === null) {
     	$("#backButton").removeClass("d-block").addClass("d-none");
+		$("#logo-row").addClass("d-md-flex");
     } else {
     	$("#backButton").removeClass("d-none").addClass("d-block");
+		$("#logo-row").removeClass("d-md-flex");
     }
 }
 
