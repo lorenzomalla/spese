@@ -25,12 +25,21 @@ public class Answer implements Serializable {
 	private String image;
 
 	private String title;
+	
+	private TreeStructure treeStructure;
 
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="tree_structure_id")
 	@JsonIgnore
-	private TreeStructure treeStructure;
+	public TreeStructure getTreeStructure()  
+    {  
+        return treeStructure;  
+    }  
+    public void setTreeStructure(TreeStructure treeStructure)  
+    {  
+        this.treeStructure = treeStructure;  
+    } 
 
 	public Answer() {
 	}
@@ -65,14 +74,6 @@ public class Answer implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public TreeStructure getTreeStructure() {
-		return this.treeStructure;
-	}
-
-	public void setTreeStructure(TreeStructure treeStructure) {
-		this.treeStructure = treeStructure;
 	}
 
 }
