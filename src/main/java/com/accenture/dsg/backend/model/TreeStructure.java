@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -42,6 +44,7 @@ public class TreeStructure implements Serializable {
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="parent_id")
+	@JsonIgnore
 	private TreeStructure treeStructure;
 	
 
@@ -136,7 +139,8 @@ public class TreeStructure implements Serializable {
 	public TreeStructure getTreeStructure() {
 		return this.treeStructure;
 	}
-
+	
+	@JsonProperty(access=Access.WRITE_ONLY) 
 	public void setTreeStructure(TreeStructure treeStructure) {
 		this.treeStructure = treeStructure;
 	}
