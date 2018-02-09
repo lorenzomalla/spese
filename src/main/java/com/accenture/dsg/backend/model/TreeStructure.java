@@ -52,9 +52,9 @@ public class TreeStructure implements Serializable {
 	}
 	
 
-	//bi-directional many-to-one association to TreeStructure
-	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
-	private List<TreeStructure> treeStructures = new ArrayList<>();;
+//	//bi-directional many-to-one association to TreeStructure
+//	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
+//	private List<TreeStructure> treeStructures = new ArrayList<>();;
 
 	public TreeStructure() {
 	}
@@ -117,26 +117,26 @@ public class TreeStructure implements Serializable {
 //		return question;
 //	}
 
-	public List<TreeStructure> getTreeStructures() {
-		return this.treeStructures;
-	}
+//	public List<TreeStructure> getTreeStructures() {
+//		return this.treeStructures;
+//	}
+//
+//	public void setTreeStructures(List<TreeStructure> treeStructures) {
+//		this.treeStructures = treeStructures;
+//	}
 
-	public void setTreeStructures(List<TreeStructure> treeStructures) {
-		this.treeStructures = treeStructures;
-	}
-
-	public TreeStructure addTreeStructure(TreeStructure treeStructure) {
-		getTreeStructures().add(treeStructure);
-		treeStructure.setTreeStructure(this);
-
-		return treeStructure;
-	}
-
-	public TreeStructure removeTreeStructure(TreeStructure treeStructure) {
-		getTreeStructures().remove(treeStructure);
-		treeStructure.setTreeStructure(null);
-
-		return treeStructure;
-	}
+//	public TreeStructure addTreeStructure(TreeStructure treeStructure) {
+//		getTreeStructures().add(treeStructure);
+//		treeStructure.setTreeStructure(this);
+//
+//		return treeStructure;
+//	}
+//
+//	public TreeStructure removeTreeStructure(TreeStructure treeStructure) {
+//		getTreeStructures().remove(treeStructure);
+//		treeStructure.setTreeStructure(null);
+//
+//		return treeStructure;
+//	}
 
 }
