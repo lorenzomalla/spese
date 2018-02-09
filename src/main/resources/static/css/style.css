@@ -21,7 +21,6 @@ div.navigation-bar{
     background-color: RGB(240, 240, 240);
     color: RGB(0, 120, 193);
     line-height: 46px;
-    font-size: 1.4em;
 }
 
 div.top-image{
@@ -71,10 +70,9 @@ div.bottom-bar {
     margin: 10px;
 }
 
-@media (max-width: @screen-xs) {
-    body{font-size: 10px;}
+@media screen and (max-width: 568px) {
+        div.naviagation-bar {
+    	font-size:60px;
+    }
 }
 
-@media (max-width: @screen-sm) {
-    body{font-size: 14px;}
-}
