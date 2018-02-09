@@ -15,7 +15,6 @@ body {
 div.top-bar{
     height: 40px;
     background-color: RGB(7, 72, 138);
-    line-height: 58px;
 }
 
 div.logo-bar{
@@ -63,8 +62,8 @@ span.top-image-caption-text {
 div.bottom-bar {
     background-color: RGB(7, 72, 138);
 	color: #FFFFFF;
-	height: 58px;
-	line-height: 58px;
+	height: 48px;
+	line-height: 48px;
 }
 
 .card {
