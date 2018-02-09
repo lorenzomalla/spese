@@ -3,6 +3,10 @@ package com.accenture.dsg.backend.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 
 /**
  * The persistent class for the template_attributes database table.
@@ -24,6 +28,7 @@ public class TemplateAttribute implements Serializable {
 
 	//bi-directional many-to-one association to Template
 	@ManyToOne
+	@JsonIgnore
 	private Template template;
 
 	public TemplateAttribute() {
@@ -52,11 +57,11 @@ public class TemplateAttribute implements Serializable {
 	public void setValue(String value) {
 		this.value = value;
 	}
-
+	@JsonIgnore
 	public Template getTemplate() {
 		return this.template;
 	}
-
+	@JsonProperty(access=Access.WRITE_ONLY) 
 	public void setTemplate(Template template) {
 		this.template = template;
 	}

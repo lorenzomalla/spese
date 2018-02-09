@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 
 /**
@@ -58,11 +60,11 @@ public class Question implements Serializable {
 	public void setPageTitle(String pageTitle) {
 		this.pageTitle = pageTitle;
 	}
-
+	@JsonIgnore
 	public TreeStructure getTreeStructure() {
 		return this.treeStructure;
 	}
-
+	@JsonProperty(access=Access.WRITE_ONLY) 
 	public void setTreeStructure(TreeStructure treeStructure) {
 		this.treeStructure = treeStructure;
 	}
