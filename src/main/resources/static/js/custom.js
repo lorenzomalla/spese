@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 function getCards() {
 	$("#cardList").html("");
-	var rootNodeId = 0;
+	var rootNodeId = 1;
 	var params = {};
 	if(location.search!="") {
 		location.search.substr(1)
@@ -27,17 +27,17 @@ function getCards() {
 		params["path"] = rootNodeId;
 	}
 	
-//	$.get("/getNodeById/"+params["path"], function(data) {
-//		console.log(data);
-//		$.each(data, function(index, element) {
-//			var answer = element[0];
-//			createCard(answer.id, answer.image, answer.title, answer.description);
-//		});
-//	});
+	$.get("/getNodeById/"+params["path"], function(data) {
+		console.log(data);
+		$.each(data, function(index, element) {
+			var answer = element[0];
+			createCard(answer.id, answer.image, answer.title, answer.description);
+		});
+	});
 	
-	for(i=0; i<getRandomInt(1, 6); i++) {
-		createCard(i, "ico:fa-wrench", "Domanda "+i,"Risposta"+i);
-	}
+//	for(i=0; i<getRandomInt(1, 6); i++) {
+//		createCard(i, "ico:fa-wrench", "Domanda "+i,"Risposta"+i);
+//	}
 }
 
 function change(state) {

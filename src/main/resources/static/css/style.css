@@ -15,7 +15,6 @@ body {
 div.top-bar{
     height: 40px;
     background-color: RGB(7, 72, 138);
-    line-height: 58px;
 }
 
 div.logo-bar{
@@ -30,10 +29,9 @@ div.navigation-bar{
 }
 
 div.top-image {
-	/*     height: 306px; */
-	background: url('../img/home.jpg') no-repeat center center fixed;
-	color: #FFFFFF;
-	height: 200px;
+	background: url('../img/home.jpg') no-repeat center -60px;
+    color: #FFFFFF;
+    height: 300px;
 	background-size: 100%;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -47,6 +45,7 @@ div.top-image-caption-background {
 	-moz-opacity: 0.3;
 	-khtml-opacity: 0.3;
 	opacity: 0.3;
+    padding-top: 5%;
 }
 
 span.top-image-caption-text {
@@ -56,11 +55,15 @@ span.top-image-caption-text {
 	-khtml-opacity: 1;
 	opacity: 1;
 	color: #FFFFFF;
+    font-size: 66px;
+    line-height: 66px;
 }
 
 div.bottom-bar {
     background-color: RGB(7, 72, 138);
 	color: #FFFFFF;
+	height: 48px;
+	line-height: 48px;
 }
 
 .card {
