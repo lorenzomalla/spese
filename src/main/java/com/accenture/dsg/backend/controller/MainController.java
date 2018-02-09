@@ -104,6 +104,7 @@ public class MainController {
 	@RequestMapping(value="/persistAnswer" , method = RequestMethod.POST)
 	public @ResponseBody String persistAnswer(@RequestBody	Answer answer){
 		if(answer != null){
+			System.out.println("------------------------>"+answer);
 			answerDao.persistAnswers(answer);
 			return "salvato";
 		}else
