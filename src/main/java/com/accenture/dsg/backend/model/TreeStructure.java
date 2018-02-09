@@ -29,27 +29,21 @@ public class TreeStructure implements Serializable {
 	@Column(name="cat_structure_type_id")
 	private BigInteger catStructureTypeId;
 
-//	//bi-directional many-to-one association to Answer
-//	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
-//	private List<Answer> answers = new ArrayList<>();
-//
-//	//bi-directional many-to-one association to Question
-//	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
-//	private List<Question> ques	tions = new ArrayList<>();
+	//bi-directional many-to-one association to Answer
+	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
+	private List<Answer> answers = new ArrayList<>();
 
-	private TreeStructure treeStructure;
+	//bi-directional many-to-one association to Question
+	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
+	private List<Question> questions = new ArrayList<>();
+
+	
 	
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="parent_id")
 	@JsonIgnore
-	public TreeStructure getTreeStructure() {
-		return this.treeStructure;
-	}
-
-	public void setTreeStructure(TreeStructure treeStructure) {
-		this.treeStructure = treeStructure;
-	}
+	private TreeStructure treeStructure;
 	
 
 	//bi-directional many-to-one association to TreeStructure
@@ -74,48 +68,48 @@ public class TreeStructure implements Serializable {
 	public void setCatStructureTypeId(BigInteger catStructureTypeId) {
 		this.catStructureTypeId = catStructureTypeId;
 	}
-//	public List<Answer> getAnswers() {
-//		return this.answers;
-//	}
-//
-//	public void setAnswers(List<Answer> answers) {
-//		this.answers = answers;
-//	}
+	public List<Answer> getAnswers() {
+		return this.answers;
+	}
 
-//	public Answer addAnswer(Answer answer) {
-//		getAnswers().add(answer);
-//		answer.setTreeStructure(this);
-//
-//		return answer;
-//	}
-//
-//	public Answer removeAnswer(Answer answer) {
-//		getAnswers().remove(answer);
-//		answer.setTreeStructure(null);
-//
-//		return answer;
-//	}
-//	public List<Question> getQuestions() {
-//		return this.questions;
-//	}
-//
-//	public void setQuestions(List<Question> questions) {
-//		this.questions = questions;
-//	}
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
+	}
 
-//	public Question addQuestion(Question question) {
-//		getQuestions().add(question);
-//		question.setTreeStructure(this);
-//
-//		return question;
-//	}
-//
-//	public Question removeQuestion(Question question) {
-//		getQuestions().remove(question);
-//		question.setTreeStructure(null);
-//
-//		return question;
-//	}
+	public Answer addAnswer(Answer answer) {
+		getAnswers().add(answer);
+		answer.setTreeStructure(this);
+
+		return answer;
+	}
+
+	public Answer removeAnswer(Answer answer) {
+		getAnswers().remove(answer);
+		answer.setTreeStructure(null);
+
+		return answer;
+	}
+	public List<Question> getQuestions() {
+		return this.questions;
+	}
+
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}
+
+	public Question addQuestion(Question question) {
+		getQuestions().add(question);
+		question.setTreeStructure(this);
+
+		return question;
+	}
+
+	public Question removeQuestion(Question question) {
+		getQuestions().remove(question);
+		question.setTreeStructure(null);
+
+		return question;
+	}
 
 	public List<TreeStructure> getTreeStructures() {
 		return this.treeStructures;
@@ -137,6 +131,14 @@ public class TreeStructure implements Serializable {
 		treeStructure.setTreeStructure(null);
 
 		return treeStructure;
+	}
+	
+	public TreeStructure getTreeStructure() {
+		return this.treeStructure;
+	}
+
+	public void setTreeStructure(TreeStructure treeStructure) {
+		this.treeStructure = treeStructure;
 	}
 
 }
