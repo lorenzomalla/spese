@@ -76,7 +76,7 @@ div.bottom-bar {
 	}
 }
 
-.img-fluid {
+div.img-fluid {
   max-width: 100%;
   height: auto;
 }
