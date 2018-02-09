@@ -2,6 +2,8 @@ package com.accenture.dsg.backend.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,7 +24,7 @@ public class CatTemplate implements Serializable {
 
 	//bi-directional many-to-one association to Template
 	@OneToMany(mappedBy="catTemplate")
-	private List<Template> templates;
+	private List<Template> templates = new ArrayList<>();;
 
 	public CatTemplate() {
 	}

@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.accenture.dsg.backend.model.TreeStructure;
+@Transactional
 @Repository
 public class TreeStructureDaoImpl implements TreeStructureDao{
 

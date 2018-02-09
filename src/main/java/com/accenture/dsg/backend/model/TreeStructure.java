@@ -6,6 +6,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,22 +30,22 @@ public class TreeStructure implements Serializable {
 	private BigInteger catStructureTypeId;
 
 	//bi-directional many-to-one association to Answer
-	@OneToMany(mappedBy="treeStructure")
-	private List<Answer> answers;
+	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
+	private List<Answer> answers = new ArrayList<>();;
 
 	//bi-directional many-to-one association to Question
-	@OneToMany(mappedBy="treeStructure")
-	private List<Question> questions;
+	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
+	private List<Question> questions = new ArrayList<>();;
 
 	//bi-directional many-to-one association to TreeStructure
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="parent_id")
 	@JsonIgnore
 	private TreeStructure treeStructure;
 
 	//bi-directional many-to-one association to TreeStructure
-	@OneToMany(mappedBy="treeStructure")
-	private List<TreeStructure> treeStructures;
+	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
+	private List<TreeStructure> treeStructures = new ArrayList<>();;
 
 	public TreeStructure() {
 	}
