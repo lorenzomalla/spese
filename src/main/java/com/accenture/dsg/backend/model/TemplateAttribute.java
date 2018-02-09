@@ -20,7 +20,7 @@ public class TemplateAttribute implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private int id;
 
 	private String key;
 
@@ -34,11 +34,11 @@ public class TemplateAttribute implements Serializable {
 	public TemplateAttribute() {
 	}
 
-	public long getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
