@@ -88,22 +88,20 @@ public class MainController {
 	
 	@RequestMapping(value="/getTree", method = RequestMethod.GET)
 	public @ResponseBody TreeStructure getTree(){
-//		TreeStructure tree = dao.getTree();
-//		List<TreeStructure> listaVuota = new ArrayList<>();
-//		tree.setTreeStructures(listaVuota);
-//		return tree;
 		TreeStructure tree = dao.getTree();
-		return tree.getTreeStructure();
+		List<TreeStructure> listaVuota = new ArrayList<>();
+		tree.setTreeStructures(listaVuota);
+		return tree;
 	}
-//	
-//	@RequestMapping(value="/getNodeById/{id}", method = RequestMethod.GET)
-//	public @ResponseBody TreeStructure getFindById(@PathVariable("id") int id){
-//		TreeStructure tree = dao.getFindById(id);
-//		for (TreeStructure t : tree.getTreeStructures()) {
-//				t.setTreeStructures(null);				
-//			}
-//		return tree;
-//	}
+	
+	@RequestMapping(value="/getNodeById/{id}", method = RequestMethod.GET)
+	public @ResponseBody TreeStructure getFindById(@PathVariable("id") int id){
+		TreeStructure tree = dao.getFindById(id);
+		for (TreeStructure t : tree.getTreeStructures()) {
+				t.setTreeStructures(null);				
+			}
+		return tree;
+	}
 	
 	@RequestMapping(value="/addTree" , method = RequestMethod.POST)
 	public @ResponseBody String persistTreeStructure(@RequestBody TreeStructure tree){
