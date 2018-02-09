@@ -21,11 +21,13 @@ public class CatTemplate implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
+	private String templatename;
+	
 	private String markup;
 
 	//bi-directional many-to-one association to Template
 	@OneToMany(mappedBy="catTemplate")
-	private List<Template> templates = new ArrayList<>();;
+	private List<Template> templates = new ArrayList<>();
 
 	public CatTemplate() {
 	}
@@ -38,6 +40,14 @@ public class CatTemplate implements Serializable {
 		this.id = id;
 	}
 
+	public String getTemplateName() {
+		return this.templatename;
+	}
+
+	public void setTemplateName(String templatename) {
+		this.templatename = templatename;
+	}
+	
 	public String getMarkup() {
 		return this.markup;
 	}
