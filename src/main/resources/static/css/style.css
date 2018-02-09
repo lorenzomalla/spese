@@ -19,7 +19,7 @@ div.top-bar{
 }
 
 div.logo-bar{
-    height: 58px;
+    line-height: 58px;
 }
 
 div.navigation-bar{
@@ -78,7 +78,7 @@ div.bottom-bar {
 
 @include media-breakpoint-up(sm) {
   div.navigation-bar {
-    font-size: 16px;
+    font-size: 10px;
 	}
 }
 
