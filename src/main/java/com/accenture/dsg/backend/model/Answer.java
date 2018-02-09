@@ -31,7 +31,6 @@ public class Answer implements Serializable {
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="tree_structure_id")
-	@JsonIgnore
 	private TreeStructure treeStructure;
 
 	public Answer() {
@@ -68,7 +67,7 @@ public class Answer implements Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+	@JsonIgnore
 	public TreeStructure getTreeStructure(){  
         return this.treeStructure;  
     }  
