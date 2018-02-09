@@ -33,7 +33,8 @@ public class TreeStructureDaoImpl implements TreeStructureDao{
 		TreeStructure tree = null;
 		try{
 			tree = (TreeStructure) em.createQuery("SELECT t FROM TreeStructure t LEFT OUTER JOIN t.answers a LEFT OUTER JOIN a.template templ LEFT OUTER JOIN t.questions q "
-					+ " WHERE t.id = '"+id+"' AND a.treeStructure.id = t.id AND a.template.id = templ.id AND q.treeStructure.id = t.id").getSingleResult();
+					+ " WHERE t.id = '"+id+"'").getSingleResult();
+			//AND a.treeStructure.id = t.id AND a.template.id = templ.id AND q.treeStructure.id = t.id
 		}catch(Exception e){
 			System.err.println("Errore");
 			e.printStackTrace();
@@ -46,7 +47,8 @@ public class TreeStructureDaoImpl implements TreeStructureDao{
 		TreeStructure tree = null;
 		try{
 			tree = (TreeStructure) em.createQuery("SELECT t FROM TreeStructure t LEFT OUTER JOIN t.answers a LEFT OUTER JOIN a.template templ LEFT OUTER JOIN t.questions q "
-					+ " WHERE t.treeStructure.id IS NULL AND a.treeStructure.id = t.id AND a.template.id = templ.id AND q.treeStructure.id = t.id").getSingleResult();
+					+ " WHERE t.treeStructure.id IS NULL").getSingleResult();
+			// AND a.treeStructure.id = t.id AND a.template.id = templ.id AND q.treeStructure.id = t.id
 		}catch(Exception e){
 			System.err.println("Errore");
 			e.printStackTrace();

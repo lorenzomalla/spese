@@ -115,9 +115,11 @@ public class MainController {
 	@RequestMapping(value="/getNodeById/{id}", method = RequestMethod.GET)
 	public @ResponseBody TreeStructure getFindById(@PathVariable("id") int id){
 		TreeStructure tree = dao.getFindById(id);
-		for (TreeStructure t : tree.getTreeStructures()) {
+		if(!tree.getTreeStructures().isEmpty()){	
+			for (TreeStructure t : tree.getTreeStructures()) {
 				t.setTreeStructures(null);				
 			}
+		}
 		return tree;
 	}
 	
