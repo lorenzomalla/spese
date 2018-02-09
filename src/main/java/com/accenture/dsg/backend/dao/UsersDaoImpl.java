@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import com.accenture.dsg.backend.model.Users;
+import com.accenture.dsg.backend.model.User;
 @Repository
 @Transactional
 public class UsersDaoImpl implements UsersDao{
@@ -17,22 +17,22 @@ public class UsersDaoImpl implements UsersDao{
 	private EntityManager em;
 
 	@Override
-	public void persist(Users u) {
+	public void persist(User u) {
 		em.persist(u);
 	}
 
 	@Override
-	public List<Users> getAllList() {
-		List<Users> listaAccount =  em.createNamedQuery("Users.findAll",Users.class).getResultList();
+	public List<User> getAllList() {
+		List<User> listaAccount =  em.createNamedQuery("Users.findAll",User.class).getResultList();
 		return listaAccount;
 	}
 
 	@Override
-	public Users checkLogin(String email, String password) {
-		Users account = null;
+	public User checkLogin(String email, String password) {
+		User account = null;
 		try{
 			account = em.createQuery("FROM Users u WHERE u.mail = :mail"
-					+ " AND u.password = :password",Users.class)
+					+ " AND u.password = :password",User.class)
 			.setParameter("mail", email).setParameter("password", password).getSingleResult();
 		}catch(Exception e){
 			e.printStackTrace();

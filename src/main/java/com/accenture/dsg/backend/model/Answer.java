@@ -3,6 +3,7 @@ package com.accenture.dsg.backend.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -11,16 +12,13 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="answers")
-@NamedQueries({
-	@NamedQuery(name="Answer.findAll", query="SELECT a FROM Answer a"),
-	@NamedQuery(name="Answer.findByTreeId", query="SELECT a FROM Answer a WHERE a.treeStructure = :treeId")
-})
+@NamedQuery(name="Answer.findAll", query="SELECT a FROM Answer a")
 public class Answer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private int id;
 
 	private String description;
 
@@ -31,21 +29,17 @@ public class Answer implements Serializable {
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne
 	@JoinColumn(name="tree_structure_id")
+	@JsonIgnore
 	private TreeStructure treeStructure;
-
-	//bi-directional many-to-one association to Template
-	@ManyToOne
-	@JoinColumn(name="answer_id")
-	private Template template;
 
 	public Answer() {
 	}
 
-	public long getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -79,14 +73,6 @@ public class Answer implements Serializable {
 
 	public void setTreeStructure(TreeStructure treeStructure) {
 		this.treeStructure = treeStructure;
-	}
-
-	public Template getTemplate() {
-		return this.template;
-	}
-
-	public void setTemplate(Template template) {
-		this.template = template;
 	}
 
 }
