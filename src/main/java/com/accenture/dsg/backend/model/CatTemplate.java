@@ -25,7 +25,8 @@ public class CatTemplate implements Serializable {
 
 	private String templatename;
 	
-	private Blob markup;
+	@Column(columnDefinition="LONGTEXT")
+	private String markup;
 
 	//bi-directional many-to-one association to Template
 	@OneToMany(mappedBy="catTemplate")
@@ -50,11 +51,11 @@ public class CatTemplate implements Serializable {
 		this.templatename = templatename;
 	}
 	
-	public Blob getMarkup() {
+	public String getMarkup() {
 		return this.markup;
 	}
 
-	public void setMarkup(Blob markup) {
+	public void setMarkup(String markup) {
 		this.markup = markup;
 	}
 
