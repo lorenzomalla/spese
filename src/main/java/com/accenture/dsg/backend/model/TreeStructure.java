@@ -35,7 +35,7 @@ public class TreeStructure implements Serializable {
 //
 //	//bi-directional many-to-one association to Question
 //	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
-//	private List<Question> questions = new ArrayList<>();
+//	private List<Question> ques	tions = new ArrayList<>();
 
 	private TreeStructure treeStructure;
 	
