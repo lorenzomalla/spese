@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.accenture.dsg.backend.model.TreeStructure;
 
 @Repository
-public interface TreeStructureRepository extends JpaRepository<TreeStructure, Long> {
+public interface TreeStructureRepository extends JpaRepository<TreeStructure, Integer> {
 
 }
