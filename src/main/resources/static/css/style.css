@@ -46,6 +46,7 @@ div.top-image-caption-background {
 	-moz-opacity: 0.3;
 	-khtml-opacity: 0.3;
 	opacity: 0.3;
+    padding-top: 5%;
 }
 
 span.top-image-caption-text {
@@ -55,6 +56,8 @@ span.top-image-caption-text {
 	-khtml-opacity: 1;
 	opacity: 1;
 	color: #FFFFFF;
+    font-size: 66px;
+    line-height: 66px;
 }
 
 div.bottom-bar {
