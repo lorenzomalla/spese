@@ -20,11 +20,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.accenture.dsg.backend.dao.AnswersDao;
+import com.accenture.dsg.backend.dao.CatTemplateDao;
+import com.accenture.dsg.backend.dao.CatTreeStructureDao;
 import com.accenture.dsg.backend.dao.QuestionsDao;
+import com.accenture.dsg.backend.dao.TemplateAttributeDao;
+import com.accenture.dsg.backend.dao.TemplateDao;
 import com.accenture.dsg.backend.dao.TreeStructureDao;
 import com.accenture.dsg.backend.dao.UsersDao;
 import com.accenture.dsg.backend.model.Answer;
+import com.accenture.dsg.backend.model.CatTemplate;
+import com.accenture.dsg.backend.model.CatTreeStructureType;
 import com.accenture.dsg.backend.model.Question;
+import com.accenture.dsg.backend.model.Template;
+import com.accenture.dsg.backend.model.TemplateAttribute;
 import com.accenture.dsg.backend.model.TreeStructure;
 import com.accenture.dsg.backend.model.User;
 
@@ -45,7 +53,17 @@ public class MainController {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-
+	@Autowired
+	private CatTemplateDao catTemplDao;
+	
+	@Autowired
+	private TemplateDao templDao;
+	
+	@Autowired
+	private TemplateAttributeDao templAttrDao;
+	
+	@Autowired
+	private CatTreeStructureDao catTreeStrDao;
 
 	
 	@RequestMapping(value={"/","/home"}, method = RequestMethod.GET)
@@ -128,6 +146,42 @@ public class MainController {
 			return "Salvato";
 		}else
 			return "Errore";
+	}
+	
+	@RequestMapping(value="/persistCatTempl" , method = RequestMethod.POST)
+	public @ResponseBody String persistCatTemplate(@RequestBody	CatTemplate catTempl){
+		if(catTempl != null){
+			catTemplDao.persistCatTemplate(catTempl);
+			return "salvato";
+		}else
+			return "errore";
+	}
+	
+	@RequestMapping(value="/persistTemplate" , method = RequestMethod.POST)
+	public @ResponseBody String persistTemplate(@RequestBody	Template template){
+		if(template != null){
+			templDao.persistTemplate(template);
+			return "salvato";
+		}else
+			return "errore";
+	}
+	
+	@RequestMapping(value="/persistTemplAttr" , method = RequestMethod.POST)
+	public @ResponseBody String persistTemplAttr(@RequestBody	TemplateAttribute templAttr){
+		if(templAttr != null){
+			templAttrDao.persistTemplateAttribute(templAttr);
+			return "salvato";
+		}else
+			return "errore";
+	}
+	
+	@RequestMapping(value="/persistCatTreeStructure" , method = RequestMethod.POST)
+	public @ResponseBody String persistCatTreeStructure(@RequestBody	CatTreeStructureType catTreeStr){
+		if(catTreeStr != null){
+			catTreeStrDao.persistCatTreeStructureType(catTreeStr);
+			return "salvato";
+		}else
+			return "errore";
 	}
 	
 	@RequestMapping(value="/sendEmail",method = RequestMethod.POST)

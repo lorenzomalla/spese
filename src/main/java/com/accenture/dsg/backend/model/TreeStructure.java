@@ -28,8 +28,10 @@ public class TreeStructure implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name="cat_structure_type_id")
-	private BigInteger catStructureTypeId;
+	@ManyToOne(cascade=CascadeType.REMOVE)
+	@JoinColumn(name="cat_structure_type_id")
+	@JsonIgnore
+	private CatTreeStructureType catStructureTypeId;
 
 	//bi-directional many-to-one association to Answer
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
@@ -50,7 +52,7 @@ public class TreeStructure implements Serializable {
 
 	//bi-directional many-to-one association to TreeStructure
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
-	private List<TreeStructure> treeStructures = new ArrayList<>();;
+	private List<TreeStructure> treeStructures = new ArrayList<>();
 
 	public TreeStructure() {
 	}
@@ -62,14 +64,15 @@ public class TreeStructure implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public BigInteger getCatStructureTypeId() {
+	@JsonIgnore
+	public CatTreeStructureType getCatStructureTypeId() {
 		return this.catStructureTypeId;
 	}
-
-	public void setCatStructureTypeId(BigInteger catStructureTypeId) {
+	@JsonProperty(access=Access.WRITE_ONLY) 
+	public void setCatStructureTypeId(CatTreeStructureType catStructureTypeId) {
 		this.catStructureTypeId = catStructureTypeId;
 	}
+	
 	public List<Answer> getAnswers() {
 		return this.answers;
 	}

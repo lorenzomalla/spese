@@ -1,6 +1,9 @@
 package com.accenture.dsg.backend.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -15,18 +18,23 @@ public class CatTreeStructureType implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 
 	private String description;
 
+	//bi-directional many-to-one association to TreeStructure
+	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
+	private List<TreeStructure> treeStructures = new ArrayList<>();
+	
 	public CatTreeStructureType() {
 	}
 
-	public String getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -36,6 +44,28 @@ public class CatTreeStructureType implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public List<TreeStructure> getTreeStructure() {
+		return this.treeStructures;
+	}
+
+	public void setTreeStructure(List<TreeStructure> treeStructures) {
+		this.treeStructures = treeStructures;
+	}
+
+	public TreeStructure addTreeStructure(TreeStructure treeStructure) {
+		getTreeStructure().add(treeStructure);
+		treeStructure.setCatStructureTypeId(this);
+
+		return treeStructure;
+	}
+
+	public TreeStructure removeTreeStructure(TreeStructure treeStructure) {
+		getTreeStructure().remove(treeStructure);
+		treeStructure.setCatStructureTypeId(null);
+
+		return treeStructure;
 	}
 
 }
