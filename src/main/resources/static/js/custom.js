@@ -27,12 +27,6 @@ function getCards() {
 		params["path"] = rootNodeId;
 	}
 	
-//	if(params["path"]==rootNodeId) {
-//		$("#logo-row").addClass("d-md-flex");
-//	} else {
-//		$("#logo-row").removeClass("d-md-flex");
-//	}
-	
 //	$.get("/getNodeById/"+params["path"], function(data) {
 //		console.log(data);
 //		$.each(data, function(index, element) {

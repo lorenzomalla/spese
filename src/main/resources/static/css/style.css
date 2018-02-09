@@ -29,9 +29,9 @@ div.navigation-bar{
     line-height: 46px;
 }
 
-div.top-image{
-    height: 306px;
-    background-color: RGB(20, 20, 20);
+div.top-image {
+/*     height: 306px; */
+    background: url('../img/home.jpg') no-repeat center center fixed;
     color: white;
 }
 
@@ -74,10 +74,5 @@ div.bottom-bar {
   div.navigation-bar {
     font-size: 10px;
 	}
-}
-
-div.img-fluid {
-  max-width: 100%;
-  height: auto;
 }
 
