@@ -151,7 +151,9 @@ public class MainController {
 		}
 	    	return "Inviata Correttamente";
 	}
-	
+	/*
+	 * TODO: DA SPOSTARE IN UNA CLASSE BEAN CONFIGURATION
+	 */
 	 @Bean
 	    public JavaMailSender getJavaMailSender() {
 	        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
