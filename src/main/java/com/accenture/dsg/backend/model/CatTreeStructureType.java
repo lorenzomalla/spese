@@ -15,18 +15,19 @@ public class CatTreeStructureType implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 
 	private String description;
 
 	public CatTreeStructureType() {
 	}
 
-	public String getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

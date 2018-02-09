@@ -19,7 +19,8 @@ public class Template implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 
 	//bi-directional many-to-one association to CatTemplate
 	@ManyToOne
@@ -30,11 +31,11 @@ public class Template implements Serializable {
 	public Template() {
 	}
 
-	public String getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	@JsonIgnore
