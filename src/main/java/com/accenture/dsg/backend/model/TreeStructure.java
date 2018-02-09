@@ -42,7 +42,7 @@ public class TreeStructure implements Serializable {
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="parent_id")
-//	@JsonIgnore
+	@JsonIgnore
 	private TreeStructure treeStructure;
 	
 
