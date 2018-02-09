@@ -27,7 +27,7 @@ public class Question implements Serializable {
 	private String pageTitle;
 
 	//bi-directional many-to-one association to TreeStructure
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="tree_structure_id")
 	@JsonIgnore
 	private TreeStructure treeStructure;
