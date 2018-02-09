@@ -1,6 +1,8 @@
 package com.accenture.dsg.backend.model;
 
 import java.io.Serializable;
+import java.sql.Blob;
+
 import javax.persistence.*;
 
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ public class CatTemplate implements Serializable {
 
 	private String templatename;
 	
-	private String markup;
+	private Blob markup;
 
 	//bi-directional many-to-one association to Template
 	@OneToMany(mappedBy="catTemplate")
@@ -48,11 +50,11 @@ public class CatTemplate implements Serializable {
 		this.templatename = templatename;
 	}
 	
-	public String getMarkup() {
+	public Blob getMarkup() {
 		return this.markup;
 	}
 
-	public void setMarkup(String markup) {
+	public void setMarkup(Blob markup) {
 		this.markup = markup;
 	}
 
