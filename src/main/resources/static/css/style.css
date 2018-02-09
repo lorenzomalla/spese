@@ -20,6 +20,7 @@ div.navigation-bar{
     height: 46px;
     background-color: RGB(240, 240, 240);
     color: RGB(0, 120, 193);
+    line-height: 46px;
 }
 
 div.top-image{
@@ -68,3 +69,4 @@ div.bottom-bar {
 .card-column {
     margin: 10px;
 }
+
