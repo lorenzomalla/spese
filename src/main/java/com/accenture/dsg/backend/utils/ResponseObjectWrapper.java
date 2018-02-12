@@ -43,6 +43,7 @@ public class ResponseObjectWrapper {
 	public CatTreeStructureType catStructureTypeId;
 	public Set<AnswerWrapper> answers;
 	public Set<QuestionWrapper> questions;
+	public ResponseObjectWrapper treeStructure;
 	public Set<ResponseObjectWrapper> treeStructures;
 	
 	
