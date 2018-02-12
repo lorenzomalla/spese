@@ -114,14 +114,17 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/getNodeById/{id}", method = RequestMethod.GET)
-	public @ResponseBody TreeStructure getFindById(@PathVariable("id") int id){
+	public @ResponseBody Object getFindById(@PathVariable("id") int id){
+		Object response = null;
 		TreeStructure tree = dao.getFindById(id);
 		if(!tree.getTreeStructures().isEmpty()){	
 			for (TreeStructure t : tree.getTreeStructures()) {
 				t.setTreeStructures(null);				
 			}
 		}
-		return tree;
+		response = tree;
+		System.out.println("------------>"+response.toString());
+		return response;
 	}
 	
 	@RequestMapping(value="/addTree" , method = RequestMethod.POST)
