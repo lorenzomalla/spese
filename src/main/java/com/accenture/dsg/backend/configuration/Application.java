@@ -1,5 +1,7 @@
 package com.accenture.dsg.backend.configuration;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,15 +33,23 @@ public class Application extends SpringBootServletInitializer {
     }
 //    @EnableWebSecurity
 //    class MultiHttpSecurityConfig {
+//    	@Autowired
+//    	private DataSource dataSource;
+//    	
 //      @Autowired
 //      public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception { 
-//          auth 
-//              .inMemoryAuthentication()
-////              INIZIALIZZO IL RUOLO A USER E SCEGLO UN USERNAME E PASSWORD
-//              //DA CONTROLLARE COME RECUPERARE QUESTI DATI DA DB
-//                  .withUser("user").password("password").roles("USER").and();
-//          //NEL CASO SI VUOLE ACCEDERE COME ADMIN
+////          auth 
+////              .inMemoryAuthentication()
+//////              INIZIALIZZO IL RUOLO A USER E SCEGLO UN USERNAME E PASSWORD
+////              //DA CONTROLLARE COME RECUPERARE QUESTI DATI DA DB
+////                  .withUser("user").password("password").roles("USER").and();
+////          //NEL CASO SI VUOLE ACCEDERE COME ADMIN
 ////                  .withUser("admin").password("password").roles("USER", "ADMIN");
+//          auth.jdbcAuthentication().dataSource(dataSource)
+//          .usersByUsernameQuery("select username, password, enabled"
+//              + " from users where username=?")
+//          .authoritiesByUsernameQuery("select username, authority "
+//              + "from authorities where username=?");
 //      }
 //    }
 //    @Configuration
@@ -73,5 +83,6 @@ public class Application extends SpringBootServletInitializer {
 //                .formLogin();
 //        }
 //    }
+
 }
   
