@@ -8,6 +8,11 @@ public class ResponseObjectWrapper {
 	
 	public ResponseObjectWrapper(){};
 	
+	private class CatTreeStructureType{
+		private int id;
+		private String description;
+	}
+	
 	private class CatTemplateWrapper{
 		private int id;
 		private String templatename;
@@ -34,7 +39,7 @@ public class ResponseObjectWrapper {
 	}
 	
 	private int id;
-	private int catStructureTypeId;
+	private CatTreeStructureType catStructureTypeId;
 	private Set<AnswerWrapper> answers;
 	private Set<QuestionWrapper> questions;
 	private Set<ResponseObjectWrapper> treeStructures;
