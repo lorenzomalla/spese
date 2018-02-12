@@ -37,8 +37,6 @@ public class TreeStructure implements Serializable {
 	//bi-directional many-to-one association to Question
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
 	private Set<Question> questions;
-
-	
 	
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne(cascade=CascadeType.REMOVE)
@@ -46,10 +44,12 @@ public class TreeStructure implements Serializable {
 	@JsonIgnore
 	private TreeStructure treeStructure;
 	
-
 	//bi-directional many-to-one association to TreeStructure
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
 	private Set<TreeStructure> treeStructures;
+	
+	private Template template;
+	private CatTemplate catTemplate;
 
 	public TreeStructure() {
 	}
