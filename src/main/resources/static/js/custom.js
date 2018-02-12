@@ -11,6 +11,16 @@ $(document).ready(function() {
     });
 
 	getCards();
+	
+	$("#cardList").on("click", ".card-column", function(event) {
+		event.stopPropagation();
+		var id = $(this).data("node-id");
+//		alert("called " + id);	
+		history.pushState({ url: "/" }, "/", "?path="+id);
+		getCards();
+//		alert(id);
+	});
+	
 });
 
 function getCards() {
@@ -37,7 +47,7 @@ function getCards() {
 		$.each(data.treeStructures, function(index, element) {
 			var answer = element.answers[0];
 			if(!!answer) {
-				createCard(answer.id, answer.image, answer.title, answer.description);
+				createCard(element.id, answer.image, answer.title, answer.description);
 			}
 		});
 	});
@@ -76,12 +86,6 @@ function createCard(id, imageOrIcon, title, description) {
 			                    "</div>"+
 			                "</div>"+
 			            "</div>");
-	$(".card-column").click(function() {
-		var id = $(this).data("node-id");
-		history.pushState({ url: "/" }, "/", "?path="+id);
-		getCards();
-//		alert(id);
-	});
 }
 
 //remove in prod
