@@ -29,7 +29,7 @@ public class Answer implements Serializable {
 	private String title;
 	
 	//bi-directional many-to-one association to Template
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="template_id")
 	@JsonIgnore
 	private Template template;
