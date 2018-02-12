@@ -2,6 +2,7 @@ package com.accenture.dsg.backend.utils;
 
 import java.util.Set;
 
+import com.accenture.dsg.backend.model.Template;
 import com.accenture.dsg.backend.model.TreeStructure;
 
 public class ResponseObjectWrapper {
@@ -9,18 +10,20 @@ public class ResponseObjectWrapper {
 	public class CatTreeStructureType{
 		int id;
 		String description;
-		ResponseObjectWrapper treeStructure;
+		Set<ResponseObjectWrapper> treeStructure;
 	}
 	
 	public class CatTemplateWrapper{
 		int id;
 		String templatename;
 		String markup;
+		Set<TemplateWrapper> templates;
 	}
 	
 	public class TemplateWrapper{
 		int id;
 		CatTemplateWrapper catTemplate;
+		Set<AnswerWrapper> answers;
 	}
 	
 	public class AnswerWrapper{
