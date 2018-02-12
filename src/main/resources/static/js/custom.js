@@ -76,7 +76,8 @@ function createCard(id, imageOrIcon, title, description) {
 			                    "</div>"+
 			                "</div>"+
 			            "</div>");
-	$(".card-column").click(function() {
+	$(".card-column").click(function(e) {
+		e.stopPropagation();
 		var id = $(this).data("node-id");
 		history.pushState({ url: "/" }, "/", "?path="+id);
 		getCards();
