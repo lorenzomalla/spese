@@ -11,6 +11,7 @@ public class ResponseObjectWrapper {
 	private class CatTreeStructureType{
 		private int id;
 		private String description;
+		private ResponseObjectWrapper treeStructure;
 	}
 	
 	private class CatTemplateWrapper{
@@ -30,12 +31,14 @@ public class ResponseObjectWrapper {
 		private String image;
 		private String title;
 		private TemplateWrapper template;
+		private ResponseObjectWrapper treeStructure;
 	}
 	
 	private class QuestionWrapper{
 		private int id;
 		private String pageSubtitle;
 		private String pageTitle;
+		private ResponseObjectWrapper treeStructure;
 	}
 	
 	private int id;
