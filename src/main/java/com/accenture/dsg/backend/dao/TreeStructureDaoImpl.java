@@ -32,6 +32,8 @@ public class TreeStructureDaoImpl implements TreeStructureDao{
 	public TreeStructure getFindById(int id) {
 		TreeStructure tree = null;
 		try{
+			System.out.println("SQL ------------->"+em.createQuery("SELECT t FROM TreeStructure t LEFT OUTER JOIN fetch t.questions q LEFT OUTER JOIN fetch t.answers a LEFT OUTER JOIN fetch a.template templ "
+					+ " WHERE t.id = '"+id+"'").toString());
 			tree = (TreeStructure) em.createQuery("SELECT t FROM TreeStructure t LEFT OUTER JOIN fetch t.questions q LEFT OUTER JOIN fetch t.answers a LEFT OUTER JOIN fetch a.template templ "
 					+ " WHERE t.id = '"+id+"'").getSingleResult();
 			//AND a.treeStructure.id = t.id AND a.template.id = templ.id AND q.treeStructure.id = t.id
