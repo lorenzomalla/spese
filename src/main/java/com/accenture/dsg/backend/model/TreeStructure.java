@@ -38,6 +38,10 @@ public class TreeStructure implements Serializable {
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
 	private Set<Question> questions;
 	
+	//bi-directional many-to-one association to Answer
+	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
+	private Set<Template> templates;
+	
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="parent_id")
@@ -115,6 +119,29 @@ public class TreeStructure implements Serializable {
 		return question;
 	}
 
+	public Set<Template> getTemplate() {
+		return this.templates;
+	}
+
+	public void setTemplate(Set<Template> templates) {
+		this.templates = templates;
+	}
+	
+
+	public Template addTemplate(Template templates) {
+		getTemplate().add(templates);
+		templates.setTreeStructure(this);
+
+		return templates;
+	}
+
+	public Template removeTemplate(Template templates) {
+		getTemplate().remove(templates);
+		templates.setTreeStructure(null);
+
+		return templates;
+	}
+	
 	public Set<TreeStructure> getTreeStructures() {
 		return this.treeStructures;
 	}

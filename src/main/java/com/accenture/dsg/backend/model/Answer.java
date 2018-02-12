@@ -30,11 +30,11 @@ public class Answer implements Serializable {
 
 	private String title;
 	
-	//bi-directional many-to-one association to Template
-	@ManyToOne
-	@JoinColumn(name="template_id")
-	@JsonIgnore
-	private Template template;
+//	//bi-directional many-to-one association to Template
+//	@ManyToOne
+//	@JoinColumn(name="template_id")
+//	@JsonIgnore
+//	private Template template;
 
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne(cascade=CascadeType.REMOVE)
@@ -85,13 +85,13 @@ public class Answer implements Serializable {
     public void setTreeStructure(TreeStructure treeStructure){  
         this.treeStructure = treeStructure;  
     } 
-	@JsonIgnore
-	public Template getTemplate(){  
-        return this.template;  
-    }  
-	@JsonProperty(access=Access.READ_WRITE) 
-    public void setTemplate(Template template){  
-        this.template = template;  
-    } 
+//	@JsonIgnore
+//	public Template getTemplate(){  
+//        return this.template;  
+//    }  
+//	@JsonProperty(access=Access.READ_WRITE) 
+//    public void setTemplate(Template template){  
+//        this.template = template;  
+//    } 
 
 }
