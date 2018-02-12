@@ -29,8 +29,11 @@ function getCards() {
 	
 	$.get("/getNodeById/"+params["path"], function(data) {
 		console.log(data);
-		$.each(data, function(index, element) {
-			var answer = element[0];
+		var question = data.questions[0];
+		$("#question").text(question.pageTitle);
+		$("#question-subtitle").text(question.pageSubtitle);
+		$.each(data.treeStructures, function(index, element) {
+			var answer = element.answers[0];
 			createCard(answer.id, answer.image, answer.title, answer.description);
 		});
 	});
