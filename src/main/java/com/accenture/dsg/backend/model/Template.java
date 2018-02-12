@@ -6,6 +6,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -29,6 +32,7 @@ public class Template implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="cat_template_id")
 	@JsonIgnore
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private CatTemplate catTemplate;
 
 	//bi-directional many-to-one association to Answer

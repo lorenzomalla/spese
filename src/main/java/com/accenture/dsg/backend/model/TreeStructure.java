@@ -3,6 +3,9 @@ package com.accenture.dsg.backend.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -31,6 +34,7 @@ public class TreeStructure implements Serializable {
 	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="cat_structure_type_id")
 	@JsonIgnore
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private CatTreeStructureType catStructureTypeId;
 
 	//bi-directional many-to-one association to Answer
@@ -47,6 +51,7 @@ public class TreeStructure implements Serializable {
 	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="parent_id")
 	@JsonIgnore
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private TreeStructure treeStructure;
 	
 
