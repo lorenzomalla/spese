@@ -40,6 +40,9 @@ public class Answer implements Serializable {
 	@JsonIgnore
 	private TreeStructure treeStructure;
 
+	@Transient
+	private CatTemplate catTemplate;
+	
 	public Answer() {
 	}
 
