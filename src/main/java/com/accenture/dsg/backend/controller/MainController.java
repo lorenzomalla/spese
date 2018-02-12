@@ -2,6 +2,7 @@ package com.accenture.dsg.backend.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -107,7 +108,7 @@ public class MainController {
 	@RequestMapping(value="/getTree", method = RequestMethod.GET)
 	public @ResponseBody TreeStructure getTree(){
 		TreeStructure tree = dao.getTree();
-		List<TreeStructure> listaVuota = new ArrayList<>();
+		Set<TreeStructure> listaVuota = null;
 		tree.setTreeStructures(listaVuota);
 		return tree;
 	}
