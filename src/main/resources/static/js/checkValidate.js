@@ -35,6 +35,7 @@ function validazione(){
 				},
 				email:{
 					required : "",
+					email: ""
 				},
 			}
 	});
