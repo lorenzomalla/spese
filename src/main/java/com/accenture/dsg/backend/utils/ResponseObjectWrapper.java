@@ -2,9 +2,6 @@ package com.accenture.dsg.backend.utils;
 
 import java.util.Set;
 
-import com.accenture.dsg.backend.model.Template;
-import com.accenture.dsg.backend.model.TreeStructure;
-
 public class ResponseObjectWrapper {
 	
 	public class CatTreeStructureType{
