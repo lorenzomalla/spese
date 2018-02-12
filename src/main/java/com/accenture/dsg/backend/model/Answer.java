@@ -62,6 +62,14 @@ public class Answer implements Serializable {
 		this.description = description;
 	}
 
+	public CatTemplate getCatTemplate() {
+		return this.catTemplate;
+	}
+
+	public void setCatTemplate(CatTemplate catTemplate) {
+		this.catTemplate = catTemplate;
+	}
+	
 	public String getImage() {
 		return this.image;
 	}

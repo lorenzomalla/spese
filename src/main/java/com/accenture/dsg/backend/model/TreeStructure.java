@@ -63,6 +63,23 @@ public class TreeStructure implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public Template getTemplate() {
+		return this.template;
+	}
+
+	public void setTemplate(Template template) {
+		this.template = template;
+	}
+	
+	public CatTemplate getCatTemplate() {
+		return this.catTemplate;
+	}
+
+	public void setCatTemplate(CatTemplate catTemplate) {
+		this.catTemplate = catTemplate;
+	}
+	
 	@JsonIgnore
 	public CatTreeStructureType getCatStructureTypeId() {
 		return this.catStructureTypeId;
