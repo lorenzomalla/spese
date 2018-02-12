@@ -48,7 +48,9 @@ public class TreeStructure implements Serializable {
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
 	private Set<TreeStructure> treeStructures;
 	
+	@Transient
 	private Template template;
+	@Transient
 	private CatTemplate catTemplate;
 
 	public TreeStructure() {
