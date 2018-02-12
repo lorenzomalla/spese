@@ -1,9 +1,9 @@
-(function(original) {
-        history.pushState = function(state) {
-            change(state);
-            return original.apply(this, arguments);
-        };
-})(history.pushState);
+//(function(original) {
+//        history.pushState = function(state) {
+//            change(state);
+//            return original.apply(this, arguments);
+//        };
+//})(history.pushState);
 
 $(document).ready(function() {
 	$(window).on("popstate", function(e) {
@@ -30,11 +30,15 @@ function getCards() {
 	$.get("/getNodeById/"+params["path"], function(data) {
 		console.log(data);
 		var question = data.questions[0];
-		$("#question").text(question.pageTitle);
-		$("#question-subtitle").text(question.pageSubtitle);
+		if(!!question) {
+			$("#question").text(question.pageTitle);
+			$("#question-subtitle").text(question.pageSubtitle);			
+		}
 		$.each(data.treeStructures, function(index, element) {
 			var answer = element.answers[0];
-			createCard(answer.id, answer.image, answer.title, answer.description);
+			if(!!answer) {
+				createCard(answer.id, answer.image, answer.title, answer.description);
+			}
 		});
 	});
 	
@@ -75,6 +79,7 @@ function createCard(id, imageOrIcon, title, description) {
 	$(".card-column").click(function() {
 		var id = $(this).data("node-id");
 		history.pushState({ url: "/" }, "/", "?path="+id);
+		getCards();
 //		alert(id);
 	});
 }
