@@ -32,7 +32,7 @@ public class TreeStructureDaoImpl implements TreeStructureDao{
 	public TreeStructure getFindById(int id) {
 		TreeStructure tree = null;
 		try{
-			tree = (TreeStructure) em.createQuery("SELECT t FROM TreeStructure t LEFT OUTER JOIN t.answers a LEFT OUTER JOIN a.template templ LEFT OUTER JOIN t.questions q "
+			tree = (TreeStructure) em.createQuery("SELECT t FROM TreeStructure t LEFT OUTER JOIN t.answers a LEFT OUTER JOIN t.answer.template templ LEFT OUTER JOIN t.questions q "
 					+ " WHERE t.id = '"+id+"'").getSingleResult();
 			//AND a.treeStructure.id = t.id AND a.template.id = templ.id AND q.treeStructure.id = t.id
 		}catch(Exception e){
