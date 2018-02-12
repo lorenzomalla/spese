@@ -41,9 +41,6 @@ public class Answer implements Serializable {
 	@JoinColumn(name="tree_structure_id")
 	@JsonIgnore
 	private TreeStructure treeStructure;
-	
-	@Transient
-	private Set<CatTemplate> catTemplate;
 
 	public Answer() {
 	}
