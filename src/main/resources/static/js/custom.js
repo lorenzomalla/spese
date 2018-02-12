@@ -37,6 +37,14 @@ function getCards() {
 		params["path"] = rootNodeId;
 	}
 	
+    if(params["path"] == rootNodeId) {
+    	$("#backButton").removeClass("d-block").addClass("d-none");
+		$("#logo-row").addClass("d-md-flex");
+    } else {
+    	$("#backButton").removeClass("d-none").addClass("d-block");
+		$("#logo-row").removeClass("d-md-flex");
+    }
+	
 	$.get("/getNodeById/"+params["path"], function(data) {
 		console.log(data);
 		var question = data.questions[0];
@@ -59,13 +67,13 @@ function getCards() {
 
 function change(state) {
 	getCards();
-    if(state === null) {
-    	$("#backButton").removeClass("d-block").addClass("d-none");
-		$("#logo-row").addClass("d-md-flex");
-    } else {
-    	$("#backButton").removeClass("d-none").addClass("d-block");
-		$("#logo-row").removeClass("d-md-flex");
-    }
+//    if(state === null) {
+//    	$("#backButton").removeClass("d-block").addClass("d-none");
+//		$("#logo-row").addClass("d-md-flex");
+//    } else {
+//    	$("#backButton").removeClass("d-none").addClass("d-block");
+//		$("#logo-row").removeClass("d-md-flex");
+//    }
 }
 
 function createCard(id, imageOrIcon, title, description) {
