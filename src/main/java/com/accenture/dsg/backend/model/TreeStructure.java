@@ -33,6 +33,14 @@ public class TreeStructure implements Serializable {
 	//bi-directional many-to-one association to Answer
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
 	private Set<Answer> answers;
+	
+		//bi-directional many-to-one association to Template
+		@OneToMany(cascade=CascadeType.ALL)
+		private Set<Template> template;
+		
+		//bi-directional many-to-one association to CatTemplate
+		@OneToMany(cascade=CascadeType.ALL)
+		private Set<CatTemplate> cat_template;
 
 	//bi-directional many-to-one association to Question
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
@@ -76,6 +84,22 @@ public class TreeStructure implements Serializable {
 
 	public void setAnswers(Set<Answer> answers) {
 		this.answers = answers;
+	}
+	
+	public Set<Template> getTemplate() {
+		return this.template;
+	}
+
+	public void setTemplate(Set<Template> template) {
+		this.template = template;
+	}
+	
+	public Set<CatTemplate> getCatTemplate() {
+		return this.cat_template;
+	}
+
+	public void setCatTemplate(Set<CatTemplate> cat_template) {
+		this.cat_template = cat_template;
 	}
 
 	public Answer addAnswer(Answer answer) {
