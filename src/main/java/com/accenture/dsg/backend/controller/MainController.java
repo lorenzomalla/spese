@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.accenture.dsg.backend.dao.AnswersDao;
-import com.accenture.dsg.backend.dao.CatTemplateDao;
+//import com.accenture.dsg.backend.dao.CatTemplateDao;
 import com.accenture.dsg.backend.dao.CatTreeStructureDao;
 import com.accenture.dsg.backend.dao.QuestionsDao;
 import com.accenture.dsg.backend.dao.TemplateAttributeDao;
@@ -29,7 +29,7 @@ import com.accenture.dsg.backend.dao.TemplateDao;
 import com.accenture.dsg.backend.dao.TreeStructureDao;
 import com.accenture.dsg.backend.dao.UsersDao;
 import com.accenture.dsg.backend.model.Answer;
-import com.accenture.dsg.backend.model.CatTemplate;
+//import com.accenture.dsg.backend.model.CatTemplate;
 import com.accenture.dsg.backend.model.CatTreeStructureType;
 import com.accenture.dsg.backend.model.Question;
 import com.accenture.dsg.backend.model.Template;
@@ -55,8 +55,8 @@ public class MainController {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	@Autowired
-	private CatTemplateDao catTemplDao;
+//	@Autowired
+//	private CatTemplateDao catTemplDao;
 	
 	@Autowired
 	private TemplateDao templDao;
@@ -162,14 +162,14 @@ public class MainController {
 			return "Errore";
 	}
 	
-	@RequestMapping(value="/persistCatTempl" , method = RequestMethod.POST)
-	public @ResponseBody String persistCatTemplate(@RequestBody	CatTemplate catTempl){
-		if(catTempl != null){
-			catTemplDao.persistCatTemplate(catTempl);
-			return "salvato";
-		}else
-			return "errore";
-	}
+//	@RequestMapping(value="/persistCatTempl" , method = RequestMethod.POST)
+//	public @ResponseBody String persistCatTemplate(@RequestBody	CatTemplate catTempl){
+//		if(catTempl != null){
+//			catTemplDao.persistCatTemplate(catTempl);
+//			return "salvato";
+//		}else
+//			return "errore";
+//	}
 	
 	@RequestMapping(value="/persistTemplate" , method = RequestMethod.POST)
 	public @ResponseBody String persistTemplate(@RequestBody	Template template){

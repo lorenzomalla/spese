@@ -24,15 +24,16 @@ public class Template implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	//bi-directional many-to-one association to CatTemplate
-	@ManyToOne
-	@JoinColumn(name="cat_template_id")
-	@JsonIgnore
-	private CatTemplate catTemplate;
+	private String templatename;
+	
+	@Column(columnDefinition="TEXT")
+	private String markup;
 
 	//bi-directional many-to-one association to Answer
-	@OneToMany(mappedBy="template", cascade=CascadeType.ALL)
-	private Set<Answer> answers;
+	@ManyToOne(cascade=CascadeType.REMOVE)
+	@JoinColumn(name="tree_structure_id")
+	@JsonIgnore
+	private TreeStructure treeStructure;
 	
 	public Template() {
 	}
@@ -44,34 +45,29 @@ public class Template implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public String getTemplateName() {
+		return this.templatename;
+	}
+
+	public void setTemplateName(String templatename) {
+		this.templatename = templatename;
+	}
+	
+	public String getMarkup() {
+		return this.markup;
+	}
+
+	public void setMarkup(String markup) {
+		this.markup = markup;
+	}
+
 	@JsonIgnore
-	public CatTemplate getCatTemplate() {
-		return this.catTemplate;
-	}
+	public TreeStructure getTreeStructure(){  
+        return this.treeStructure;  
+    }  
 	@JsonProperty(access=Access.READ_WRITE) 
-	public void setCatTemplate(CatTemplate catTemplate) {
-		this.catTemplate = catTemplate;
-	}
-
-	public Set<Answer> getAnswers() {
-		return this.answers;
-	}
-
-	public void setAnswers(Set<Answer> answers) {
-		this.answers = answers;
-	}
-
-	public Answer addAnswer(Answer answer) {
-		getAnswers().add(answer);
-		answer.setTemplate(this);
-
-		return answer;
-	}
-
-	public Answer removeAnswer(Answer answer) {
-		getAnswers().remove(answer);
-		answer.setTemplate(null);
-
-		return answer;
-	}
+    public void setTreeStructure(TreeStructure treeStructure){  
+        this.treeStructure = treeStructure;  
+    } 
 }
