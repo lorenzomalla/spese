@@ -25,7 +25,6 @@ public class CatTemplate implements Serializable {
 	private String markup;
 
 	//bi-directional many-to-one association to Template
-	@JoinTable
 	@OneToMany(mappedBy="catTemplate")
 	private Set<Template> templates;
 
