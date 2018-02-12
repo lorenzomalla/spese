@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+		
+		<script src="../js/jquery.js"></script>
+		<script src="../js/jquery.validate.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+		<script src="../js/startswith.js"></script>
+		<script src="../js/checkValidate.js"></script>
+		<link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+		<link href="../css/supporto.css" type="text/css" rel="stylesheet"></link>
+		<link href="../css/style.css" type="text/css" rel="stylesheet"></link>
+		<link href="../css/font/fontawesome-all.min.css" rel="stylesheet" ></link>
+		<title>Home Page</title>
+	</head>
+	<body>
+	<!-- FUNZIONE PER LA VALIDAZIONE CON BOOTSTRAP -->
+<!-- 	<script type="text/javascript">
+	(function() {
+		  'use strict';
+		  window.addEventListener('load', function() {
+		    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+		    var forms = document.getElementsByClassName('needs-validation');
+		    // Loop over them and prevent submission
+		    var validation = Array.prototype.filter.call(forms, function(form) {
+		      form.addEventListener('submit', function(event) {
+		        if (form.checkValidity() === false) {
+		          event.preventDefault();
+		          event.stopPropagation();
+		        }
+		        form.classList.add('was-validated');
+		      }, false);
+		    });
+		  }, false);
+		})();
+	</script>
+	<script type="text/javascript">
+    jQuery.validator.addMethod("codfiscale", function(value) { 
+        var regex = /[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/;
+        return value. match(regex);  
+    }, "Please insert a valid italian identification number");
+    $(document).ready(function(){
+        $("#form").validate();
+    });
+</script> -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12 top-bar"></div>
+			</div>
+			<div class="row">
+				<div class="col-12 text-left logo-bar">
+					<img id="logo-tim" src="../img/timdigitalstore.png" />
+				</div>
+			</div>
+			<div class="row navigation-bar">
+				<div class="col-6 text-left">
+					Benvenuti nel portale di supporto di TIM Digital Store
+				</div>
+				<div class="col-6 d-none text-right" id="backButton">
+						<a href="javascript:history.back();"><i class="fas fa-angle-left"></i>Torna indietro</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col text-center pt-3">
+					<h3>Supporto TIM Digital Store tramite email.</h3>
+					<h5>Fai una domanda al supporto ti risponderemo il prima possibile</h5>
+				</div>
+			</div>
+			
+			<form id="form-registrazione" class="col-lg-6 offset-lg-3">
+			<div class="form-group row">
+				<label for="email">Email <span style="color:#FF0000">*</span></label>
+				<input type="email" name="email" class="form-control" id="email"></input>
+			</div>
+			<div class="form-group row">
+				<label for="cf-iva">CF O PIVA <span style="color:#FF0000">*</span></label>
+				<input type="text" name="codiceFiscale" class="form-control" id="codiceFiscale"></input>
+			</div>
+			<div class="form-group row">
+				<label for="telefono">IL TUO CONTATTO TELEFONICO </label>
+				<input type="text" class="form-control" id="telefono"></input>
+			</div>
+			<div class="form-group row">
+			    <label for="textArea">SCRIVI QUI LA TUA RICHIESTA <span style="color:#FF0000">*</span></label>
+			    <textarea class="form-control" id="problema" rows="4"></textarea>
+		  	</div>
+		  	<div class="form-group row justify-content-center">
+			  <button type="button" id="captcha" class="btn btn-primary">Google Captcha</button>
+			</div>
+		  	<div class="form-group row justify-content-center">
+			  <button type="submit" id="continue" class="btn btn-primary">Continua</button>
+			</div>
+			</form>
+			<div class="row"></div>
+			<div class="row bottom-bar">
+				<div class="col-6 text-left">Copyright 2018 Telecom Italia S.p.A</div>
+				<div class="col-6 text-right">Partita IVA: 00488410010</div>
+			</div>
+		</div>
+	</body>
+</html>
