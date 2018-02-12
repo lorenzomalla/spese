@@ -48,7 +48,16 @@ public class TreeStructure implements Serializable {
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
 	private Set<TreeStructure> treeStructures;
 
-
+	@Transient
+	@OneToMany
+    @JoinTable
+    (
+        name="template",
+        joinColumns={ @JoinColumn(name="answer_id", referencedColumnName="id") },
+        inverseJoinColumns={ @JoinColumn(name="id", referencedColumnName="template_id") }
+    )
+    private Set<Template> template;
+	
 	public TreeStructure() {
 	}
 
