@@ -35,8 +35,9 @@ public class TreeStructureDaoImpl implements TreeStructureDao{
 		TreeStructure tree = null;
 		try{
 			tree = (TreeStructure) em.createQuery("SELECT t FROM TreeStructure t LEFT OUTER JOIN fetch t.questions q "
-					+ "LEFT OUTER JOIN fetch t.answers a LEFT OUTER JOIN fetch a.template templ LEFT OUTER JOIN fetch templ.catTemplate ct"
-					+ " WHERE t.id = '"+id+"' ORDER BY t.id, t.treeStructures ASC").getSingleResult();
+					+ "LEFT OUTER JOIN fetch t.answers a LEFT OUTER JOIN fetch a.template templ "
+					+ "LEFT OUTER JOIN fetch templ.catTemplate ct LEFT OUTER JOIN fetch t.treeStructures tt"
+					+ " WHERE t.id = '"+id+"' ORDER BY t.id, tt.id ASC").getSingleResult();
 		}catch(Exception e){
 			System.err.println("Errore");
 			e.printStackTrace();
