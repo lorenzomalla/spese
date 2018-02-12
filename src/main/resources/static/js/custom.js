@@ -76,12 +76,10 @@ function createCard(id, imageOrIcon, title, description) {
 			                    "</div>"+
 			                "</div>"+
 			            "</div>");
-	var ind = 0;
-	
 	$(".card-column").click(function(event) {
 		event.stopPropagation();
-	alert("called " + ind++);	
 		var id = $(this).data("node-id");
+		alert("called " + id);	
 		history.pushState({ url: "/" }, "/", "?path="+id);
 		getCards();
 //		alert(id);
