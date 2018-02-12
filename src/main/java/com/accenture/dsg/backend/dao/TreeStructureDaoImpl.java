@@ -31,17 +31,12 @@ public class TreeStructureDaoImpl implements TreeStructureDao{
 	}
 
 	@Override
-	public ResponseObjectWrapper getFindById(int id) {
-		ResponseObjectWrapper tree = null;
+	public TreeStructure getFindById(int id) {
+		TreeStructure tree = null;
 		try{
-			Object tmpObj = new Object();
-			tmpObj = em.createQuery("SELECT t, (select ct from catTemplate) as cat FROM TreeStructure t LEFT OUTER JOIN fetch t.questions q "
+			tree = (TreeStructure) em.createQuery("SELECT t FROM TreeStructure t LEFT OUTER JOIN fetch t.questions q "
 					+ "LEFT OUTER JOIN fetch t.answers a LEFT OUTER JOIN fetch a.template templ LEFT OUTER JOIN fetch templ.catTemplate ct"
 					+ " WHERE t.id = '"+id+"'").getSingleResult();
-			ObjectMapper mapper = new ObjectMapper();
-			System.out.println(mapper.writeValueAsString(tmpObj));
-			tree = (ResponseObjectWrapper) tmpObj;
-			//AND a.treeStructure.id = t.id AND a.template.id = templ.id AND q.treeStructure.id = t.id
 		}catch(Exception e){
 			System.err.println("Errore");
 			e.printStackTrace();
