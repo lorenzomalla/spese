@@ -67,14 +67,19 @@ public class MainController {
 	private CatTreeStructureDao catTreeStrDao;
 
 	
-	@RequestMapping(value={"/","/home"}, method = RequestMethod.GET)
-	public String home(){
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+	public String login(){
 		return "login";
 	}
 	
 	@RequestMapping(value={"/error"}, method = RequestMethod.GET)
 	public String errore(){
 		return "error";
+	}
+	
+	@RequestMapping(value={"/","/home"},method = RequestMethod.GET)
+	public String homepage(){
+		return "home";
 	}
 	
 	
