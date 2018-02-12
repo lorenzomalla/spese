@@ -29,49 +29,49 @@ public class Application extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-    @EnableWebSecurity
-    class MultiHttpSecurityConfig {
-      @Autowired
-      public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception { 
-          auth 
-              .inMemoryAuthentication()
-//              INIZIALIZZO IL RUOLO A USER E SCEGLO UN USERNAME E PASSWORD
-              //DA CONTROLLARE COME RECUPERARE QUESTI DATI DA DB
-                  .withUser("user").password("password").roles("USER").and();
-          //NEL CASO SI VUOLE ACCEDERE COME ADMIN
-//                  .withUser("admin").password("password").roles("USER", "ADMIN");
-      }
-    }
-    @Configuration
-    @Order(1)                                                        
-    public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
-        protected void configure(HttpSecurity http) throws Exception {
-            http
-            /*
-             * MAPPO TUTTI I SERVIZI CHE RICHIEDONO L'AUTENTICAZIONE
-             * E QUINDI RITORNANDO IL FORM DI LOGIN
-             */
-       
-                .antMatcher("/api/**")                          
-                .authorizeRequests()
-                    .anyRequest().hasRole("USER")
-                    .and().formLogin().loginPage("/login")
-                    .and().httpBasic();
-        }
-    }   
-    
-    @Configuration                                                   
-    public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
-
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            http
-//            AUTORIZZO LA RICHIESTA AFFINCHE' SI E' AUTENTICATI
-                .authorizeRequests()
-                    .anyRequest().authenticated()
-                    .and()
-                .formLogin();
-        }
-    }
+//    @EnableWebSecurity
+//    class MultiHttpSecurityConfig {
+//      @Autowired
+//      public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception { 
+//          auth 
+//              .inMemoryAuthentication()
+////              INIZIALIZZO IL RUOLO A USER E SCEGLO UN USERNAME E PASSWORD
+//              //DA CONTROLLARE COME RECUPERARE QUESTI DATI DA DB
+//                  .withUser("user").password("password").roles("USER").and();
+//          //NEL CASO SI VUOLE ACCEDERE COME ADMIN
+////                  .withUser("admin").password("password").roles("USER", "ADMIN");
+//      }
+//    }
+//    @Configuration
+//    @Order(1)                                                        
+//    public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
+//        protected void configure(HttpSecurity http) throws Exception {
+//            http
+//            /*
+//             * MAPPO TUTTI I SERVIZI CHE RICHIEDONO L'AUTENTICAZIONE
+//             * E QUINDI RITORNANDO IL FORM DI LOGIN
+//             */
+//       
+//                .antMatcher("/api/**")                          
+//                .authorizeRequests()
+//                    .anyRequest().hasRole("USER")
+//                    .and().formLogin().loginPage("/login")
+//                    .and().httpBasic();
+//        }
+//    }   
+//    
+//    @Configuration                                                   
+//    public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+//
+//        @Override
+//        protected void configure(HttpSecurity http) throws Exception {
+//            http
+////            AUTORIZZO LA RICHIESTA AFFINCHE' SI E' AUTENTICATI
+//                .authorizeRequests()
+//                    .anyRequest().authenticated()
+//                    .and()
+//                .formLogin();
+//        }
+//    }
 }
   
