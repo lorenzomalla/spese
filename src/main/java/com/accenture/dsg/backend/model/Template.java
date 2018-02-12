@@ -1,13 +1,9 @@
 package com.accenture.dsg.backend.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -32,12 +28,11 @@ public class Template implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="cat_template_id")
 	@JsonIgnore
-	@LazyCollection(LazyCollectionOption.FALSE)
 	private CatTemplate catTemplate;
 
 	//bi-directional many-to-one association to Answer
 	@OneToMany(mappedBy="template", cascade=CascadeType.ALL)
-	private List<Answer> answers = new ArrayList<>();
+	private Set<Answer> answers;
 	
 	public Template() {
 	}
@@ -58,11 +53,11 @@ public class Template implements Serializable {
 		this.catTemplate = catTemplate;
 	}
 
-	public List<Answer> getAnswers() {
+	public Set<Answer> getAnswers() {
 		return this.answers;
 	}
 
-	public void setAnswers(List<Answer> answers) {
+	public void setAnswers(Set<Answer> answers) {
 		this.answers = answers;
 	}
 

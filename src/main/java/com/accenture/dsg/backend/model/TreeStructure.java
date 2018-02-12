@@ -3,16 +3,10 @@ package com.accenture.dsg.backend.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
-
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -34,16 +28,15 @@ public class TreeStructure implements Serializable {
 	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="cat_structure_type_id")
 	@JsonIgnore
-	@LazyCollection(LazyCollectionOption.FALSE)
 	private CatTreeStructureType catStructureTypeId;
 
 	//bi-directional many-to-one association to Answer
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
-	private List<Answer> answers = new ArrayList<>();
+	private Set<Answer> answers;
 
 	//bi-directional many-to-one association to Question
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
-	private List<Question> questions = new ArrayList<>();
+	private Set<Question> questions;
 
 	
 	
@@ -51,13 +44,12 @@ public class TreeStructure implements Serializable {
 	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="parent_id")
 	@JsonIgnore
-	@LazyCollection(LazyCollectionOption.FALSE)
 	private TreeStructure treeStructure;
 	
 
 	//bi-directional many-to-one association to TreeStructure
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
-	private List<TreeStructure> treeStructures = new ArrayList<>();
+	private Set<TreeStructure> treeStructures;
 
 	public TreeStructure() {
 	}
@@ -78,11 +70,11 @@ public class TreeStructure implements Serializable {
 		this.catStructureTypeId = catStructureTypeId;
 	}
 	
-	public List<Answer> getAnswers() {
+	public Set<Answer> getAnswers() {
 		return this.answers;
 	}
 
-	public void setAnswers(List<Answer> answers) {
+	public void setAnswers(Set<Answer> answers) {
 		this.answers = answers;
 	}
 
@@ -99,11 +91,11 @@ public class TreeStructure implements Serializable {
 
 		return answer;
 	}
-	public List<Question> getQuestions() {
+	public Set<Question> getQuestions() {
 		return this.questions;
 	}
 
-	public void setQuestions(List<Question> questions) {
+	public void setQuestions(Set<Question> questions) {
 		this.questions = questions;
 	}
 
@@ -121,11 +113,11 @@ public class TreeStructure implements Serializable {
 		return question;
 	}
 
-	public List<TreeStructure> getTreeStructures() {
+	public Set<TreeStructure> getTreeStructures() {
 		return this.treeStructures;
 	}
 
-	public void setTreeStructures(List<TreeStructure> treeStructures) {
+	public void setTreeStructures(Set<TreeStructure> treeStructures) {
 		this.treeStructures = treeStructures;
 	}
 

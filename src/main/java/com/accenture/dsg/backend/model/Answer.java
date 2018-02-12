@@ -3,9 +3,6 @@ package com.accenture.dsg.backend.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -35,14 +32,12 @@ public class Answer implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="template_id")
 	@JsonIgnore
-	@LazyCollection(LazyCollectionOption.FALSE)
 	private Template template;
 
 	//bi-directional many-to-one association to TreeStructure
 	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="tree_structure_id")
 	@JsonIgnore
-	@LazyCollection(LazyCollectionOption.FALSE)
 	private TreeStructure treeStructure;
 
 	public Answer() {

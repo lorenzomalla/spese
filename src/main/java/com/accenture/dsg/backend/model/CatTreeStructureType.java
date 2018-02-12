@@ -1,8 +1,7 @@
 package com.accenture.dsg.backend.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -25,7 +24,7 @@ public class CatTreeStructureType implements Serializable {
 
 	//bi-directional many-to-one association to TreeStructure
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
-	private List<TreeStructure> treeStructures = new ArrayList<>();
+	private Set<TreeStructure> treeStructures;
 	
 	public CatTreeStructureType() {
 	}
@@ -46,11 +45,11 @@ public class CatTreeStructureType implements Serializable {
 		this.description = description;
 	}
 	
-	public List<TreeStructure> getTreeStructure() {
+	public Set<TreeStructure> getTreeStructure() {
 		return this.treeStructures;
 	}
 
-	public void setTreeStructure(List<TreeStructure> treeStructures) {
+	public void setTreeStructure(Set<TreeStructure> treeStructures) {
 		this.treeStructures = treeStructures;
 	}
 
