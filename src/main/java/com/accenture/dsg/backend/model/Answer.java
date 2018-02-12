@@ -1,6 +1,8 @@
 package com.accenture.dsg.backend.model;
 
 import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -39,7 +41,9 @@ public class Answer implements Serializable {
 	@JoinColumn(name="tree_structure_id")
 	@JsonIgnore
 	private TreeStructure treeStructure;
-
+	
+	@Transient
+	private Set<CatTemplate> catTemplate;
 
 	public Answer() {
 	}
