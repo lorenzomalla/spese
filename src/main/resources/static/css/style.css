@@ -65,9 +65,13 @@ div.bottom-bar {
 	height: 48px;
 	line-height: 48px;
 }
+.spacer {
+	height: 48px;
+}
 
 .card {
-	width: 160px;
+    width: 200px;
+    height: 300px;
 }
 
 .card {
