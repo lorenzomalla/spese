@@ -47,11 +47,7 @@ public class TreeStructure implements Serializable {
 	//bi-directional many-to-one association to TreeStructure
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
 	private Set<TreeStructure> treeStructures;
-	
-	@Transient
-	private Template template;
-	@Transient
-	private CatTemplate catTemplate;
+
 
 	public TreeStructure() {
 	}
@@ -62,22 +58,6 @@ public class TreeStructure implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-	
-	public Template getTemplate() {
-		return this.template;
-	}
-
-	public void setTemplate(Template template) {
-		this.template = template;
-	}
-	
-	public CatTemplate getCatTemplate() {
-		return this.catTemplate;
-	}
-
-	public void setCatTemplate(CatTemplate catTemplate) {
-		this.catTemplate = catTemplate;
 	}
 	
 	@JsonIgnore

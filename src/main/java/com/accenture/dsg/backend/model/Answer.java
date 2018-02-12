@@ -29,7 +29,7 @@ public class Answer implements Serializable {
 	private String title;
 	
 	//bi-directional many-to-one association to Template
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="template_id")
 	@JsonIgnore
 	private Template template;
@@ -40,9 +40,7 @@ public class Answer implements Serializable {
 	@JsonIgnore
 	private TreeStructure treeStructure;
 
-	@Transient
-	private CatTemplate catTemplate;
-	
+
 	public Answer() {
 	}
 
@@ -62,13 +60,6 @@ public class Answer implements Serializable {
 		this.description = description;
 	}
 
-	public CatTemplate getCatTemplate() {
-		return this.catTemplate;
-	}
-
-	public void setCatTemplate(CatTemplate catTemplate) {
-		this.catTemplate = catTemplate;
-	}
 	
 	public String getImage() {
 		return this.image;
