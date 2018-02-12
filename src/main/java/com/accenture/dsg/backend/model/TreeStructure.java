@@ -31,6 +31,7 @@ public class TreeStructure implements Serializable {
 	private CatTreeStructureType catStructureTypeId;
 
 	//bi-directional many-to-one association to Answer
+	@JoinTable
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
 	private Set<Answer> answers;
 	
@@ -48,6 +49,7 @@ public class TreeStructure implements Serializable {
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
 	@OrderBy("id ASC")
 	private Set<TreeStructure> treeStructures;
+
 
 	
 	public TreeStructure() {
