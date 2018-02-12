@@ -6,46 +6,44 @@ import com.accenture.dsg.backend.model.TreeStructure;
 
 public class ResponseObjectWrapper {
 	
-	public ResponseObjectWrapper(){};
-	
-	private class CatTreeStructureType{
-		private int id;
-		private String description;
-		private ResponseObjectWrapper treeStructure;
+	public class CatTreeStructureType{
+		int id;
+		String description;
+		ResponseObjectWrapper treeStructure;
 	}
 	
-	private class CatTemplateWrapper{
-		private int id;
-		private String templatename;
-		private String markup;
+	public class CatTemplateWrapper{
+		int id;
+		String templatename;
+		String markup;
 	}
 	
-	private class TemplateWrapper{
-		private int id;
-		private CatTemplateWrapper catTemplate;
+	public class TemplateWrapper{
+		int id;
+		CatTemplateWrapper catTemplate;
 	}
 	
-	private class AnswerWrapper{
-		private int id;
-		private String description;
-		private String image;
-		private String title;
-		private TemplateWrapper template;
-		private ResponseObjectWrapper treeStructure;
+	public class AnswerWrapper{
+		int id;
+		String description;
+		String image;
+		String title;
+		TemplateWrapper template;
+		ResponseObjectWrapper treeStructure;
 	}
 	
-	private class QuestionWrapper{
-		private int id;
-		private String pageSubtitle;
-		private String pageTitle;
-		private ResponseObjectWrapper treeStructure;
+	public class QuestionWrapper{
+		int id;
+		String pageSubtitle;
+		String pageTitle;
+		ResponseObjectWrapper treeStructure;
 	}
 	
-	private int id;
-	private CatTreeStructureType catStructureTypeId;
-	private Set<AnswerWrapper> answers;
-	private Set<QuestionWrapper> questions;
-	private Set<ResponseObjectWrapper> treeStructures;
+	public int id;
+	public CatTreeStructureType catStructureTypeId;
+	public Set<AnswerWrapper> answers;
+	public Set<QuestionWrapper> questions;
+	public Set<ResponseObjectWrapper> treeStructures;
 	
 	
 	public Set<ResponseObjectWrapper> getTreeStructures() {
