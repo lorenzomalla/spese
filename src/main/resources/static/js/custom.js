@@ -1,9 +1,9 @@
-(function(original) {
-        history.pushState = function(state) {
-            change(state);
-            return original.apply(this, arguments);
-        };
-})(history.pushState);
+//(function(original) {
+//        history.pushState = function(state) {
+//            change(state);
+//            return original.apply(this, arguments);
+//        };
+//})(history.pushState);
 
 $(document).ready(function() {
 	$(window).on("popstate", function(e) {
@@ -79,6 +79,7 @@ function createCard(id, imageOrIcon, title, description) {
 	$(".card-column").click(function() {
 		var id = $(this).data("node-id");
 		history.pushState({ url: "/" }, "/", "?path="+id);
+		getCards();
 //		alert(id);
 	});
 }
