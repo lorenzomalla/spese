@@ -36,6 +36,7 @@ import com.accenture.dsg.backend.model.Template;
 import com.accenture.dsg.backend.model.TemplateAttribute;
 import com.accenture.dsg.backend.model.TreeStructure;
 import com.accenture.dsg.backend.model.User;
+import com.accenture.dsg.backend.utils.ResponseObjectWrapper;
 
 @Controller 
 public class MainController {
@@ -119,17 +120,14 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/getNodeById/{id}", method = RequestMethod.GET)
-	public @ResponseBody Object getFindById(@PathVariable("id") int id){
-		Object response = null;
-		TreeStructure tree = dao.getFindById(id);
+	public @ResponseBody ResponseObjectWrapper getFindById(@PathVariable("id") int id){
+		ResponseObjectWrapper tree = dao.getFindById(id);
 		if(!tree.getTreeStructures().isEmpty()){	
-			for (TreeStructure t : tree.getTreeStructures()) {
+			for (ResponseObjectWrapper t : tree.getTreeStructures()) {
 				t.setTreeStructures(null);				
 			}
 		}
-		response = tree;
-		System.out.println("------------>"+response.toString());
-		return response;
+		return tree;
 	}
 	
 	@RequestMapping(value="/addTree" , method = RequestMethod.POST)
