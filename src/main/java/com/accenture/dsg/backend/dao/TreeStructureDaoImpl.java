@@ -29,10 +29,10 @@ public class TreeStructureDaoImpl implements TreeStructureDao{
 	}
 
 	@Override
-	public TreeStructure getFindById(int id) {
-		TreeStructure tree = null;
+	public Object getFindById(int id) {
+		Object tree = null;
 		try{
-			tree = (TreeStructure) em.createQuery("SELECT t FROM TreeStructure t LEFT OUTER JOIN fetch t.questions q "
+			tree = (Object) em.createQuery("SELECT t FROM TreeStructure t LEFT OUTER JOIN fetch t.questions q "
 					+ "LEFT OUTER JOIN fetch t.answers a LEFT OUTER JOIN fetch a.template templ LEFT OUTER JOIN fetch templ.catTemplate ct"
 					+ " WHERE t.id = '"+id+"'").getSingleResult();
 			//AND a.treeStructure.id = t.id AND a.template.id = templ.id AND q.treeStructure.id = t.id
