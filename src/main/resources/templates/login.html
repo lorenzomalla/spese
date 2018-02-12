@@ -1,59 +1,14 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
-		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-		
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/startswith.js"></script>
-		<script src="js/custom.js"></script>
-		<link href="css/bootstrap.min.css" rel="stylesheet" />
-		<link href="css/style.css" type="text/css" rel="stylesheet" />
-		<link href="css/font/fontawesome-all.min.css" rel="stylesheet" />
-		<title>Home Page</title>
-	</head>
-	<body>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-12 top-bar"></div>
-			</div>
-			<div class="row">
-				<div class="col-12 text-left logo-bar">
-					<img id="logo-tim" src="img/timdigitalstore.png" />
-				</div>
-			</div>
-			<div class="row navigation-bar">
-				<div class="col-6 text-left">
-					Benvenuti nel portale di supporto di TIM Digital Store
-				</div>
-				<div class="col-6 d-none text-right" id="backButton">
-					<a href="javascript:history.back();"><i class="fas fa-angle-left"></i>Torna indietro</a>
-				</div>
-			</div>
-			<div class="row d-none d-md-flex top-image" id="logo-row">
-				<div class="col-3 top-image-caption-background">
-					<span class="top-image-caption-text">Siamo qui per aiutarti</span>
-<!-- 					<img class="img-fluid" src="img/home.jpg"/> -->
-				</div>
-			</div>
-			<div class="row">
-				<div class="col text-center pt-3">
-					<h3 id="question"></h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col text-center">
-					<h6 id="question-subtitle"></h6>
-				</div>
-			</div>
-			
-			<div class="row" id="cardList"></div>
-			<div class="row spacer"></div>
-			<div class="row fixed-bottom bottom-bar">
-				<div class="col-6 text-left">Copyright 2018 Telecom Italia S.p.A</div>
-				<div class="col-6 text-right">Partita IVA: 00488410010</div>
-			</div>
-		</div>
-	</body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Spring Security Example </title>
+    </head>
+    <body>
+        <form method="POST" action="/checkLogin">
+            <div><label> User Name : <input type="text" name="mail"/> </label></div>
+            <div><label> Password: <input type="password" name="password"/> </label></div>
+            <button type="button">Login</button>
+        </form>
+    </body>
 </html>

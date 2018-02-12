@@ -1,6 +1,8 @@
 package com.accenture.dsg.backend.model;
 
 import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,7 +31,7 @@ public class Answer implements Serializable {
 	private String title;
 	
 	//bi-directional many-to-one association to Template
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="template_id")
 	@JsonIgnore
 	private Template template;
@@ -59,6 +61,7 @@ public class Answer implements Serializable {
 		this.description = description;
 	}
 
+	
 	public String getImage() {
 		return this.image;
 	}

@@ -36,6 +36,7 @@ import com.accenture.dsg.backend.model.Template;
 import com.accenture.dsg.backend.model.TemplateAttribute;
 import com.accenture.dsg.backend.model.TreeStructure;
 import com.accenture.dsg.backend.model.User;
+import com.accenture.dsg.backend.utils.ResponseObjectWrapper;
 
 @Controller 
 public class MainController {
@@ -67,14 +68,24 @@ public class MainController {
 	private CatTreeStructureDao catTreeStrDao;
 
 	
-	@RequestMapping(value={"/","/home"}, method = RequestMethod.GET)
-	public String home(){
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+	public String login(){
 		return "login";
 	}
 	
 	@RequestMapping(value={"/error"}, method = RequestMethod.GET)
 	public String errore(){
 		return "error";
+	}
+	
+	@RequestMapping(value={"/","/home"},method = RequestMethod.GET)
+	public String homepage(){
+		return "home";
+	}
+	
+	@RequestMapping(value="/supporto",method = RequestMethod.GET)
+	public String supporto(){
+		return "supporto";
 	}
 	
 	
@@ -114,17 +125,14 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/getNodeById/{id}", method = RequestMethod.GET)
-	public @ResponseBody Object getFindById(@PathVariable("id") int id){
-		Object response = null;
+	public @ResponseBody TreeStructure getFindById(@PathVariable("id") int id){
 		TreeStructure tree = dao.getFindById(id);
 		if(!tree.getTreeStructures().isEmpty()){	
 			for (TreeStructure t : tree.getTreeStructures()) {
 				t.setTreeStructures(null);				
 			}
 		}
-		response = tree;
-		System.out.println("------------>"+response.toString());
-		return response;
+		return tree;
 	}
 	
 	@RequestMapping(value="/addTree" , method = RequestMethod.POST)
