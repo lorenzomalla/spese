@@ -64,6 +64,7 @@ div.bottom-bar {
 	color: #FFFFFF;
 	height: 48px;
 	line-height: 48px;
+	font-size: 14px;
 }
 .spacer {
 	height: 48px;
@@ -100,9 +101,9 @@ div.bottom-bar {
     margin: 10px;
 }
 
-@include media-breakpoint-up(sm) {
-  div.navigation-bar {
-    font-size: 10px;
+@media (max-width: 767px) {
+	div.navigation-bar {
+		font-size: 10px;
 	}
 }
 

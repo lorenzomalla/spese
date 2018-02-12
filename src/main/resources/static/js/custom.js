@@ -53,9 +53,13 @@ function getCards() {
 			$("#question-subtitle").text(question.pageSubtitle);			
 		}
 		$.each(data.treeStructures, function(index, element) {
-			var answer = element.answers[0];
-			if(!!answer) {
-				createCard(element.id, answer.image, answer.title, answer.description);
+			if(element.template.length>0) {
+				
+			} else {
+				var answer = element.answers[0];
+				if(!!answer) {
+					createCard(element.id, answer.image, answer.title, answer.description);
+				}
 			}
 		});
 	});
