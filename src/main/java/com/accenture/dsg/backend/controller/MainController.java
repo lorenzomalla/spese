@@ -114,13 +114,13 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/getNodeById/{id}", method = RequestMethod.GET)
-	public @ResponseBody Object getFindById(@PathVariable("id") int id){
-		Object tree = dao.getFindById(id);
-//		if(!tree.equals(null)){	
-//			for (Object t : tree.TreeStructures()) {
-//				t.setTreeStructures(null);				
-//			}
-//		}
+	public @ResponseBody TreeStructure getFindById(@PathVariable("id") int id){
+		TreeStructure tree = dao.getFindById(id);
+		if(!tree.getTreeStructures().isEmpty()){	
+			for (TreeStructure t : tree.getTreeStructures()) {
+				t.setTreeStructures(null);				
+			}
+		}
 		return tree;
 	}
 	
