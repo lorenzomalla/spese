@@ -46,28 +46,9 @@ public class TreeStructure implements Serializable {
 	
 	//bi-directional many-to-one association to TreeStructure
 	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
+	@OrderBy("id ASC")
 	private Set<TreeStructure> treeStructures;
 
-	@Transient
-	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
-	@JoinTable(name="answers",
-		joinColumns=
-            @JoinColumn(name="template_id", referencedColumnName="id"),
-        inverseJoinColumns=
-            @JoinColumn(name="answer_id", referencedColumnName="id")
-			)
-	private Set<Template> template;
-	
-	@Transient
-	@OneToMany(mappedBy="treeStructure", cascade=CascadeType.ALL)
-	@JoinTable(name="templates",
-		joinColumns=
-            @JoinColumn(name="cat_template_id", referencedColumnName="id"),
-        inverseJoinColumns=
-            @JoinColumn(name="template_id", referencedColumnName="id")
-			)
-	private Set<CatTemplate> catTemplate;
-	
 	
 	public TreeStructure() {
 	}
