@@ -47,7 +47,7 @@ function getCards() {
 		$.each(data.treeStructures, function(index, element) {
 			var answer = element.answers[0];
 			if(!!answer) {
-				createCard(answer.id, answer.image, answer.title, answer.description);
+				createCard(element.id, answer.image, answer.title, answer.description);
 			}
 		});
 	});
