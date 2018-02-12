@@ -11,6 +11,16 @@ $(document).ready(function() {
     });
 
 	getCards();
+	
+	$("#cardList").on("click", ".card-column", function(event) {
+		event.stopPropagation();
+		var id = $(this).data("node-id");
+//		alert("called " + id);	
+		history.pushState({ url: "/" }, "/", "?path="+id);
+		getCards();
+//		alert(id);
+	});
+	
 });
 
 function getCards() {
@@ -76,14 +86,6 @@ function createCard(id, imageOrIcon, title, description) {
 			                    "</div>"+
 			                "</div>"+
 			            "</div>");
-	$(".card-column").click(function(event) {
-		event.stopPropagation();
-		var id = $(this).data("node-id");
-		alert("called " + id);	
-		history.pushState({ url: "/" }, "/", "?path="+id);
-		getCards();
-//		alert(id);
-	});
 }
 
 //remove in prod
