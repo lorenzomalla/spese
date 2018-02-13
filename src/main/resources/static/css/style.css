@@ -21,7 +21,7 @@ div.logo-bar{
     line-height: 58px;
 }
 
-div.navigation-bar{
+dl.navigation-bar{
     height: 46px;
     background-color: RGB(240, 240, 240);
     color: RGB(0, 120, 193);
@@ -111,11 +111,5 @@ div.bottom-bar {
 div.card-body{
     width: 201px;
 }
-@media only screen and (max-width: 320px) {
 
-   #welcome { 
-      font-size: 2em; 
-   }
-
-}
 
