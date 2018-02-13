@@ -111,12 +111,12 @@ function createCard(id, imageOrIcon, title, description) {
 }
 
 function createCardWithTemplate(id,title, description) {
-	var blueSquareContent = "";
-	if(imageOrIcon.startsWith("ico:")) {
-		blueSquareContent = "<i class=\"fas "+imageOrIcon.substr(4)+" pt-2 display-4\"></i>";
-	} else {
-		blueSquareContent = "<img src=\""+imageOrIcon+"\" />";
-	}
+//	var blueSquareContent = "";
+//	if(imageOrIcon.startsWith("ico:")) {
+//		blueSquareContent = "<i class=\"fas "+imageOrIcon.substr(4)+" pt-2 display-4\"></i>";
+//	} else {
+//		blueSquareContent = "<img src=\""+imageOrIcon+"\" />";
+//	}
 	$("#cardList").append("<div class=\"card-column template\" data-node-id=\""+id+"\">"+
 			                "<div class=\"card text-center\">"+
 			                    "<div class=\"card-body\">"+
