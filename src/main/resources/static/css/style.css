@@ -87,6 +87,8 @@ div.bottom-bar {
     color: #FFFFFF;
     background-color: #2672EC;
     padding: 25px;
+    width: 143px;
+    height: 132px;
 }
 
 .card:hover .blue-square {
@@ -106,5 +108,11 @@ div.bottom-bar {
 		font-size: 12px;
 	}
 	
+}
+div.card-body{
+    width: 201px;
+}
+#backButtonPhone{
+    color: #FFFFFF !important;
 }
 
