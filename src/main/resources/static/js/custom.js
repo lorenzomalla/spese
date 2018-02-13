@@ -63,8 +63,9 @@ function getCards() {
 		}
 		$.each(data.treeStructures, function(index, element) {
 			if(element.template.length>0) {
+				var template = element.template[0];
 				console.log("ELEMENT: " +element.template);
-				createCardWithTemplate(element.id,template.templatename,template.markup)
+				createCardWithTemplate(element.id,template.markup)
 				console.log("ELEMENT: " +element.template.id);
 			} else {
 				var answer = element.answers[0];
@@ -111,7 +112,7 @@ function createCard(id, imageOrIcon, title, description) {
 			            "</div>");
 }
 
-function createCardWithTemplate(id,title, description) {
+function createCardWithTemplate(id,markup ) {
 //	var blueSquareContent = "";
 //	if(imageOrIcon.startsWith("ico:")) {
 //		blueSquareContent = "<i class=\"fas "+imageOrIcon.substr(4)+" pt-2 display-4\"></i>";
@@ -124,8 +125,8 @@ function createCardWithTemplate(id,title, description) {
 			                        "<div class=\"ml-2 blue-square\">"+
 //			                            "<h3 class=\"title\">"+blueSquareContent+"</h3>"+
 			                        "</div>"+
-			                        "<h5 class=\"card-title mt-2\">"+title+"</h5>"+
-			                        "<h6 class=\"card-subtitle mb-2 text-muted\">"+description+"</h6>"+
+			                        "<h5 class=\"card-title mt-2\">"+markup+"</h5>"+
+//			                        "<h6 class=\"card-subtitle mb-2 text-muted\">"+description+"</h6>"+
 			                    "</div>"+
 			                "</div>"+
 			            "</div>");
