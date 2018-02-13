@@ -83,7 +83,7 @@ function change(state) {
 function createCard(id, imageOrIcon, title, description) {
 	var blueSquareContent = "";
 	if(imageOrIcon.startsWith("ico:")) {
-		blueSquareContent = "<i class=\"fas "+imageOrIcon.substr(4)+"pt2 display-4\"></i>";
+		blueSquareContent = "<i class=\"fas "+imageOrIcon.substr(4)+"pt-2 display-4\"></i>";
 	} else {
 		blueSquareContent = "<img src=\""+imageOrIcon+"\" />";
 	}
