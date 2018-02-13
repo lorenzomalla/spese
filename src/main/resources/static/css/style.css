@@ -64,7 +64,7 @@ div.bottom-bar {
 	color: #FFFFFF;
 	height: 48px;
 	line-height: 48px;
-	font-size: 14px;
+/* 	font-size: 14px; */
 }
 .spacer {
 	height: 48px;
@@ -102,8 +102,9 @@ div.bottom-bar {
 }
 
 @media (max-width: 767px) {
-	div.navigation-bar {
-		font-size: 10px;
+	div.navigation-bar, div.bottom-bar {
+		font-size: 12px;
 	}
+	
 }
 
