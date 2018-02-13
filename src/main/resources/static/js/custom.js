@@ -83,7 +83,7 @@ function change(state) {
 function createCard(id, imageOrIcon, title, description) {
 	var blueSquareContent = "";
 	if(imageOrIcon.startsWith("ico:")) {
-		blueSquareContent = "<i class=\"fas "+imageOrIcon.substr(4)+"pt-2 display-4\"></i>";
+		blueSquareContent = "<i class=\"fas "+imageOrIcon.substr(4)+" pt-2 display-4\"></i>";
 	} else {
 		blueSquareContent = "<img src=\""+imageOrIcon+"\" />";
 	}
@@ -93,8 +93,8 @@ function createCard(id, imageOrIcon, title, description) {
 			                        "<div class=\"ml-2 blue-square\">"+
 			                            "<h3 class=\"title\">"+blueSquareContent+"</h3>"+
 			                        "</div>"+
-			                        "<h5 class=\"card-title mt-3\">"+title+"</h5>"+
-			                        "<h6 class=\"card-subtitle mt-4 text-muted\">"+description+"</h6>"+
+			                        "<h5 class=\"card-title mt-2\">"+title+"</h5>"+
+			                        "<h6 class=\"card-subtitle mb-2 text-muted\">"+description+"</h6>"+
 			                    "</div>"+
 			                "</div>"+
 			            "</div>");
