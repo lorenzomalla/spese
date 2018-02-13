@@ -110,9 +110,10 @@ div.bottom-bar {
 	
 }
 div.card-body{
-    width: 201px;
+    width: 200px;
 }
-#backButtonPhone{
+
+#backButtonPhone a {
     color: #FFFFFF !important;
 }
 
