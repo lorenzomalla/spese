@@ -129,7 +129,8 @@ public class MainController {
 		TreeStructure tree = dao.getFindById(id);
 		if(!tree.getTreeStructures().isEmpty()){	
 			for (TreeStructure t : tree.getTreeStructures()) {
-				t.setTreeStructures(null);				
+				t.setTreeStructures(null);	
+				t.setTemplate(null);
 			}
 		}
 		return tree;
