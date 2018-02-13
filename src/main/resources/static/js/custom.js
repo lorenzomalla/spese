@@ -20,16 +20,7 @@ $(document).ready(function() {
 		getCards();
 //		alert(id);
 	});
-	
-	$("#cardList").on("click", ".template", function(event) {
-		event.stopPropagation();
-		var id = $(this).data("node-id");
-//		alert("called " + id);	
-		history.pushState({ url: "/" }, "/", "?path="+id);
-		getCards();
-//		alert(id);
-	});
-	
+		
 });
 
 function getCards() {
@@ -62,16 +53,9 @@ function getCards() {
 			$("#question-subtitle").text(question.pageSubtitle);			
 		}
 		$.each(data.treeStructures, function(index, element) {
-			if(element.template.length>0) {
-				var template = element.template[0];
-				console.log("ELEMENT: " +element.template);
-				createCardWithTemplate(element.id,template.markup)
-				console.log("ELEMENT: " +element.template.id);
-			} else {
-				var answer = element.answers[0];
-				if(!!answer) {
-					createCard(element.id, answer.image, answer.title, answer.description);
-				}
+			var answer = element.answers[0];
+			if(!!answer) {
+				createCard(element.id, answer.image, answer.title, answer.description);
 			}
 		});
 	});
@@ -107,26 +91,6 @@ function createCard(id, imageOrIcon, title, description) {
 			                        "</div>"+
 			                        "<h5 class=\"card-title mt-2\">"+title+"</h5>"+
 			                        "<h6 class=\"card-subtitle mb-2 text-muted\">"+description+"</h6>"+
-			                    "</div>"+
-			                "</div>"+
-			            "</div>");
-}
-
-function createCardWithTemplate(id,markup ) {
-//	var blueSquareContent = "";
-//	if(imageOrIcon.startsWith("ico:")) {
-//		blueSquareContent = "<i class=\"fas "+imageOrIcon.substr(4)+" pt-2 display-4\"></i>";
-//	} else {
-//		blueSquareContent = "<img src=\""+imageOrIcon+"\" />";
-//	}
-	$("#cardList").append("<div class=\"card-column template\" data-node-id=\""+id+"\">"+
-			                "<div class=\"card text-center\">"+
-			                    "<div class=\"card-body\">"+
-			                        "<div class=\"ml-2 blue-square\">"+
-//			                            "<h3 class=\"title\">"+blueSquareContent+"</h3>"+
-			                        "</div>"+
-			                        "<h5 class=\"card-title mt-2\">"+markup+"</h5>"+
-//			                        "<h6 class=\"card-subtitle mb-2 text-muted\">"+description+"</h6>"+
 			                    "</div>"+
 			                "</div>"+
 			            "</div>");
