@@ -93,8 +93,8 @@ function createCard(id, imageOrIcon, title, description) {
 			                        "<div class=\"ml-2 blue-square\">"+
 			                            "<h3 class=\"title\">"+blueSquareContent+"</h3>"+
 			                        "</div>"+
-			                        "<h5 class=\"card-title\">"+title+"</h5>"+
-			                        "<h6 class=\"card-subtitle mb-2 text-muted\">"+description+"</h6>"+
+			                        "<h5 class=\"card-title mt-3\">"+title+"</h5>"+
+			                        "<h6 class=\"card-subtitle mt-4 text-muted\">"+description+"</h6>"+
 			                    "</div>"+
 			                "</div>"+
 			            "</div>");

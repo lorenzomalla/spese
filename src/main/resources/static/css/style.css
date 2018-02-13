@@ -108,4 +108,6 @@ div.bottom-bar {
 		font-size: 10px;
 	}
 }
-
+div.card-body{
+    width: 201px;
+}
