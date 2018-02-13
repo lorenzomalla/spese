@@ -63,8 +63,9 @@ function getCards() {
 		}
 		$.each(data.treeStructures, function(index, element) {
 			if(element.template.length>0) {
-				console.log("ELEMENT: " +element.template)
+				console.log("ELEMENT: " +element.template);
 				createCardWithTemplate(element.template.id,element.template.templatename,element.template.markup)
+				console.log("ELEMENT: " +element.template.id);
 			} else {
 				var answer = element.answers[0];
 				if(!!answer) {
