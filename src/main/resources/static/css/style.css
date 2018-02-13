@@ -111,20 +111,11 @@ div.bottom-bar {
 div.card-body{
     width: 201px;
 }
+@media only screen and (max-width: 320px) {
 
-@media (max-width: @screen-xs) {
-    #welcome{
-    	font-size: 10px;
-    }
+   #welcome { 
+      font-size: 2em; 
+   }
+
 }
 
-@media (max-width: @screen-sm) {
-    #welcome{
-    	font-size: 14px;
-    }
-}
-
-
-#welcome{
-    font-size: 1.4em;
-}   
