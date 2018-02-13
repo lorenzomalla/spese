@@ -18,3 +18,12 @@
 body{
 	  font-family: TIMSans-Light;
 }
+
+#button{
+	background-color: RGB(000, 120, 193);
+    width: 214px;
+}
+
+#label.value{
+	border: none;	
+}

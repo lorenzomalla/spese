@@ -83,10 +83,10 @@ public class MainController {
 		return "home";
 	}
 	
-	@RequestMapping(value="/supporto",method = RequestMethod.GET)
-	public String supporto(){
-		return "supporto";
-	}
+//	@RequestMapping(value="/supporto",method = RequestMethod.GET)
+//	public String supporto(){
+//		return "supporto";
+//	}
 	
 	
 	@GetMapping(path="/add") // Map ONLY GET Requests
