@@ -48,16 +48,25 @@ function getCards() {
 	$.get("/getNodeById/"+params["path"], function(data) {
 		console.log(data);
 		var question = data.questions[0];
-		if(!!question) {
-			$("#question").text(question.pageTitle);
-			$("#question-subtitle").text(question.pageSubtitle);			
-		}
-		$.each(data.treeStructures, function(index, element) {
-			var answer = element.answers[0];
-			if(!!answer) {
-				createCard(element.id, answer.image, answer.title, answer.description);
+		var template = data.template[0];
+		if(!!template) {
+			$("#question").text("");
+			$("#question-subtitle").text("");
+			
+			$("#cardList").html(template.markup);
+			
+		} else {
+			if(!!question) {
+				$("#question").text(question.pageTitle);
+				$("#question-subtitle").text(question.pageSubtitle);			
 			}
-		});
+			$.each(data.treeStructures, function(index, element) {
+				var answer = element.answers[0];
+				if(!!answer) {
+					createCard(element.id, answer.image, answer.title, answer.description);
+				}
+			});
+		}
 	});
 	
 //	for(i=0; i<getRandomInt(1, 6); i++) {
