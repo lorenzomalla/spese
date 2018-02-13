@@ -21,7 +21,7 @@ div.logo-bar{
     line-height: 58px;
 }
 
-dl.navigation-bar{
+div.navigation-bar{
     height: 46px;
     background-color: RGB(240, 240, 240);
     color: RGB(0, 120, 193);
