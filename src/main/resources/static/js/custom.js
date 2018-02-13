@@ -121,7 +121,7 @@ function createCardWithTemplate(id,title, description) {
 			                "<div class=\"card text-center\">"+
 			                    "<div class=\"card-body\">"+
 			                        "<div class=\"ml-2 blue-square\">"+
-			                            "<h3 class=\"title\">"+blueSquareContent+"</h3>"+
+//			                            "<h3 class=\"title\">"+blueSquareContent+"</h3>"+
 			                        "</div>"+
 			                        "<h5 class=\"card-title mt-2\">"+title+"</h5>"+
 			                        "<h6 class=\"card-subtitle mb-2 text-muted\">"+description+"</h6>"+
