@@ -83,14 +83,14 @@ function change(state) {
 function createCard(id, imageOrIcon, title, description) {
 	var blueSquareContent = "";
 	if(imageOrIcon.startsWith("ico:")) {
-		blueSquareContent = "<i class=\"fas "+imageOrIcon.substr(4)+"\"></i>";
+		blueSquareContent = "<i class=\"fas "+imageOrIcon.substr(4)+" pt2 display-4\"></i>";
 	} else {
 		blueSquareContent = "<img src=\""+imageOrIcon+"\" />";
 	}
 	$("#cardList").append("<div class=\"card-column\" data-node-id=\""+id+"\">"+
 			                "<div class=\"card text-center\">"+
 			                    "<div class=\"card-body\">"+
-			                        "<div class=\"blue-square\">"+
+			                        "<div class=\" ml-2 blue-square\">"+
 			                            "<h3 class=\"title\">"+blueSquareContent+"</h3>"+
 			                        "</div>"+
 			                        "<h5 class=\"card-title\">"+title+"</h5>"+

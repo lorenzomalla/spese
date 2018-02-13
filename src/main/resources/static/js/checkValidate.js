@@ -21,7 +21,6 @@ function validazione(){
 		rules:{
 			codiceFiscale:{
 				required:true,
-				regx: /^[a-zA-z] ?([a-zA-z]|[a-zA-z] )*[a-zA-z]$/,
 				maxlength : 15
 			},
 			email:{
@@ -32,6 +31,7 @@ function validazione(){
 			messages:{
 				codiceFiscale:{
 					required:"",
+					maxlength: ""
 				},
 				email:{
 					required : "",
