@@ -25,6 +25,8 @@ $(document).ready(function() {
 
 function getCards() {
 	$("#cardList").html("");
+	$("#question").text("");
+	$("#question-subtitle").text("");
 	var rootNodeId = 1;
 	var params = {};
 	if(location.search!="") {
@@ -50,8 +52,6 @@ function getCards() {
 		var question = data.questions[0];
 		var template = data.template[0];
 		if(!!template) {
-			$("#question").text("");
-			$("#question-subtitle").text("");
 			
 			$("#cardList").html(template.markup);
 			
