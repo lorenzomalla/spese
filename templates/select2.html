@@ -27,8 +27,29 @@
          </div>
       </div>
       <div class='row'>
-      		<div class='col-12 form-group text-center'> <button id='button-select' class='btn btn-primary' type='button'>Continua</button></div>
+      		<div class='col-12 form-group text-center'> 
+      			<button id='button-select' class='btn btn-primary' type='button'>Continua</button>
+      		</div>
 	  </div>
    </form>
-   <script type='text/javascript'>var redirecturl='';$('.js-example-basic-single').select2 ({theme:'classic',placeholder:'...',allowClear:true}).on('select2:select',function(e){var data=e.params.data;if(data.id!=null){document.redirecturl=data.id;$('#button-select').prop('disabled',false);}else{$('#button-select').prop('disabled',true);} console.log(document.redirecturl);});$('#button-select').click(function(){if(document.redirecturl=='https://dgs-backend.herokuapp.com/?path=6'){window.location.href=document.redirecturl;}else{window.open(document.redirecturl,'_blank');}});</script>
 </div>
+   <script type="text/javascript">
+   var redirecturl='';
+   $('.js-example-basic-single').select2({theme:'classic',placeholder:'...',allowClear:true})
+   .on('select2:select',function(e){
+	   var data=e.params.data;
+	   if(data.id!=null){
+		   document.redirecturl=data.id;
+		   $('#button-select').prop('disabled',false);
+		   }else{
+			   $('#button-select').prop('disabled',true);
+			   } console.log(document.redirecturl);
+			   });
+   $('#button-select').click(function(){
+	   if(document.redirecturl=="https://dgs-backend.herokuapp.com/?path=6"){
+		   window.location.href=document.redirecturl;
+		   }else{
+			   window.open(document.redirecturl,'_blank');
+			   }
+	   });
+   </script>
