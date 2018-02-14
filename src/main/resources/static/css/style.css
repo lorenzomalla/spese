@@ -30,7 +30,7 @@ div.navigation-bar{
 }
 
 div.top-image {
-	background: url('../img/home.jpg') no-repeat center -60px;
+	background: url('../img/home.jpg') no-repeat center top;
     color: #FFFFFF;
     height: 300px;
 	background-size: 100%;
