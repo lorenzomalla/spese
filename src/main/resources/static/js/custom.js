@@ -25,6 +25,7 @@ $(document).ready(function() {
 
 function getCards() {
 	$("#cardList").html("");
+	$("#template").html("");
 	$("#question").text("");
 	$("#question-subtitle").text("");
 	var rootNodeId = 1;
@@ -53,7 +54,7 @@ function getCards() {
 		var template = data.template[0];
 		if(!!template) {
 			
-			$("#cardList").html(template.markup);
+			$("#template").html(template.markup);
 			
 		} else {
 			if(!!question) {
