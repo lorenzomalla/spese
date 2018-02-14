@@ -16,24 +16,25 @@
 		  </label>
 	</div>
 	<div class='form-group row justify-content-center'>
-		 <button id='button' class='btn btn-primary' type='button'>Continua</button>
+		 <button id='button-select' class='btn btn-primary' type='button'>Continua</button>
 	</div>
 </form>
  <script type='text/javascript'>
- 	var redirecturl='';$('.js-example-basic-single').select2
+ 	var redirecturl='';
+ 	$('.js-example-basic-single').select2
  	({theme:'classic',placeholder:'...',allowClear:true,'width':'600px'})
  	.on('select2:select',function(e){
  		var data=e.params.data;
  		if(data.id!=null){
  			document.redirecturl = data.id;
- 			$('#button').prop('disabled',false);
+ 			$('#button-select').prop('disabled',false);
  			}else{
- 				$('#button').prop('disabled',true);
+ 				$('#button-select').prop('disabled',true);
  			}
  			console.log(document.redirecturl);
  		}
  	);
- 	$('#button').click(function(){
+ 	$('#button-select').click(function(){
  		if(data.id=='https://dgs-backend.herokuapp.com/?path=6'){
 			 window.location.href = document.redirecturl;
 		}else{
