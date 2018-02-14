@@ -1,5 +1,4 @@
 package com.accenture.dsg.backend.controller;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -36,7 +35,6 @@ import com.accenture.dsg.backend.model.Template;
 import com.accenture.dsg.backend.model.TemplateAttribute;
 import com.accenture.dsg.backend.model.TreeStructure;
 import com.accenture.dsg.backend.model.User;
-import com.accenture.dsg.backend.utils.ResponseObjectWrapper;
 
 @Controller 
 public class MainController {

@@ -9,8 +9,6 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.accenture.dsg.backend.model.TreeStructure;
-import com.accenture.dsg.backend.utils.ResponseObjectWrapper;
-import com.fasterxml.jackson.databind.ObjectMapper;
 @Transactional
 @Repository
 public class TreeStructureDaoImpl implements TreeStructureDao{
