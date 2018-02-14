@@ -3,13 +3,6 @@
     width: 214px;
 }
 
-#captcha{
-	background-color: RGB(80, 120, 193);
-	width: 617px;
-	height: 100px;
-	font-size: 40px;
-}
-
 @font-face {
     font-family: TIMSans-Light;
     src: url(/css/font/TIMSans-Light.ttf);

@@ -118,3 +118,13 @@ div.card-body{
     color: #FFFFFF !important;
 }
 
+
+#label-value{
+	border: none;	
+}
+
+#continue{
+	background-color: RGB(000, 120, 193);
+    width: 214px;
+}
+
