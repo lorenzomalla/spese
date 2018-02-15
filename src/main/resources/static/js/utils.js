@@ -16,9 +16,15 @@ function select2init() {
 //				},
 				processResults: function (data) {
 					console.log(data);
-					return {
-						results: data.items
-					};
+					var opt = '{"result":['; 
+					$.each(data,function(key,value){ 
+						console.log("VALORE : " + value);
+						opt +='{"id":"'+value.value+'","text":"'+value.oOption+'","phone":"'+value.phone+'","mail":"'+value.email+'"},';
+					}
+					opt = str.substring(0, opt.lenght()-1);
+					opt +=']}'; 
+					console.log(opt);
+					return opt;
 				}
 			},
 			theme:'classic',
