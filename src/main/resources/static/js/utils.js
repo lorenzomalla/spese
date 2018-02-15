@@ -1,10 +1,11 @@
 var redirecturl='';
 
-$('.js-example-basic-single').select2(
+$('.js-data-example-ajax').select2(
 		{theme:'classic',placeholder:'Seleziona un valore dalla lista...',
 		allowClear:true,
 		ajax: {
 			url: 'https://dgs-backend.herokuapp.com/findOptions',
+			dataType: 'json',
 			data: function (params) {
 				var query = {
 					search: params.term,
