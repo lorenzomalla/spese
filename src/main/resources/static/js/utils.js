@@ -5,12 +5,11 @@ $('.js-data-example-ajax').select2(
 		allowClear:true,
 		ajax: {
 			url: 'https://dgs-backend.herokuapp.com/findOptions',
-			dataType: 'json',
 			data: function (params) {
 				var query = {
-					search: params.term,
-					type: 'public'
-				};
+//					search: params.term,
+//					type: 'public'
+				}
 				console.log(query);
 				return query;
 			},
@@ -19,6 +18,12 @@ $('.js-data-example-ajax').select2(
 				return {
 					results: data.items
 				};
+			},
+			transport: function (params, success, failure) {
+				var $request = $.ajax(params);
+				$request.then(success);
+				$request.fail(failure);
+				return $request;
 			}
 		}
 	}).on('select2:select',function(e){
