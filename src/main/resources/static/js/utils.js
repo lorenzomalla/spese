@@ -18,7 +18,7 @@ function select2init() {
 				},
 				processResults: function (data) {
 					console.log(data);
-					var opt = '{"result":['; 
+					var opt = '{"results":['; 
 					$.each(data,function(key,value){ 
 						console.log("VALORE : " + value);
 						opt +='{"id":"'+value.value+'","text":"'+value.oOption+'","phone":"'+value.phone+'","mail":"'+value.email+'"},';
@@ -31,6 +31,7 @@ function select2init() {
 			},
 			theme:'classic',
 			allowClear:true,
+			minimumInputLength: 0
 		}).on('select2:select',function(e){
 		    var data=e.params.data;
 		    if(data.id!=null){
