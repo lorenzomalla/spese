@@ -114,7 +114,7 @@ public class MainController {
 	@RequestMapping(value="/getAllList", method = RequestMethod.GET)
 	public @ResponseBody List<TreeStructure> getAllList(){
 		List<TreeStructure> list = dao.getAllLista();
-//		list.toString();
+		list.toString();
 		return list;
 	}
 	
@@ -213,7 +213,7 @@ public class MainController {
 	@RequestMapping(value="/findOptions" , method = RequestMethod.GET)
 	public @ResponseBody List<Contact> getFindAll(){
 		List<Contact> list = contactDao.getAllList();
-//		list.toString();
+		list.toString();
 		return list;
 	}
 	
