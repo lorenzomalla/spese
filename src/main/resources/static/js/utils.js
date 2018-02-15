@@ -26,18 +26,15 @@ var redirecturl='';
 
 $('.js-data-example-ajax').select2(
 	{
-		theme:'classic',
-		placeholder:'Seleziona un valore dalla lista...',
-		allowClear:true,
 		ajax: {
 			type: "GET",
-			url: "/findOptions",
-			ContentType: "application/json",
-			dataType: "json",
+			url: "https://dgs-backend.herokuapp.com/findOptions",
+			dataType: 'json',
+		    delay: 250,
 			data: function (params) {
 				var query = {
-//					search: params.term,
-//					type: 'public'
+					search: params.term,
+					type: 'public'
 				}
 				console.log(query);
 				return query;
@@ -54,8 +51,12 @@ $('.js-data-example-ajax').select2(
 				$request.then(success);
 				$request.fail(failure);
 				return $request;
-			}
-		}
+			},
+			cache: true
+		},
+		theme:'classic',
+		placeholder:'Seleziona un valore dalla lista...',
+		allowClear:true
 	}).on('select2:select',function(e){
 	    var data=e.params.data;
 	    if(data.id!=null){
