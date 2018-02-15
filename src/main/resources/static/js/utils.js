@@ -19,6 +19,7 @@ $(document).ready(function(){
 		error: function(){
 			console.log("Errore nella richiesta");
 		}
+	});
 });
 
 $('.js-data-example-ajax').select2(
