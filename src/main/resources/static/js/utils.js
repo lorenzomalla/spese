@@ -28,7 +28,7 @@ function select2init() {
 				}
 			},
 			theme:'classic',
-			placeholder:'Seleziona un valore dalla lista...',
+			//placeholder:'Seleziona un valore dalla lista...',
 			allowClear:true,
 		}).on('select2:select',function(e){
 		    var data=e.params.data;
