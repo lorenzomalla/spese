@@ -1,24 +1,24 @@
 var redirecturl='';
+
 $('.js-example-basic-single').select2
 ({theme:'classic',placeholder:'...',
     allowClear:true,
     ajax: {
     url: 'https://dgs-backend.herokuapp.com/findOptions',
-    data: function (params) {
-      var query = {
-        search: params.term,
-        type: 'public'
-      }
-      return query;
+	    data: function (params) {
+	      var query = {
+	        search: params.term,
+	        type: 'public'
+	      }
+	      return query;
+	    }
+	    processResults: function (data) {
+	      return {
+	        results: data.items
+	      };
+	    }
     }
-    processResults: function (data) {
-      return {
-        results: data.items
-      };
-    }
-    }
-})
-.on('select2:select',function(e){
+	}).on('select2:select',function(e){
     var data=e.params.data;
     if(data.id!=null){
         document.redirecturl = data.id;
@@ -29,6 +29,7 @@ $('.js-example-basic-single').select2
         console.log(document.redirecturl);
     }
 );
+
 $('#button-select').click(function(){
     if(document.redirecturl=='https://dgs-backend.herokuapp.com/?path=6'){
          window.location.href = document.redirecturl;
