@@ -6,10 +6,11 @@ $('.js-example-basic-single').select2(
 		ajax: {
 			url: 'https://dgs-backend.herokuapp.com/findOptions',
 			data: function (params) {
+				console.log('query');
 				var query = {
 					search: params.term,
 					type: 'public'
-				}
+				};
 				return query;
 			},
 			processResults: function (data) {
