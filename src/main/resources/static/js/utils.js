@@ -14,7 +14,6 @@ $('.js-example-basic-single').select2(
 			},
 			processResults: function (data) {
 				return {
-					console.log(data);
 					results: data.items
 				};
 			}
