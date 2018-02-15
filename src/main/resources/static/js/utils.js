@@ -13,6 +13,7 @@ $('.js-example-basic-single').select2(
 				return query;
 			},
 			processResults: function (data) {
+				console.log(data);
 				return {
 					results: data.items
 				};
