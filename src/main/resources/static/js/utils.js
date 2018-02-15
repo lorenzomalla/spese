@@ -48,9 +48,9 @@ function select2init() {
 		        },
 		        cache: true
 		    },
-		    minimumInputLength: 2
-			theme:'classic',
-			allowClear:true,
+		    minimumInputLength: 2,
+			theme:'classic'
+//			allowClear:true,
 //			minimumInputLength: 0
 		}).on('select2:select',function(e){
 		    var data=e.params.data;
