@@ -8,10 +8,11 @@ $(document).ready(function(){
 		dataType: "json",
 		success: function(response){
 			var select = $('#singleselect');
-			$.each(response,function(key,valore){
+			$.each(response,function(key,value){
 				//Prende l'oggetto 
 //			JSON.stringify(value);
-				opt +="<option value="+valore.value+">"+valore.option+"</option>";
+				console.log("VALORE : " + value);
+				opt +="<option value="+value.value+">"+value.option+"</option>";
 			});
 			select.html(opt);
 			select.show();
