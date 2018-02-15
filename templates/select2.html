@@ -45,9 +45,13 @@
  	$('#button-select').click(function(){
  		if(document.redirecturl=='https://dgs-backend.herokuapp.com/?path=6'){
 			 window.location.href = document.redirecturl;
-		}else{
+		}else if(document.redirecturl=='https://dgs-backend.herokuapp.com/?path=10'){
+			 window.location.replace = document.redirecturl;
+		}else if(document.redirecturl=='https://dgs-backend.herokuapp.com/?path=11'){
+			window.location.replace = document.redirecturl;
+		}
 			 window.open(document.redirecturl, '_blank');
-		} 
+		})
  	});
  	
  	
