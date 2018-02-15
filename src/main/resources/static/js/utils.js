@@ -7,7 +7,7 @@ $(document).ready(function(){
 		ContentType: "application/json",
 		dataType: "json",
 		success: function(response){
-			var select = $('select2:select');
+			var select = $('#select');
 			$.each(response,function(key,value){
 				//Prende l'oggetto 
 //			JSON.stringify(value);
