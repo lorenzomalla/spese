@@ -210,6 +210,13 @@ public class MainController {
 			return "errore";
 	}
 	
+	@RequestMapping(value="/findOptions" , method = RequestMethod.POST)
+	public @ResponseBody List<Contact> getFindAll(){
+		List<Contact> list = contactDao.getAllList();
+		list.toString();
+		return list;
+	}
+	
 	@RequestMapping(value="/sendEmail",method = RequestMethod.POST)
 	public String doSendEmail(HttpServletRequest request) {
 		try{
