@@ -10,6 +10,6 @@ import com.accenture.dsg.backend.model.Contact;
 public interface ContactDao {
 	
 	public void persist(Contact a);
-	public List<Contact> getAllList();
+	public List<Contact> getAllList(String option);
 	
 }

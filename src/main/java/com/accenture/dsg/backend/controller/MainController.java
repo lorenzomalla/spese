@@ -210,9 +210,9 @@ public class MainController {
 			return "errore";
 	}
 	
-	@RequestMapping(value="/findOptions" , method = RequestMethod.GET)
-	public @ResponseBody List<Contact> getFindAll(){
-		List<Contact> list = contactDao.getAllList();
+	@RequestMapping(value="/findOptions/{option}" , method = RequestMethod.GET)
+	public @ResponseBody List<Contact> getFindAll(@PathVariable("option") String option){
+		List<Contact> list = contactDao.getAllList(option);
 //		list.toString();
 		return list;
 	}
