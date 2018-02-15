@@ -9,14 +9,34 @@ $(document).ready(function() {
 	$(window).on("popstate", function(e) {
         change(e.originalEvent.state);
     });
+	
+	var getUrlParameter = function getUrlParameter(sParam) {
+	    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+	        sURLVariables = sPageURL.split('&'),
+	        sParameterName,
+	        i;
 
+	    for (i = 0; i < sURLVariables.length; i++) {
+	        sParameterName = sURLVariables[i].split('=');
+
+	        if (sParameterName[0] === sParam) {
+	            return sParameterName[1] === undefined ? true : sParameterName[1];
+	        }
+	    }
+	};
+	
 	getCards();
 	
 	$("#cardList").on("click", ".card-column", function(event) {
 		event.stopPropagation();
 		var id = $(this).data("node-id");
+		var servizio = getUrlParameter('servizio');
 //		alert("called " + id);	
-		history.pushState({ url: "/" }, "/", "?path="+id);
+		if(servizio!=null){
+			history.pushState({ url: "/" }, "/", "?path="+id+"&servizio="+servizio);
+		}else{
+			history.pushState({ url: "/" }, "/", "?path="+id);
+		}
 		getCards();
 //		alert(id);
 	});
