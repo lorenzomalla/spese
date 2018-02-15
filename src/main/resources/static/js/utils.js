@@ -23,7 +23,7 @@ function select2init() {
 		        }else{
 		            $('#button-select').prop('disabled',true);
 		        }
-		    };
+		    });
 		},
 		error: function(){
 			console.log("Errore nella richiesta");
