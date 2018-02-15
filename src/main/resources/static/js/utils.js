@@ -29,27 +29,37 @@ function select2init() {
 //					return opt;
 //				}
 //			},
-			ajax: {
-		        url: "/findOptions",
-		        dataType: 'json',
-		        delay: 250,
-		        data: function (params) {
+		      data: data,
+		      ajax: {
+		           url: '/findOptions',
+		           dataType: 'json',
+		           delay: 250,
+		           data: function (params) {
+		               return {
+		                   where: {'title' : '%' + params.term + '%'}, 
+		                       page: params.page
+		               };
+		          },
+		          processResults: function (data, params) {
+
+		            params.page = params.page || 1;
 		            return {
-		                q: params.term // search term
-		            };
-		        },
-		        processResults: function (data) {
-		            // parse the results into the format expected by Select2.
-		            // since we are using custom formatting functions we do not need to
-		            // alter the remote JSON data
-		            return {
-		                results: data
-		            };
-		        },
-		        cache: true
-		    },
-		    minimumInputLength: 2,
-			theme:'classic'
+		                results: $.map(data.message.data, function (item) {
+		                     return {
+		                          text: item.values.oOption,
+		                          id: item.values.value
+		                     }
+		                }),
+		                pagination: {
+		                     more: (params.page * 30) < data.total_count
+		                   }
+		               };
+		           },
+		           cache: true
+		           },
+		           minimumInputLength: 1
+
+		       }).val(ids).trigger('change');
 //			allowClear:true,
 //			minimumInputLength: 0
 		}).on('select2:select',function(e){
