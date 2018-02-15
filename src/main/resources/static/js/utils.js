@@ -6,27 +6,19 @@ function select2init() {
 				url: '/findOptions',
 				type: "GET",
 				dataType: "json",
-				data: function (params) {
-					var query = {
-						search: params.term,
-						type: 'public'
-					}
-					console.log(query);
-					return query;
-				},
+//				data: function (params) {
+//					var query = {
+//						search: params.term,
+//						type: 'public'
+//					}
+//					console.log(query);
+//					return query;
+//				},
 				processResults: function (data) {
 					console.log(data);
 					return {
 						results: data.items
 					};
-				},
-				transport: function (params, success, failure) {
-				    var $request = $.ajax(params);
-	
-				    $request.then(success);
-				    $request.fail(failure);
-	
-				    return $request;
 				}
 			},
 			theme:'classic',
