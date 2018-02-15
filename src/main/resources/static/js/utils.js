@@ -14,6 +14,8 @@ $('.js-example-basic-single').select2(
 			}
 			processResults: function (data) {
 				return {
+					console.log(data);
+					console.log(data.value);
 					results: data.items
 				};
 			}
