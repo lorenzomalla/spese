@@ -10,7 +10,7 @@ $(document).ready(function(){
 			var select = $('#singleselect');
 			$.each(response,function(key,value){
 				//Prende l'oggetto 
-//			JSON.stringify(value);
+				JSON.stringify(value);
 				console.log("VALORE : " + value);
 				opt +="<option value="+value.value+">"+value.option+"</option>";
 			});
