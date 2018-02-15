@@ -1,7 +1,7 @@
 var redirecturl='';
 
 $('.js-example-basic-single').select2
-({theme:'classic',placeholder:'...',
+({theme:'classic',placeholder:'Seleziona un valore dalla lista...',
     allowClear:true,
     ajax: {
     url: 'https://dgs-backend.herokuapp.com/findOptions',
