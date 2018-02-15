@@ -12,7 +12,7 @@ public class Contact implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-
+	
 	private String option;
 	
 	private String value;
