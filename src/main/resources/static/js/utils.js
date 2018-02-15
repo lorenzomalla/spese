@@ -29,39 +29,10 @@ function select2init() {
 //					return opt;
 //				}
 //			},
-		      data: data,
-		      ajax: {
-		           url: '/findOptions/{option}',
-		           dataType: 'json',
-		           delay: 250,
-		           data: function (params) {
-		               return {
-		                   where: {'title' : '%' + params.term + '%'}, 
-		                       page: params.page
-		               };
-		          },
-		          processResults: function (data, params) {
-
-		            params.page = params.page || 1;
-		            return {
-		                results: $.map(data.message.data, function (item) {
-		                     return {
-		                          text: item.values.oOption,
-		                          id: item.values.value
-		                     }
-		                }),
-		                pagination: {
-		                     more: (params.page * 30) < data.total_count
-		                   }
-		               };
-		           },
-		           cache: true
-		           },
-		           minimumInputLength: 1
-
-		       }).val(ids).trigger('change');
-//			allowClear:true,
-//			minimumInputLength: 0
+			
+			theme:'classic',
+			allowClear:true,
+			minimumInputLength: 0
 		}).on('select2:select',function(e){
 		    var data=e.params.data;
 		    if(data.id!=null){

@@ -22,8 +22,8 @@ public class ContactDaoImpl implements ContactDao{
 	}
 
 	@Override
-	public List<Contact> getAllList(String option) {
-		List<Contact> listaContact =  em.createQuery("SELECT c FROM Contatti c WHERE c.option = '"+option+"'",Contact.class).getResultList();
+	public List<Contact> getAllList() {
+		List<Contact> listaContact =  em.createNamedQuery("Contact.findAll",Contact.class).getResultList();
 		return listaContact;
 	}
 
