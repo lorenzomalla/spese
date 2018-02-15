@@ -21,8 +21,8 @@ $('.js-example-basic-single').select2
 	}).on('select2:select',function(e){
     var data=e.params.data;
     if(data.id!=null){
-        document.redirecturl = data.id;
-        $('#button-select').prop('disabled',false);
+        	document.redirecturl = data.id;
+        	$('#button-select').prop('disabled',false);
         }else{
             $('#button-select').prop('disabled',true);
         }
