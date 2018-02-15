@@ -31,7 +31,7 @@ function select2init() {
 //			},
 		      data: data,
 		      ajax: {
-		           url: '/findOptions',
+		           url: '/findOptions/{option}',
 		           dataType: 'json',
 		           delay: 250,
 		           data: function (params) {
