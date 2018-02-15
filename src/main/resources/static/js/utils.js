@@ -31,10 +31,10 @@ $('.js-example-basic-single').select2
 );
 
 $('#button-select').click(function(){
-    if(document.redirecturl=='https://dgs-backend.herokuapp.com/?path=6'){
-         window.location.href = document.redirecturl;
+    if(document.redirecturl.indexOf('https://dgs-backend.herokuapp.com') !== -1){
+    	window.open(document.redirecturl, '_blank');
     }else{
-         window.open(document.redirecturl, '_blank');
+    	window.location.href = document.redirecturl;
     } 
 });
  	
