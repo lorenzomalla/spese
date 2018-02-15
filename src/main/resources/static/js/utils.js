@@ -8,11 +8,11 @@ $(document).ready(function(){
 		dataType: "json",
 		success: function(response){
 			var select = $('#singleselect');
-			$.each(response,function(key,value){
+			$.each(response,function(key,pippo){
 				//Prende l'oggetto 
-				JSON.stringify(value);
-				console.log("VALORE : " + value);
-				opt +="<option value="+value.value+">"+value.option+"</option>";
+			var pippo2 =	$.parseJSON(pippo);
+				console.log("VALORE : " + pippo2);
+				opt +="<option value="+pippo2.value+">"+pippo2.option+"</option>";
 			});
 			select.html(opt);
 			select.show();
