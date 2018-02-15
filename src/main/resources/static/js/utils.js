@@ -51,7 +51,7 @@ $('.js-data-example-ajax').select2(
 
 			    return $request;
 			}
-		}
+		},
 		theme:'classic',
 		placeholder:'Seleziona un valore dalla lista...',
 		allowClear:true,
