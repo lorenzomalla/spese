@@ -1,43 +1,26 @@
 var redirecturl='';
-$(document).ready(function(){
-	$.ajax({
-		type: "GET",
-		url: "/findOptions",
-		ContentType: "application/json",
-		dataType: "json",
-		success: function(response){
-			var select = $('select2:select');
-			$.each(response,function(key,valore){
-				//Prende l'oggetto 
-//			JSON.stringify(value);
-				opt +="<option value="+valore.value+">"+valore.option+"</option>";
-			});
-			select.html(opt);
-			select.show();
-			opt = "";
-		},
-		error: function(){
-			console.log("Errore nella richiesta");
-		}
-});
-$('.js-example-basic-single').select2(
+
+$('.js-data-example-ajax').select2(
 		{theme:'classic',placeholder:'Seleziona un valore dalla lista...',
 		allowClear:true,
-//		ajax: {
-//			url: 'https://dgs-backend.herokuapp.com/findOptions',
-//			data: function (params) {
-//				var query = {
-//					search: params.term,
-//					type: 'public'
-//				}
-//				return query;
-//			}
-//			processResults: function (data) {
-//				return {
-//					results: data.items
-//				};
-//			}
-//		}
+		ajax: {
+			url: 'https://dgs-backend.herokuapp.com/findOptions',
+			dataType: 'json',
+			data: function (params) {
+				var query = {
+					search: params.term,
+					type: 'public'
+				};
+				console.log(query);
+				return query;
+			},
+			processResults: function (data) {
+				console.log(data);
+				return {
+					results: data.items
+				};
+			}
+		}
 	}).on('select2:select',function(e){
 	    var data=e.params.data;
 	    if(data.id!=null){
