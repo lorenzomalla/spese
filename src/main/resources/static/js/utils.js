@@ -1,26 +1,26 @@
 var redirecturl='';
 
-$('.js-example-basic-single').select2
-({theme:'classic',placeholder:'Seleziona un valore dalla lista...',
-    allowClear:true,
-    ajax: {
-    url: 'https://dgs-backend.herokuapp.com/findOptions',
-	    data: function (params) {
-	      var query = {
-	        search: params.term,
-	        type: 'public'
-	      }
-	      return query;
-	    }
-	    processResults: function (data) {
-	      return {
-	        results: data.items
-	      };
-	    }
-    }
+$('.js-example-basic-single').select2(
+		{theme:'classic',placeholder:'Seleziona un valore dalla lista...',
+		allowClear:true,
+		ajax: {
+			url: 'https://dgs-backend.herokuapp.com/findOptions',
+			data: function (params) {
+				var query = {
+					search: params.term,
+					type: 'public'
+				}
+				return query;
+			}
+			processResults: function (data) {
+				return {
+					results: data.items
+				};
+			}
+		}
 	}).on('select2:select',function(e){
-    var data=e.params.data;
-    if(data.id!=null){
+	    var data=e.params.data;
+	    if(data.id!=null){
         	document.redirecturl = data.id;
         	$('#button-select').prop('disabled',false);
         }else{
