@@ -1,13 +1,13 @@
 var redirecturl='';
 $(document).ready(function(){
-	var opt = "<option value=\"\"></option>";
+	var opt = "<option></option>";
 	$.ajax({
 		type: "GET",
 		url: "/findOptions",
 		ContentType: "application/json",
 		dataType: "json",
 		success: function(response){
-			var select = $('select2:select');
+			var select = $('#singleselect');
 			$.each(response,function(key,valore){
 				//Prende l'oggetto 
 //			JSON.stringify(value);
