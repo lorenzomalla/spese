@@ -23,6 +23,7 @@ import com.accenture.dsg.backend.dao.AnswersDao;
 //import com.accenture.dsg.backend.dao.CatTemplateDao;
 import com.accenture.dsg.backend.dao.CatTreeStructureDao;
 import com.accenture.dsg.backend.dao.QuestionsDao;
+import com.accenture.dsg.backend.dao.ContactDao;
 import com.accenture.dsg.backend.dao.TemplateAttributeDao;
 import com.accenture.dsg.backend.dao.TemplateDao;
 import com.accenture.dsg.backend.dao.TreeStructureDao;
@@ -31,6 +32,7 @@ import com.accenture.dsg.backend.model.Answer;
 //import com.accenture.dsg.backend.model.CatTemplate;
 import com.accenture.dsg.backend.model.CatTreeStructureType;
 import com.accenture.dsg.backend.model.Question;
+import com.accenture.dsg.backend.model.Contact;
 import com.accenture.dsg.backend.model.Template;
 import com.accenture.dsg.backend.model.TemplateAttribute;
 import com.accenture.dsg.backend.model.TreeStructure;
@@ -65,6 +67,8 @@ public class MainController {
 	@Autowired
 	private CatTreeStructureDao catTreeStrDao;
 
+	@Autowired
+	private ContactDao contactDao;
 	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String login(){
@@ -192,6 +196,15 @@ public class MainController {
 	public @ResponseBody String persistCatTreeStructure(@RequestBody	CatTreeStructureType catTreeStr){
 		if(catTreeStr != null){
 			catTreeStrDao.persistCatTreeStructureType(catTreeStr);
+			return "salvato";
+		}else
+			return "errore";
+	}
+	
+	@RequestMapping(value="/persistContact" , method = RequestMethod.POST)
+	public @ResponseBody String persistContact(@RequestBody	Contact contact){
+		if(contact != null){
+			contactDao.persist(contact);
 			return "salvato";
 		}else
 			return "errore";

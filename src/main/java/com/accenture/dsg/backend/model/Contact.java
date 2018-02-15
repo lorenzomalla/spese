@@ -4,9 +4,9 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name="select")
-@NamedQuery(name="Select.findAll", query="SELECT s FROM Select s")
-public class Select implements Serializable {
+@Table(name="contatti")
+@NamedQuery(name="Contact.findAll", query="SELECT c FROM Contact c")
+public class Contact implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -21,7 +21,7 @@ public class Select implements Serializable {
 	
 	private String email;
 	
-	public Select() {
+	public Contact() {
 	}
 
 	public int getId() {
