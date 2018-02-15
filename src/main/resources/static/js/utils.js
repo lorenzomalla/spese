@@ -12,7 +12,7 @@ $(document).ready(function(){
 				//Prende l'oggetto 
 			JSON.stringify(value);
 				console.log(value);
-				opt +="<option value="+value.value+">"+value.option+"</option>";
+				opt +="<option value="+value.value+">"+value.oOption+"</option>";
 			});
 			select.html(opt);
 			select.show();
