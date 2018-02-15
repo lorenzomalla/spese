@@ -1,28 +1,4 @@
 var redirecturl='';
-$(document).ready(function(){
-	var opt = "<option value=\"\">Seleziona un valore dalla lista..</option>";
-	$.ajax({
-		type: "GET",
-		url: "/findOptions",
-		ContentType: "application/json",
-		dataType: "json",
-		success: function(response){
-			var select = $('#select');
-			$.each(response,function(key,value){
-				//Prende l'oggetto 
-			JSON.stringify(value);
-				console.log(value);
-				opt +="<option value="+value.value+">"+value.oOption+"</option>";
-			});
-			select.html(opt);
-			select.show();
-			opt = "";
-		},
-		error: function(){
-			console.log("Errore nella richiesta");
-		}
-	});
-});
 //$('.js-data-example-ajax').select2(
 //		{
 //		ajax: {

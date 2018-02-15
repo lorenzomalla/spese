@@ -7,8 +7,8 @@
 			 	<!-- <select id='singleselect' class='js-data-example-ajax' name='Link'>
 			 		<option></option> 
 			 	</select>  -->
-			 	<select id="select" class="btn btn-primary dropdown-toggle" style="color:white; background-color: #5cb85c; border-color:#4cae4c ">
-					        <option value="">Corsi di Laurea</option>
+			 	<select id="select" class="btn btn-primary dropdown-toggle" style="color:white; border-color:#4cae4c ">
+					        <option value="">Scegli un opzione</option>
 			    </select>
 			 	</div>
 			  </label>
@@ -20,4 +20,28 @@
 		</div>
 	</div>
 </form>
+<script type="text/javascript">
+var opt = "<option value=\"\">Seleziona un valore dalla lista..</option>";
+$.ajax({
+	type: "GET",
+	url: "/findOptions",
+	ContentType: "application/json",
+	dataType: "json",
+	success: function(response){
+		var select = $('#select');
+		$.each(response,function(key,value){
+			//Prende l'oggetto 
+		JSON.stringify(value);
+			console.log(value);
+			opt +="<option value="+value.value+">"+value.oOption+"</option>";
+		});
+		select.html(opt);
+		select.show();
+		opt = "";
+	},
+	error: function(){
+		console.log("Errore nella richiesta");
+	}
+});
+</script>
 </div>
