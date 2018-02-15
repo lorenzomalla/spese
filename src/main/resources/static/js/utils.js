@@ -1,5 +1,6 @@
 var redirecturl='';
 $(document).ready(function(){
+	var opt = "<option value=\"\"></option>";
 	$.ajax({
 		type: "GET",
 		url: "/findOptions",
