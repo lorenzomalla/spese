@@ -20,7 +20,7 @@ function select2init() {
 					$.each(data,function(key,value){ 
 						console.log("VALORE : " + value);
 						opt +='{"id":"'+value.value+'","text":"'+value.oOption+'","phone":"'+value.phone+'","mail":"'+value.email+'"},';
-					}
+					});
 					opt = str.substring(0, opt.lenght()-1);
 					opt +=']}'; 
 					console.log(opt);
