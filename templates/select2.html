@@ -1,20 +1,60 @@
-<div class='col-12'>	
+<div class="col-12">	
 <form>
 	<div class='row'>
-		<div class='col-12 col-md-6 offset-md-3 text-center'>
+		<div class="col-12 col-md-6 offset-md-3 text-center">
 			 <label for='singleselect' id='label-value'> Seleziona il valore dalla lista 
 			 	<div class='row'>
 			 	<select id='singleselect' class='js-example-basic-single' name='Link'>
-			 		<option></option>
+			 		<option value='https://digitalstore.tim.it/'>Mail Power</option>
+			 		<option value='https://digitalstore.tim.it/'>TIM Wi-Fi Power</option>
+			 		<option value='https://digitalstore.tim.it/'>TIM Mail Safe</option>
+			 		<option value='https://digitalstore.tim.it/'>wiMAN Social Wi-Fi</option>
+			 		<option value='https://digitalstore.tim.it/'>My Good Client</option>
+			 		<option value='https://digitalstore.tim.it/'>Kaspersky Small Office Security</option>
+			 		<option value='https://dgs-backend.herokuapp.com/?path=6'>LMP</option>
+			 		<option value='https://dgs-backend.herokuapp.com/?path=6'>VirtualTour e Tourmake</option>
+			 		<option value='https://dgs-backend.herokuapp.com/?path=6'>mobyx</option>
+			 		<option value='https://dgs-backend.herokuapp.com/?path=6'>bitgo</option> 
+			 		<option value='https://dgs-backend.herokuapp.com/?path=10'>Email</option> 
+			 		<option value='https://dgs-backend.herokuapp.com/?path=11'>Telefono</option> 
 			 	</select> 
 			 	</div>
 			  </label>
 	    </div>
 	</div>
 	<div class='row'>
-		<div class='col-12 col-md-6 offset-md-3 text-center'>
+		<div class="col-12 col-md-6 offset-md-3 text-center">
 		 	<button id='button-select' class='btn btn-primary' type='button'>Continua</button>
 		</div>
 	</div>
 </form>
 </div>
+ <script type='text/javascript'>
+ 	var redirecturl='';
+ 	$('.js-example-basic-single').select2
+ 	({theme:'classic',placeholder:'...',allowClear:true})
+ 	.on('select2:select',function(e){
+ 		var data=e.params.data;
+ 		if(data.id!=null){
+ 			document.redirecturl = data.id;
+ 			$('#button-select').prop('disabled',false);
+ 			}else{
+ 				$('#button-select').prop('disabled',true);
+ 			}
+ 			console.log(document.redirecturl);
+ 		}
+ 	);
+ 	$('#button-select').click(function(){
+ 		if(document.redirecturl=='https://dgs-backend.herokuapp.com/?path=6'){
+			 window.location.href = document.redirecturl;
+		}else if(document.redirecturl=='https://dgs-backend.herokuapp.com/?path=10'){
+			 window.location.replace = document.redirecturl;
+		}else if(document.redirecturl=='https://dgs-backend.herokuapp.com/?path=11'){
+			window.location.replace = document.redirecturl;
+		}
+			 window.open(document.redirecturl, '_blank');
+		})
+ 	});
+ 	
+ 	
+ 	</script>
