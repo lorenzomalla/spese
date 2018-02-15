@@ -11,7 +11,7 @@ $('.js-example-basic-single').select2(
 					type: 'public'
 				}
 				return query;
-			}
+			},
 			processResults: function (data) {
 				return {
 					console.log(data);
