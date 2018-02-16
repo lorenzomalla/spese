@@ -3,7 +3,8 @@ var servizio='';
 var setContatti = function(name){
 	var branch = getUrlParameter('path');
 	console.log("-------> branch:"+branch+" --- option:"+name);
-	
+
+	/*
 	$.post("/getByRef", {"branch":"1", "option":"Self Virtual Server"}, function(data) {
 		console.log(data);
 		contatti.email=data.email;
@@ -12,14 +13,14 @@ var setContatti = function(name){
 		contatti.web=data.web;
 		contatti.web=data.bcc;
 	});
-	/*
+	*/
 	$.ajax({
 		type: "POST",
 		url: "/getByRef",
-		ContentType: "application/json",
+  		contentType:"application/json; charset=utf-8",
 		data: {
-			"branch": branch.toString(), 
-			"option": name.toString()
+			"branch": branch, 
+			"option": name
 		},
 		success: function(data){
 			console.log(data);
@@ -34,7 +35,6 @@ var setContatti = function(name){
 			contatti=null;
 		}
 	});
-	*/
 }
 
 function select2init() {
