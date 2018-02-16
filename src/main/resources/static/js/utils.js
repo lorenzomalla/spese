@@ -7,7 +7,7 @@ var setContatti = function(name){
 		type: "POST",
 		url: "/getByRef",
 		ContentType: "application/json",
-		dataType: "jsonp",
+		dataType: "json",
 		data: {
 			"branch": branch, 
 			"option": name
