@@ -11,7 +11,7 @@ var setContatti = function(name){
 		data: {
 			"branch": branch, 
 			"option": name
-		}
+		},
 		success: function(data){
 			console.log(data);
 			contatti.email=data.email;
