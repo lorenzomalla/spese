@@ -19,7 +19,7 @@ var setContatti = function(name){
 			contatti=null;
 			console.log("Errore nella richiesta");
 		}
-	}
+	});
 }
 
 function select2init() {
