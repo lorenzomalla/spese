@@ -218,20 +218,14 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/getByRef" , method = RequestMethod.POST)
-	public @ResponseBody Contact getByRef(HttpServletRequest request, 
-			@RequestParam(value="branch") String branch,
-			@RequestParam(value="option") String option){
-		Contact contact = null;
+	public @ResponseBody Contact getByRef(@RequestBody	Contact contact){
+		Contact contactOut = null;
 		try{
-			System.out.println("-------------------------->branch:"+branch+"--- option:"+option);
-			String branchIn = branch; 
-			String optionIn = option;
-			System.out.println("-------------------------->branch:"+branchIn+"--- option:"+optionIn);
-			contact = contactDao.getByRef(branchIn, optionIn);
+			contactOut = contactDao.getByRef(contact.getBranch(), contact.getoOption());
 			}catch(Exception e){
 				e.printStackTrace();
 		}
-		return contact;
+		return contactOut;
 	}
 	
 	@RequestMapping(value="/sendEmail",method = RequestMethod.POST)
