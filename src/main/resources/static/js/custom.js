@@ -5,7 +5,7 @@
 //        };
 //})(history.pushState);
 
-var contatti;
+var contatti = {};
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),

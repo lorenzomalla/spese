@@ -3,6 +3,16 @@ var servizio='';
 var setContatti = function(name){
 	var branch = getUrlParameter('path');
 	console.log("-------> branch:"+branch+" --- option:"+name);
+	
+	$.post("/getByRef", {"branch":"1", "option":"Self Virtual Server"}, function(data) {
+		console.log(data);
+		contatti.email=data.email;
+		contatti.phone=data.phone;
+		contatti.fax=data.fax;
+		contatti.web=data.web;
+		contatti.web=data.bcc;
+	});
+	/*
 	$.ajax({
 		type: "POST",
 		url: "/getByRef",
@@ -17,12 +27,14 @@ var setContatti = function(name){
 			contatti.phone=data.phone;
 			contatti.fax=data.fax;
 			contatti.web=data.web;
+			contatti.web=data.bcc;
 		},
 		error: function(data){
 			console.log("Errore nella richiesta",data);
 			contatti=null;
 		}
 	});
+	*/
 }
 
 function select2init() {
