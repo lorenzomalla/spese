@@ -18,9 +18,7 @@ var setContatti = function(name){
 		type: "POST",
 		url: "/getByRef",
   		contentType:"application/json; charset=utf-8",
-		data: {
-			"id": name
-		},
+		data: '{"id": '+name+'}',
 		success: function(data){
 			console.log(data);
 			contatti.email=data.email;
