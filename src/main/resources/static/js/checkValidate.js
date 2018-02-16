@@ -1,5 +1,6 @@
 $(document).ready(function(){
-		$('#continue').click(function(){
+		$('#continue').click(function(event){
+			controllConditionCheck(event);
 			validazione();
 			if(!$('#form-registrazione').valid()){
 				$('#email').css("border-color", "#FF0000");
@@ -39,5 +40,15 @@ function validazione(){
 				},
 			}
 	});
+}
+function controllConditionCheck(){
+	var selValue = $('input[name=policy]:checked').val(); 
+	if(selValue == "no"){
+		event.preventDefault();
+		alert("Per favore prima di proseguire accetta le condizioni");
+//		$('#policy').css("border-color", "#FF0000");
+		return false;
+	}else
+		return true;
 }
 

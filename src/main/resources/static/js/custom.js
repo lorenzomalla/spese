@@ -32,6 +32,7 @@ $(document).ready(function() {
 		var id = $(this).data("node-id");
 		var servizio = getUrlParameter('servizio');
 		var tipoassistenza = getUrlParameter('tipoassistenza');
+		var channel = getUrlParameter('channel');
 //		alert("called " + id);	
 		var historypushurl = "?path="+id;
 		if(servizio!=null){
@@ -39,6 +40,8 @@ $(document).ready(function() {
 		}
 		if(tipoassistenza!=null){
 			historypushurl += "&tipoassistenza="+tipoassistenza;
+		}if(channel!=null){
+			historypushurl += "&channel="+channel;
 		}
 		history.pushState({ url: "/" }, "/", historypushurl);
 		getCards();
