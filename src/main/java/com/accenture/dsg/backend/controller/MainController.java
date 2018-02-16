@@ -211,7 +211,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/findOptions" , method = RequestMethod.GET)
-	public @ResponseBody List<Contact> getFindAll(@RequestBody	Contact contact){
+	public @ResponseBody List<Contact> getFindAll(){
 		List<Contact> list = contactDao.getAllList();
 		list.toString();
 		return list;
