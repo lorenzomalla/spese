@@ -31,12 +31,16 @@ $(document).ready(function() {
 		event.stopPropagation();
 		var id = $(this).data("node-id");
 		var servizio = getUrlParameter('servizio');
+		var tipoassistenza = getUrlParameter('tipoassistenza');
 //		alert("called " + id);	
+		var historypushurl = "?path="+id;
 		if(servizio!=null){
-			history.pushState({ url: "/" }, "/", "?path="+id+"&servizio="+servizio);
-		}else{
-			history.pushState({ url: "/" }, "/", "?path="+id);
+			historypushurl += "&servizio="+servizio;
 		}
+		if(tipoassistenza!=null){
+			historypushurl += "&tipoassistenza="+tipoassistenza;
+		}
+		history.pushState({ url: "/" }, "/", historypushurl);
 		getCards();
 //		alert(id);
 	});

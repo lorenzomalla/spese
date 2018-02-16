@@ -21,6 +21,18 @@ public class Contact implements Serializable {
 	
 	private String email;
 	
+	private String type;
+	
+	private String channel;
+	
+	private String web;
+	
+	private String fax;
+	
+	private String bcc;
+	
+	private String branch;
+	
 	public Contact() {
 	}
 
@@ -64,6 +76,52 @@ public class Contact implements Serializable {
 		this.email = email;
 	}
 
+	public String getType() {
+		return this.type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 	
+	public String getChannel() {
+		return this.channel;
+	}
+
+	public void setChannel(String channel) {
+		this.channel = channel;
+	}
+	
+	public String getWeb() {
+		return this.web;
+	}
+
+	public void setWeb(String web) {
+		this.web = web;
+	}
+	
+	public String getFax() {
+		return this.fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+	
+	public String getBcc() {
+		return this.bcc;
+	}
+
+	public void setBcc(String bcc) {
+		this.bcc = bcc;
+	}
+	
+	public String getBranch() {
+		return this.branch;
+	}
+
+	public void setBranch(String branch) {
+		this.branch = branch;
+	}
 
 }
