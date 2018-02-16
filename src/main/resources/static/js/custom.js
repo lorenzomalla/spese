@@ -78,12 +78,11 @@ function getCards() {
 		var template = data.template[0];
 		if(!!template) {
 			var templateMarkup = template.markup;
-			console.log("CHANNEL "+ data.template.channel);
-			if(!!data.template.channel){
-				templateMarkup = templateMarkup.replace("#email#", data.template.email);
-				templateMarkup = templateMarkup.replace("#phone#", data.template.phone);
-				templateMarkup = templateMarkup.replace("#fax#", data.template.fax);
-				templateMarkup = templateMarkup.replace("#web#", data.template.web);
+			if(!!contatti.channel){
+				templateMarkup = templateMarkup.replace("#email#",contatti.email);
+				templateMarkup = templateMarkup.replace("#phone#", contatti.phone);
+				templateMarkup = templateMarkup.replace("#fax#", contatti.fax);
+				templateMarkup = templateMarkup.replace("#web#", contatti.web);
 			}
 			$("#template").html(templateMarkup);
 		} else {
