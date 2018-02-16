@@ -78,7 +78,7 @@ function getCards() {
 		var template = data.template[0];
 		if(!!template) {
 			var templateMarkup = template.markup;
-			if(!!template.channel){
+			if(!!data.template.channel{
 				templateMarkup = templateMarkup.replace("#email#", oggettoglobale.email);
 				templateMarkup = templateMarkup.replace("#phone#", oggettoglobale.phone);
 				templateMarkup = templateMarkup.replace("#fax#", oggettoglobale.fax);
