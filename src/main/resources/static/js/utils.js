@@ -1,7 +1,7 @@
 var servizio='';
 
 var setContatti = function(name){
-	var branch = getUrlParameter('servizio');
+	var branch = getUrlParameter('path');
 	console.log("-------> branch:"+branch+" --- option:"+name);
 	$.ajax({
 		type: "POST",
