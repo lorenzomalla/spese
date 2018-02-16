@@ -218,8 +218,15 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/getByRef" , method = RequestMethod.POST)
-	public @ResponseBody Contact getByRef(String branch, String option){
-		Contact contact = contactDao.getByRef(branch, option);
+	public @ResponseBody Contact getByRef(HttpServletRequest request){
+		Contact contact = null;
+		try{
+			String branch = request.getParameter("branch"); 
+			String option = request.getParameter("option");
+			contact = contactDao.getByRef(branch, option);
+			}catch(Exception e){
+				e.printStackTrace();
+		}
 		return contact;
 	}
 	
