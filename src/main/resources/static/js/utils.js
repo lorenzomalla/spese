@@ -9,8 +9,8 @@ var setContatti = function(name){
 		ContentType: "application/json",
 		dataType: "json",
 		data: {
-			"branch": branch, 
-			"option": name
+			"branch": branch.toString(), 
+			"option": name.toString()
 		},
 		success: function(data){
 			console.log(data);
