@@ -73,9 +73,14 @@ function getCards() {
 		var question = data.questions[0];
 		var template = data.template[0];
 		if(!!template) {
-			
-			$("#template").html(template.markup);
-			
+			var templateMarkup = template.markup;
+			if(!!template.channel){
+				templateMarkup = templateMarkup.replace("#email#", oggettoglobale.email);
+				templateMarkup = templateMarkup.replace("#phone#", oggettoglobale.phone);
+				templateMarkup = templateMarkup.replace("#fax#", oggettoglobale.fax);
+				templateMarkup = templateMarkup.replace("#web#", oggettoglobale.web);
+			}
+			$("#template").html(templateMarkup);
 		} else {
 			if(!!question) {
 				$("#question").text(question.pageTitle);
@@ -131,5 +136,10 @@ function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //Il max è escluso e il min è incluso
+}
+
+function replaceTemplate(){
+	if()
+	$('#email')
 }
 

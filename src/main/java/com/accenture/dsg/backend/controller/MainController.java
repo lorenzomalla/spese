@@ -238,6 +238,13 @@ public class MainController {
 		}
 	    	return "Inviata Correttamente";
 	}
+//	@RequestMapping()
+//	public @ResponseBody Template getTemplate(@PathVariable("id") int id, @PathVariable("idServizio")int idServizio,
+//										@PathVariable("channel")int channel, @PathVariable("branch")int branch){
+//		Template template = null;
+//		return template;
+//	}
+//	
 	/*
 	 * TODO: DA SPOSTARE IN UNA CLASSE BEAN CONFIGURATION
 	 */

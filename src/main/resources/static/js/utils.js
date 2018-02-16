@@ -14,7 +14,7 @@ function select2init() {
 			$('.js-example-basic-single').select2({
 					width: '100%',	
 					theme:'classic',
-					allowClear:true
+//					allowClear:true
 			}).on('select2:select',function(e){
 			    var data=e.params.data;
 			    if(data.id!=null){
