@@ -79,10 +79,10 @@ function getCards() {
 		if(!!template) {
 			var templateMarkup = template.markup;
 			if(!!data.template.channel{
-				templateMarkup = templateMarkup.replace("#email#", oggettoglobale.email);
-				templateMarkup = templateMarkup.replace("#phone#", oggettoglobale.phone);
-				templateMarkup = templateMarkup.replace("#fax#", oggettoglobale.fax);
-				templateMarkup = templateMarkup.replace("#web#", oggettoglobale.web);
+				templateMarkup = templateMarkup.replace("#email#", data.template.email);
+				templateMarkup = templateMarkup.replace("#phone#", data.template.phone);
+				templateMarkup = templateMarkup.replace("#fax#", data.template.fax);
+				templateMarkup = templateMarkup.replace("#web#", data.template.web);
 			}
 			$("#template").html(templateMarkup);
 		} else {
