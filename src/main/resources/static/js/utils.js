@@ -7,7 +7,7 @@ var setContatti = function(name){
 		url: "/getByRef",
 		ContentType: "application/json",
 		dataType: "jsonp",
-		data: JSON.stringify({"branch": branch, "option": name}),
+		data: '{"branch": "'+branch+'", "option": "'+name+'"}',
 		success: function(data){
 			console.log(data);
 			contatti.email=data.email;
