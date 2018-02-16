@@ -221,6 +221,7 @@ public class MainController {
 	public @ResponseBody Contact getByRef(HttpServletRequest request){
 		Contact contact = null;
 		try{
+			System.out.println("-------------------------->request:"+request.toString());
 			String branch = request.getParameter("branch"); 
 			String option = request.getParameter("option");
 			contact = contactDao.getByRef(branch, option);

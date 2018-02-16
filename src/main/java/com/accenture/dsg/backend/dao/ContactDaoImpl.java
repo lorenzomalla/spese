@@ -29,10 +29,12 @@ public class ContactDaoImpl implements ContactDao{
 	
 	@Override
 	public Contact getByRef(String branch, String option) {
+		System.out.println("-------------------------->branch:"+branch+"--- option:"+option);
 		Contact singleContact =  em.createNamedQuery("Contact.getByRef",Contact.class)
 				.setParameter("branch", branch)
 				.setParameter("option", option)
 				.getSingleResult();
+		System.out.println(singleContact.toString());
 		return singleContact;
 	}
 
