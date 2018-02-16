@@ -211,10 +211,16 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/findOptions" , method = RequestMethod.GET)
-	public @ResponseBody List<Contact> getFindAll(){
+	public @ResponseBody List<Contact> getFindAll(@RequestBody	Contact contact){
 		List<Contact> list = contactDao.getAllList();
 		list.toString();
 		return list;
+	}
+	
+	@RequestMapping(value="/getByRef" , method = RequestMethod.POST)
+	public @ResponseBody Contact getByRef(String branch, String option){
+		Contact contact = contactDao.getByRef(branch, option);
+		return contact;
 	}
 	
 	@RequestMapping(value="/sendEmail",method = RequestMethod.POST)

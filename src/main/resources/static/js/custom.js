@@ -5,6 +5,8 @@
 //        };
 //})(history.pushState);
 
+var contatti;
+
 $(document).ready(function() {
 	$(window).on("popstate", function(e) {
         change(e.originalEvent.state);

@@ -11,5 +11,5 @@ public interface ContactDao {
 	
 	public void persist(Contact a);
 	public List<Contact> getAllList();
-	
+	public Contact getByRef(String branch, String option);
 }

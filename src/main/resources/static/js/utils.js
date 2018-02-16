@@ -1,4 +1,27 @@
 var servizio='';
+
+var setContatti = function(name){
+	var branch = getUrlParameter('servizio');
+	$.ajax({
+		type: "POST",
+		url: "/getByRef",
+		ContentType: "application/json",
+		dataType: "jsonp",
+		data: JSON.stringify({"branch": branch, "option": name}),
+		success: function(data){
+			console.log(data);
+			contatti.email=data.email;
+			contatti.phone=data.phone;
+			contatti.fax=data.fax;
+			contatti.web=data.web;
+		},
+		error: function(){
+			contatti=null;
+			console.log("Errore nella richiesta");
+		}
+	}
+}
+
 function select2init() {
 	$.ajax({
 		type: "GET",
@@ -23,6 +46,7 @@ function select2init() {
 		        }else{
 		            $('#button-select').prop('disabled',true);
 		        }
+			    var result = setContatti(data.id);
 		    });
 		},
 		error: function(){
