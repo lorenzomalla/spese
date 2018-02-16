@@ -9,7 +9,6 @@ import javax.persistence.*;
 	@NamedQuery(name="Contact.findAll", query="SELECT c FROM Contact c"),
 	@NamedQuery(name="Contact.getByRef", query="SELECT c FROM Contact c WHERE c.branch= :branch AND c.option= :option")
 })
-
 public class Contact implements Serializable {
 	private static final long serialVersionUID = 1L;
 
