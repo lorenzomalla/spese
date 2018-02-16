@@ -20,3 +20,7 @@ body{
 #label-value{
 	border: none;	
 }
+
+#captcha{
+	text-align: -webkit-center;
+}
