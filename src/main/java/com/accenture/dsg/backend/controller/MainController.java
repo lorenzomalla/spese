@@ -224,6 +224,7 @@ public class MainController {
 			System.out.println("-------------------------->request:"+request.toString());
 			String branch = request.getParameter("branch"); 
 			String option = request.getParameter("option");
+			System.out.println("-------------------------->branch:"+branch+"--- option:"+option);
 			contact = contactDao.getByRef(branch, option);
 			}catch(Exception e){
 				e.printStackTrace();
