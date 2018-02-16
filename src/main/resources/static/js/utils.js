@@ -2,12 +2,16 @@ var servizio='';
 
 var setContatti = function(name){
 	var branch = getUrlParameter('servizio');
+	console.log("-------> branch:"+branch+" --- option:"+name);
 	$.ajax({
 		type: "POST",
 		url: "/getByRef",
 		ContentType: "application/json",
 		dataType: "jsonp",
-		data: '{"branch": "'+branch+'", "option": "'+name+'"}',
+		data: {
+			"branch": branch, 
+			"option": name
+		}
 		success: function(data){
 			console.log(data);
 			contatti.email=data.email;
