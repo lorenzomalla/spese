@@ -7,7 +7,6 @@ var setContatti = function(name){
 		type: "POST",
 		url: "/getByRef",
 		ContentType: "application/json",
-		dataType: "json",
 		data: {
 			"branch": branch.toString(), 
 			"option": name.toString()
@@ -19,9 +18,9 @@ var setContatti = function(name){
 			contatti.fax=data.fax;
 			contatti.web=data.web;
 		},
-		error: function(){
+		error: function(data){
+			console.log("Errore nella richiesta",data);
 			contatti=null;
-			console.log("Errore nella richiesta");
 		}
 	});
 }
