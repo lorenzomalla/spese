@@ -25,7 +25,7 @@ var setContatti = function(name){
 			contatti.phone=data.phone;
 			contatti.fax=data.fax;
 			contatti.web=data.web;
-			contatti.web=data.bcc;
+			contatti.bcc=data.bcc;
 		},
 		error: function(data){
 			console.log("Errore nella richiesta",data);
