@@ -7,7 +7,7 @@
 
 var contatti = {};
 
-var getUrlParameter = function getUrlParameter(sParam) {
+function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
         sParameterName,
@@ -22,7 +22,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
-var setContatti = function(name){
+function setContatti(name){
 	//var branch = getUrlParameter('path');
 	//console.log("-------> branch:"+branch+" --- option:"+name);
 
@@ -49,6 +49,14 @@ var setContatti = function(name){
 			contatti.web=data.web;
 			contatti.bcc=data.bcc;
 			console.log(contatti);
+			
+			if(name!=null && name!="" ){
+	        	document.servizio = name;
+	        	$('#button-select').prop('disabled',false);
+	        }else{
+	            $('#button-select').prop('disabled',true);
+	        }
+			
 		},
 		error: function(data){
 			console.log("Errore nella richiesta",data);
@@ -116,6 +124,7 @@ function getCards() {
 		if(!!template) {
 			var templateMarkup = template.markup;
 			console.log(contatti);
+			debugger;
 			if(!!contatti){
 				templateMarkup = templateMarkup.replace("#email#",contatti.email);
 				templateMarkup = templateMarkup.replace("#phone#", contatti.phone);

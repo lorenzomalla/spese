@@ -20,12 +20,12 @@ function select2init() {
 //					allowClear:true
 			}).on('select2:select',function(e){
 			    var data=e.params.data;
-			    if(data.id!=null){
-		        	document.servizio = data.id;
-		        	$('#button-select').prop('disabled',false);
-		        }else{
-		            $('#button-select').prop('disabled',true);
-		        }
+//			    if(data.id!=null){
+//		        	document.servizio = data.id;
+//		        	$('#button-select').prop('disabled',false);
+//		        }else{
+//		            $('#button-select').prop('disabled',true);
+//		        }
 			    var result = setContatti(data.id);
 		    });
 		},
