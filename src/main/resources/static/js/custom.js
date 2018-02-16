@@ -5,26 +5,71 @@
 //        };
 //})(history.pushState);
 
+var contatti = {};
+
+function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+function setContatti(name){
+	//var branch = getUrlParameter('path');
+	//console.log("-------> branch:"+branch+" --- option:"+name);
+
+	/*
+	$.post("/getByRef", {"branch":"1", "option":"Self Virtual Server"}, function(data) {
+		console.log(data);
+		contatti.email=data.email;
+		contatti.phone=data.phone;
+		contatti.fax=data.fax;
+		contatti.web=data.web;
+		contatti.web=data.bcc;
+	});
+	*/
+	$.ajax({
+		type: "POST",
+		url: "/getByRef",
+  		contentType:"application/json; charset=utf-8",
+		data: '{"id": '+name+'}',
+		success: function(data){
+			console.log(data);
+			contatti.email=data.email;
+			contatti.phone=data.phone;
+			contatti.fax=data.fax;
+			contatti.web=data.web;
+			contatti.bcc=data.bcc;
+			console.log(contatti);
+			
+			if(name!=null && name!="" ){
+	        	document.servizio = name;
+	        	$('#button-select').prop('disabled',false);
+	        }else{
+	            $('#button-select').prop('disabled',true);
+	        }
+			
+		},
+		error: function(data){
+			console.log("Errore nella richiesta",data);
+			contatti={};
+		}
+	});
+};
+
 $(document).ready(function() {
 	$(window).on("popstate", function(e) {
         change(e.originalEvent.state);
     });
-	
-	var getUrlParameter = function getUrlParameter(sParam) {
-	    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-	        sURLVariables = sPageURL.split('&'),
-	        sParameterName,
-	        i;
-
-	    for (i = 0; i < sURLVariables.length; i++) {
-	        sParameterName = sURLVariables[i].split('=');
-
-	        if (sParameterName[0] === sParam) {
-	            return sParameterName[1] === undefined ? true : sParameterName[1];
-	        }
-	    }
-	};
-	
+		
 	getCards();
 	
 	$("#cardList").on("click", ".card-column", function(event) {
@@ -81,7 +126,9 @@ function getCards() {
 		var template = data.template[0];
 		if(!!template) {
 			var templateMarkup = template.markup;
-			if(!!contatti.channel){
+			console.log(contatti);
+			debugger;
+			if(!!contatti){
 				templateMarkup = templateMarkup.replace("#email#",contatti.email);
 				templateMarkup = templateMarkup.replace("#phone#", contatti.phone);
 				templateMarkup = templateMarkup.replace("#fax#", contatti.fax);

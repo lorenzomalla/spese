@@ -5,7 +5,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="contatti")
-@NamedQuery(name="Contact.findAll", query="SELECT c FROM Contact c")
+@NamedQueries({
+	@NamedQuery(name="Contact.findAll", query="SELECT c FROM Contact c"),
+	@NamedQuery(name="Contact.getByRef", query="SELECT c FROM Contact c WHERE c.id= :id"),
+})
 public class Contact implements Serializable {
 	private static final long serialVersionUID = 1L;
 

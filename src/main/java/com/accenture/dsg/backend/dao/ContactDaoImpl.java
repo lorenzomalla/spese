@@ -26,5 +26,14 @@ public class ContactDaoImpl implements ContactDao{
 		List<Contact> listaContact =  em.createNamedQuery("Contact.findAll",Contact.class).getResultList();
 		return listaContact;
 	}
+	
+	@Override
+	public Contact getByRef(int id) {
+		Contact singleContact =  em.createNamedQuery("Contact.getByRef",Contact.class)
+				.setParameter("id", id)
+				.getSingleResult();
+		System.out.println(singleContact.toString());
+		return singleContact;
+	}
 
 }

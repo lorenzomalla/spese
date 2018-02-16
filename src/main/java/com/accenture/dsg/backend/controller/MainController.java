@@ -217,6 +217,17 @@ public class MainController {
 		return list;
 	}
 	
+	@RequestMapping(value="/getByRef" , method = RequestMethod.POST)
+	public @ResponseBody Contact getByRef(@RequestBody	Contact contact){
+		Contact contactOut = null;
+		try{
+			contactOut = contactDao.getByRef(contact.getId());
+			}catch(Exception e){
+				e.printStackTrace();
+		}
+		return contactOut;
+	}
+	
 	@RequestMapping(value="/sendEmail",method = RequestMethod.POST)
 	public String doSendEmail(HttpServletRequest request) {
 		try{
