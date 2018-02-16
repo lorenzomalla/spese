@@ -22,6 +22,41 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
+var setContatti = function(name){
+	//var branch = getUrlParameter('path');
+	//console.log("-------> branch:"+branch+" --- option:"+name);
+
+	/*
+	$.post("/getByRef", {"branch":"1", "option":"Self Virtual Server"}, function(data) {
+		console.log(data);
+		contatti.email=data.email;
+		contatti.phone=data.phone;
+		contatti.fax=data.fax;
+		contatti.web=data.web;
+		contatti.web=data.bcc;
+	});
+	*/
+	$.ajax({
+		type: "POST",
+		url: "/getByRef",
+  		contentType:"application/json; charset=utf-8",
+		data: '{"id": '+name+'}',
+		success: function(data){
+			console.log(data);
+			contatti.email=data.email;
+			contatti.phone=data.phone;
+			contatti.fax=data.fax;
+			contatti.web=data.web;
+			contatti.bcc=data.bcc;
+			console.log(contatti);
+		},
+		error: function(data){
+			console.log("Errore nella richiesta",data);
+			contatti={};
+		}
+	});
+};
+
 $(document).ready(function() {
 	$(window).on("popstate", function(e) {
         change(e.originalEvent.state);
