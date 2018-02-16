@@ -221,7 +221,7 @@ public class MainController {
 	public @ResponseBody Contact getByRef(@RequestBody	Contact contact){
 		Contact contactOut = null;
 		try{
-			contactOut = contactDao.getByRef(contact.getBranch(), contact.getoOption());
+			contactOut = contactDao.getByRef(contact.getId());
 			}catch(Exception e){
 				e.printStackTrace();
 		}

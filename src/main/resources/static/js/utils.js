@@ -1,8 +1,8 @@
 var servizio='';
 
 var setContatti = function(name){
-	var branch = getUrlParameter('path');
-	console.log("-------> branch:"+branch+" --- option:"+name);
+	//var branch = getUrlParameter('path');
+	//console.log("-------> branch:"+branch+" --- option:"+name);
 
 	/*
 	$.post("/getByRef", {"branch":"1", "option":"Self Virtual Server"}, function(data) {
@@ -19,8 +19,7 @@ var setContatti = function(name){
 		url: "/getByRef",
   		contentType:"application/json; charset=utf-8",
 		data: {
-			"branch": branch, 
-			"option": name
+			"id": name
 		},
 		success: function(data){
 			console.log(data);
@@ -32,7 +31,7 @@ var setContatti = function(name){
 		},
 		error: function(data){
 			console.log("Errore nella richiesta",data);
-			contatti=null;
+			contatti={};
 		}
 	});
 }
