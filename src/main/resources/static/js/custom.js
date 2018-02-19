@@ -42,6 +42,7 @@ function setContatti(name){
   		contentType:"application/json; charset=utf-8",
 		data: '{"id": '+name+'}',
 		success: function(data){
+			contatti = {};
 			console.log(data);
 			contatti.email=data.email;
 			contatti.phone=data.phone;
@@ -144,7 +145,7 @@ function getCards() {
 			$.each(data.treeStructures, function(index, element) {
 				var answer = element.answers[0];
 				var servizio = getUrlParameter("servizio");
-				debugger;
+				console.log("CONTATTI --> "+contatti);
 				console.log("SERVIZIO --> "+servizio);
 				if(!!answer) {
 					if(servizio>0){
