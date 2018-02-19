@@ -1,12 +1,20 @@
 $(document).ready(function(){
 		$('#continue').click(function(event){
 			$.ajax({
+				async: false,
 				type: "POST",
-				url: "/validateCaptcha",
+				url: "/validationCheck",
 				ContentType: "application/json",
 				dataType: "json",
+				data: {
+					g_recaptcha_response: grecaptcha.getResponse(),
+				},
 			success: function(response){
-				console.log(response);
+				alert("Successo");
+			},
+			error: function(response){
+				console.log(g_recaptcha_response);
+				alert("Errore");
 			}
 			});
 			controllConditionCheck(event);
