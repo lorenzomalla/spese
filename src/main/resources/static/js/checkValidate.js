@@ -1,5 +1,14 @@
 $(document).ready(function(){
 		$('#continue').click(function(event){
+			$.ajax({
+				type: "POST",
+				url: "/validateCaptcha",
+				ContentType: "application/json",
+				dataType: "json",
+			success: function(response){
+				console.log(response);
+			}
+			});
 			controllConditionCheck(event);
 			validazione();
 			if(!$('#form-registrazione').valid()){
@@ -53,4 +62,5 @@ function controllConditionCheck(){
 		$('#error-mess').html("");
 		return true;
 }
+
 
