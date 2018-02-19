@@ -3,9 +3,10 @@ var servizio='';
 
 
 function select2init() {
+	var branch = getUrlParameter("path");
 	$.ajax({
 		type: "GET",
-		url: "/findOptions",
+		url: "/findOptions/"+branch,
 		ContentType: "application/json",
 		dataType: "json",
 		success: function(response){
