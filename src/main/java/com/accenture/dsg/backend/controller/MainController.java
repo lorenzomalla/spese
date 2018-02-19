@@ -219,6 +219,7 @@ public class MainController {
 	
 	@RequestMapping(value="/findOptions/{branch}" , method = RequestMethod.GET)
 	public @ResponseBody List<Contact> getFindByBranch(@PathVariable("branch") String branch){
+		System.out.println("-----------------> 1 BRANCH="+branch);
 		List<Contact> list = contactDao.getByBranch(branch);
 		list.toString();
 		return list;

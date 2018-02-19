@@ -38,6 +38,7 @@ public class ContactDaoImpl implements ContactDao{
 
 	@Override
 	public List<Contact> getByBranch(String branch) {
+		System.out.println("-----------------> 2 BRANCH="+branch);
 		List<Contact> contactList =  em.createNamedQuery("Contact.getByRef",Contact.class)
 				.setParameter("branch", branch)
 				.getResultList();
