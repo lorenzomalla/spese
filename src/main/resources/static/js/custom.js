@@ -132,6 +132,7 @@ function getCards() {
 				templateMarkup = templateMarkup.replace("#phone#", contatti.phone);
 				templateMarkup = templateMarkup.replace("#fax#", contatti.fax);
 				templateMarkup = templateMarkup.replace("#web#", contatti.web);
+				templateMarkup = templateMarkup.replace("#bcc#", contatti.bcc);
 			}
 			$("#template").html(templateMarkup);
 		} else {
