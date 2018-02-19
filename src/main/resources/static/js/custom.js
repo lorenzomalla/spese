@@ -48,6 +48,7 @@ function setContatti(name){
 			contatti.fax=data.fax;
 			contatti.web=data.web;
 			contatti.bcc=data.bcc;
+			contatti.callback=data.callback;
 			console.log(contatti);
 			
 			if(name!=null && name!="" ){
