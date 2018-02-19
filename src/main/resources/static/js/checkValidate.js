@@ -1,19 +1,22 @@
 $(document).ready(function(){
-		$('#continue').click(function(event){
-			controllConditionCheck(event);
-			validazione();
-			if(!$('#form-registrazione').valid()){
-				$('#email').css("border-color", "#FF0000");
-				$('#codiceFiscale').css("border-color", "#FF0000");
-				$('#problema').css("border-color", "#FF0000");
-			}else{
-				$('#email').css("border-color", "#ced4da");
-				$('#codiceFiscale').css("border-color", "#ced4da");
-				$('#problema').css("border-color", "#ced4da");
-			}
-		});
- 
+	validationFormOnCheck();
 });
+function validationFormOnCheck(){
+	$('#continue').click(function(event){
+		controllConditionCheck(event);
+		validazione();
+		if(!$('#form-registrazione').valid()){
+			$('#email').css("border-color", "#FF0000");
+			$('#codiceFiscale').css("border-color", "#FF0000");
+			$('#problema').css("border-color", "#FF0000");
+		}else{
+			$('#email').css("border-color", "#ced4da");
+			$('#codiceFiscale').css("border-color", "#ced4da");
+			$('#problema').css("border-color", "#ced4da");
+		}
+	});
+}
+
 function validazione(){
 	$.validator.addMethod("regx", function(value, element, regexpr) {          
 	    return regexpr.test(value);
