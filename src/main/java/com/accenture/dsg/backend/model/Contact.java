@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Table(name="contatti")
 @NamedQueries({
 	@NamedQuery(name="Contact.findAll", query="SELECT c FROM Contact c"),
+	@NamedQuery(name="Contact.getByBranch", query="SELECT c FROM Contact c WHERE c.branch= :branch"),
 	@NamedQuery(name="Contact.getByRef", query="SELECT c FROM Contact c WHERE c.id= :id"),
 })
 public class Contact implements Serializable {
@@ -35,6 +36,8 @@ public class Contact implements Serializable {
 	private String bcc;
 	
 	private String branch;
+	
+	private String callback;
 	
 	public Contact() {
 	}
@@ -125,6 +128,14 @@ public class Contact implements Serializable {
 
 	public void setBranch(String branch) {
 		this.branch = branch;
+	}
+	
+	public String getCallback() {
+		return this.callback;
+	}
+
+	public void setCallback(String callback) {
+		this.callback = callback;
 	}
 
 }

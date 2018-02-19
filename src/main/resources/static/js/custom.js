@@ -42,12 +42,14 @@ function setContatti(name){
   		contentType:"application/json; charset=utf-8",
 		data: '{"id": '+name+'}',
 		success: function(data){
+			contatti = {};
 			console.log(data);
 			contatti.email=data.email;
 			contatti.phone=data.phone;
 			contatti.fax=data.fax;
 			contatti.web=data.web;
 			contatti.bcc=data.bcc;
+			contatti.callback=data.callback;
 			console.log(contatti);
 			
 			if(name!=null && name!="" ){
@@ -142,8 +144,27 @@ function getCards() {
 			}
 			$.each(data.treeStructures, function(index, element) {
 				var answer = element.answers[0];
+				var servizio = getUrlParameter("servizio");
+				console.log("CONTATTI --> "+String(contatti));
+				console.log("SERVIZIO --> "+servizio);
 				if(!!answer) {
-					createCard(element.id, answer.image, answer.title, answer.description);
+					if(servizio>0){
+						if(answer.title=='Telefono' && contatti.phone!="NULL"){
+							createCard(element.id, answer.image, answer.title, answer.description);
+						}
+						if(answer.title=='Email' && contatti.email!="NULL"){
+							createCard(element.id, answer.image, answer.title, answer.description);
+						}
+						if(answer.title=='Fax' && contatti.fax!="NULL"){
+							createCard(element.id, answer.image, answer.title, answer.description);
+						}
+						if(answer.title=='Web' && contatti.web!="NULL"){
+							createCard(element.id, answer.image, answer.title, answer.description);
+						}
+					}else{
+						createCard(element.id, answer.image, answer.title, answer.description);
+					}
+					
 				}
 			});
 		}

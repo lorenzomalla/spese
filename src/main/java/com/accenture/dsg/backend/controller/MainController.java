@@ -217,6 +217,13 @@ public class MainController {
 		return list;
 	}
 	
+	@RequestMapping(value="/findOptions/{branch}" , method = RequestMethod.GET)
+	public @ResponseBody List<Contact> getFindByBranch(@PathVariable("branch") String branch){
+		List<Contact> list = contactDao.getByBranch(branch);
+		list.toString();
+		return list;
+	}
+	
 	@RequestMapping(value="/getByRef" , method = RequestMethod.POST)
 	public @ResponseBody Contact getByRef(@RequestBody	Contact contact){
 		Contact contactOut = null;

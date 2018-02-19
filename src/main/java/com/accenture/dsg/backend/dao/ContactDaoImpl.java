@@ -36,4 +36,12 @@ public class ContactDaoImpl implements ContactDao{
 		return singleContact;
 	}
 
+	@Override
+	public List<Contact> getByBranch(String branch) {
+		List<Contact> contactList =  em.createNamedQuery("Contact.getByBranch",Contact.class)
+				.setParameter("branch", branch)
+				.getResultList();
+		return contactList;
+	}
+
 }
