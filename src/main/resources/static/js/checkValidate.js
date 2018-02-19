@@ -1,5 +1,5 @@
-$(document).ready(function(){
-		$('#continue').click(function(event){
+function formValidation() {
+	var isValid = false;
 			$.ajax({
 				async: false,
 				type: "POST",
@@ -10,7 +10,8 @@ $(document).ready(function(){
 					g_recaptcha_response: grecaptcha.getResponse(),
 				},
 			success: function(response){
-				alert("Successo");
+// TODO CHECK SU RESPONSE.SUCCESS
+				isValid = true;
 			},
 			error: function(response){
 				console.log(g_recaptcha_response);
@@ -23,14 +24,16 @@ $(document).ready(function(){
 				$('#email').css("border-color", "#FF0000");
 				$('#codiceFiscale').css("border-color", "#FF0000");
 				$('#problema').css("border-color", "#FF0000");
+				isValid=false;
 			}else{
 				$('#email').css("border-color", "#ced4da");
 				$('#codiceFiscale').css("border-color", "#ced4da");
 				$('#problema').css("border-color", "#ced4da");
+				isValid=true;
 			}
-		});
- 
-});
+		return isValid;
+}
+
 function validazione(){
 	$.validator.addMethod("regx", function(value, element, regexpr) {          
 	    return regexpr.test(value);
