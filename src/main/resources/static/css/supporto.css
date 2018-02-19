@@ -24,3 +24,7 @@ body{
 #captcha{
 	text-align: -webkit-center;
 }
+
+#error-mess{
+	color: #FF0000;
+}
