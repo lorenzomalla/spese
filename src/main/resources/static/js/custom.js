@@ -127,7 +127,6 @@ function getCards() {
 		if(!!template) {
 			var templateMarkup = template.markup;
 			console.log(contatti);
-			debugger;
 			if(!!contatti){
 				templateMarkup = templateMarkup.replace("#email#",contatti.email);
 				templateMarkup = templateMarkup.replace("#phone#", contatti.phone);
