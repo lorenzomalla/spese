@@ -41,6 +41,7 @@ public class ContactDaoImpl implements ContactDao{
 		List<Contact> contactList =  em.createNamedQuery("Contact.getByBranch",Contact.class)
 				.setParameter("branch", branch)
 				.getResultList();
+		System.out.println("-------------------------------> Option count: "+contactList.size());
 		return contactList;
 	}
 
