@@ -3,7 +3,7 @@ var servizio='';
 
 
 function select2init() {
-	console.log("branch="+path);
+	var branch = getUrlParameter("path");
 	$.ajax({
 		type: "GET",
 		url: "/findOptions/"+branch,
