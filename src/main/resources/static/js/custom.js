@@ -192,4 +192,22 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min; //Il max è escluso e il min è incluso
 }
 
+function captchaExpiredCallback() {
+	disableButton("#continue");
+}
 
+function captchaCallback() {
+	if(grecaptcha.getResponse().length==0) {
+		disableButton("#continue");
+	} else {
+		enableButton("#continue");
+	}
+}
+
+function disableButton(selector) {
+	$(selector).attr("disabled", disabled);
+}
+
+function enableButton(selector) {
+	$(selector).removeAttr("disabled");
+}

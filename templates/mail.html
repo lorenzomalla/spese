@@ -8,13 +8,13 @@
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-6 offset-md-3 form-group">
-				<label for="email">Email <span style="color:#FF0000">*</span></label> 
-			 	<input type="email" name="email" class="form-control" placeholder="#email#" id="email">
+				<label for="email">Email <span class="mandatoryField">*</span></label> 
+			 	<input type="email" name="email" class="form-control" id="email">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-6 offset-md-3 form-group">
-			 	<label for="cf-iva">CF O PIVA <span style="color:#FF0000">*</span></label>
+			 	<label for="cf-iva">CF O PIVA <span class="mandatoryField">*</span></label>
 			  	<input type="text" name="codiceFiscale" class="form-control" id="codiceFiscale">
 		  	</div>
 		</div>
@@ -26,13 +26,13 @@
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-6 offset-md-3 form-group">
-			  	<label for="textArea">SCRIVI QUI LA TUA RICHIESTA <span style="color:#FF0000">*</span></label>
+			  	<label for="textArea">SCRIVI QUI LA TUA RICHIESTA <span class="mandatoryField">*</span></label>
 			  	<textarea class="form-control" id="problema" rows="4"></textarea>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-6 offset-md-3 form-group">
-		  	 	<div id="captcha" class="g-recaptcha" data-sitekey="6LdUMUcUAAAAAFx2RjyRUUAu6_Q6mRhNJYlHJh_G" data-callback="onloadCallback"></div>
+		  	 	<div id="captcha" class="g-recaptcha" data-sitekey="6LdUMUcUAAAAAFx2RjyRUUAu6_Q6mRhNJYlHJh_G" data-callback="captchaCallback" data-expired-callback="captchaExpiredCallback"></div>
 			</div>
 		</div>
 			<div class="row">
@@ -56,6 +56,8 @@
 			  <button type="submit" id="continue" class="btn btn-primary">Continua</button>
 			</div>
 		</div>
+		<input type="hidden" id="bcc" value="#bcc#" class="form-control">
+		<input type="hidden" id="cc" value="#cc#" class="form-control">
 	</form>
 	<script src="https://www.google.com/recaptcha/api.js" async="async" defer="defer"></script>
 </div>

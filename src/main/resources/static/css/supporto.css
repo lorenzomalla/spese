@@ -28,3 +28,7 @@ body{
 #error-mess{
 	color: #FF0000;
 }
+
+span.mandatoryField{
+	color: #FF0000;
+}
