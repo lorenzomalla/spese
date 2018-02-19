@@ -143,8 +143,26 @@ function getCards() {
 			}
 			$.each(data.treeStructures, function(index, element) {
 				var answer = element.answers[0];
+				var servizio = getUrlParameter("servizio");
+				console.log("SERVIZIO --> "+servizio);
 				if(!!answer) {
-					createCard(element.id, answer.image, answer.title, answer.description);
+					if(servizio>0){
+						if(answer.title=='Telefono' && contatti.phone!="NULL"){
+							createCard(element.id, answer.image, answer.title, answer.description);
+						}
+						if(answer.title=='Email' && contatti.email!="NULL"){
+							createCard(element.id, answer.image, answer.title, answer.description);
+						}
+						if(answer.title=='Fax' && contatti.fax!="NULL"){
+							createCard(element.id, answer.image, answer.title, answer.description);
+						}
+						if(answer.title=='Web' && contatti.web!="NULL"){
+							createCard(element.id, answer.image, answer.title, answer.description);
+						}
+					}else{
+						createCard(element.id, answer.image, answer.title, answer.description);
+					}
+					
 				}
 			});
 		}
