@@ -7,17 +7,21 @@ function formValidation() {
 				ContentType: "application/json",
 				dataType: "json",
 				data: {
-					g_recaptcha_response: grecaptcha.getResponse(),
+					response: grecaptcha.getResponse(),
 				},
 			success: function(response){
-// TODO CHECK SU RESPONSE.SUCCESS
+				if(response == true){
+				alert("successo");
 				isValid = true;
+				}
 			},
 			error: function(response){
-				console.log(g_recaptcha_response);
-				alert("Errore");
+				if(response == false){
+					alert("Errore");
+					isValid = false;
+				}
 			}
-			});
+		});
 			controllConditionCheck(event);
 			validazione();
 			if(!$('#form-registrazione').valid()){
@@ -28,8 +32,7 @@ function formValidation() {
 			}else{
 				$('#email').css("border-color", "#ced4da");
 				$('#codiceFiscale').css("border-color", "#ced4da");
-				$('#problema').css("border-color", "#ced4da");
-				isValid=true;
+				$('#problema').css("border-color", "#ced4da"); 
 			}
 		return isValid;
 }
@@ -73,5 +76,3 @@ function controllConditionCheck(){
 		$('#error-mess').html("");
 		return true;
 }
-
-
