@@ -144,6 +144,7 @@ function getCards() {
 			$.each(data.treeStructures, function(index, element) {
 				var answer = element.answers[0];
 				var servizio = getUrlParameter("servizio");
+				debugger;
 				console.log("SERVIZIO --> "+servizio);
 				if(!!answer) {
 					if(servizio>0){
