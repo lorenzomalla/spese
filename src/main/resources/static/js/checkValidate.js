@@ -47,8 +47,10 @@ function controllConditionCheck(){
 		event.preventDefault();
 		alert("Per favore prima di proseguire accetta le condizioni");
 //		$('#policy').css("border-color", "#FF0000");
+		$('#error-mess').html("Per favore prima di proseguire accetta le condizioni");
 		return false;
 	}else
+		$('#error-mess').html("");
 		return true;
 }
 
