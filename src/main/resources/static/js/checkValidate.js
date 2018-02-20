@@ -47,14 +47,14 @@ function formValidation() {
 }
 
 function validazione() {
-//	$.validator.addMethod("regx", function(value, element, regexpr) {
-//		return regexpr.test(value);
-//	});
+	$.validator.addMethod("regx", function(value, element, regexpr) {          
+	    return regexpr.test(value);
+	});
 	$('#form-registrazione').validate({
 		rules : {
 			codiceFiscale : {
 				required : true,
-				maxlength : 16
+				regx: /(^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1})|(^[0-9]{11})$/
 			},
 			email : {
 				required : true,
@@ -67,12 +67,16 @@ function validazione() {
 		},
 		messages : {
 			codiceFiscale : {
-				required : "Campo obbligatorio",
-				maxlength : ""
+				required : "Campo obbligatorio.",
+				regx : "Inserire una Partita Iva o un Codice Fiscale corretto."
 			},
 			email : {
-				required : "Campo obbligatorio",
+				required : "Campo obbligatorio.",
 				email : "L'email non è in un formato corretto."
+			},
+			privacyPolicy: {
+				required : "Campo obbligatorio.",
+				equalTo: "Accettare il trattamento."
 			}
 		}
 	});
