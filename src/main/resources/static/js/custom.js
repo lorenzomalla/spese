@@ -206,13 +206,6 @@ function createCard(id, imageOrIcon, title, description) {
 			            "</div>");
 }
 
-//remove in prod
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //Il max è escluso e il min è incluso
-}
-
 function captchaExpiredCallback() {
 	disableButton("#continue");
 }
@@ -226,7 +219,7 @@ function captchaCallback() {
 }
 
 function disableButton(selector) {
-	$(selector).attr("disabled", disabled);
+	$(selector).attr("disabled", "disabled");
 }
 
 function enableButton(selector) {
