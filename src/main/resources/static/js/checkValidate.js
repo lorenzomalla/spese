@@ -22,18 +22,25 @@ function formValidation() {
 				}
 			}
 		});
+			if($('#form-registrazione').valid()){
+				validazione();
+				if($('#email').val() != ""){
+					$('#email').css("border-color", "#ced4da");
+				}else{
+					$('#email').css("border-color", "#FF0000");					
+				}
+				if($('#codiceFiscale').val() != ""){
+					$('#codiceFiscale').css("border-color", "#ced4da");
+				}else{
+					$('#codiceFiscale').css("border-color", "#FF0000");					
+				}
+				if($('#problema').val() != ""){
+					$('#problema').css("border-color", "#ced4da"); 
+				}else{	
+					$('#problema').css("border-color", "#FF0000");
+				}
+		}
 			controllConditionCheck(event);
-			validazione();
-			if(!$('#form-registrazione').valid()){
-				$('#email').css("border-color", "#FF0000");
-				$('#codiceFiscale').css("border-color", "#FF0000");
-				$('#problema').css("border-color", "#FF0000");
-				isValid=false;
-			}else{
-				$('#email').css("border-color", "#ced4da");
-				$('#codiceFiscale').css("border-color", "#ced4da");
-				$('#problema').css("border-color", "#ced4da"); 
-			}
 		return isValid;
 }
 
