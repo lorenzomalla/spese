@@ -1,5 +1,5 @@
 <div class="col-12">	
-	<form id="form-registrazione" onsubmit="return formValidation();">
+	<form id="form-registrazione" onsubmit="return formValidation()">
 		<div class="row">
 			<div class="col-12 col-md-6 offset-md-3 text-center">
 				<h3>Supporto TIM Digital Store tramite email.</h3>
@@ -37,18 +37,17 @@
 		</div>
 			<div class="row">
 				<div class='col-12 text-center form-group'>
-					<label>La compilazione di questo form autorizza il trattamento dei dati personali ai sensi del <a href="http://www.garanzia3.it/areadownload/PrivacyInformativaIT.pdf">D.Lgs 196/03</a></label>
-					<p id="error-mess"></p>
+					<label>ATTESA TESTO <a href="http://www.garanzia3.it/areadownload/PrivacyInformativaIT.pdf">D.Lgs 196/03</a></label>
 				</div>
 			</div>
 		<div>
 			<div class="col-12 text-center form-group">
-				<input type="radio" name="policy" value="si" id="yes"/>ACCETTO
+				<input type="radio" name="privacy-policy" value="yes" />ACCETTO
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 text-center form-group">
-				<input type="radio" name="policy" value="no" id="no" checked="checked"/>NON ACCETTO
+				<input type="radio" name="privacy-policy" value="no" checked="checked"/>NON ACCETTO
 			</div>
 		</div>	
 		<div class="row">
@@ -56,8 +55,9 @@
 			  <button type="submit" id="continue" class="btn btn-primary">Continua</button>
 			</div>
 		</div>
-		<input type="hidden" id="bcc" value="#bcc#" class="form-control">
-		<input type="hidden" id="cc" value="#cc#" class="form-control">
+		<input type="hidden" id="privacy-yes" name="privacy-yes" value="yes" />
+		<input type="hidden" id="bcc" name="bcc" value="#bcc#" />
+		<input type="hidden" id="cc"  name="cc" value="#cc#" />
 	</form>
 	<script src="https://www.google.com/recaptcha/api.js" async="async" defer="defer"></script>
 </div>

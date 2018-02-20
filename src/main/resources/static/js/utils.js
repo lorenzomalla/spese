@@ -1,7 +1,5 @@
 var servizio='';
 
-
-
 function select2init() {
 	var branch = getUrlParameter("path");
 	$.ajax({
