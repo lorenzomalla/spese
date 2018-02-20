@@ -40,6 +40,7 @@ import com.accenture.dsg.backend.model.User;
 
 @Controller 
 public class MainController {
+	
 	@Autowired 
 	private UsersDao userDao;
 	
@@ -85,13 +86,7 @@ public class MainController {
 		return "home";
 	}
 	
-//	@RequestMapping(value="/supporto",method = RequestMethod.GET)
-//	public String supporto(){
-//		return "supporto";
-//	}
-	
-	
-	@GetMapping(path="/add") // Map ONLY GET Requests
+	@RequestMapping(value ="/persistUser" , method = RequestMethod.GET)
 	public @ResponseBody String addNewUser (@RequestParam String email ,
 											@RequestParam String password) {
 		User user = new User();
@@ -101,7 +96,7 @@ public class MainController {
 		return "Salvato";
 	}
 		
-	@GetMapping(path="/checkLogin")
+	@RequestMapping(value= "/checkLogin" , method = RequestMethod.POST)
 	public @ResponseBody String getAllUsers(@RequestParam String email,
 											@RequestParam String password){
 		User user = userDao.checkLogin(email, password);
@@ -148,7 +143,7 @@ public class MainController {
 	}
 
 	@RequestMapping(value="/persistAnswer" , method = RequestMethod.POST)
-	public @ResponseBody String persistAnswer(@RequestBody	Answer answer){
+	public @ResponseBody String persistAnswer(@RequestBody Answer answer){
 		if(answer != null){
 			answerDao.persistAnswers(answer);
 			return "salvato";
@@ -175,7 +170,7 @@ public class MainController {
 //	}
 	
 	@RequestMapping(value="/persistTemplate" , method = RequestMethod.POST)
-	public @ResponseBody String persistTemplate(@RequestBody	Template template){
+	public @ResponseBody String persistTemplate(@RequestBody Template template){
 		if(template != null){
 			templDao.persistTemplate(template);
 			return "salvato";
@@ -184,7 +179,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/persistTemplAttr" , method = RequestMethod.POST)
-	public @ResponseBody String persistTemplAttr(@RequestBody	TemplateAttribute templAttr){
+	public @ResponseBody String persistTemplAttr(@RequestBody TemplateAttribute templAttr){
 		if(templAttr != null){
 			templAttrDao.persistTemplateAttribute(templAttr);
 			return "salvato";
@@ -193,7 +188,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/persistCatTreeStructure" , method = RequestMethod.POST)
-	public @ResponseBody String persistCatTreeStructure(@RequestBody	CatTreeStructureType catTreeStr){
+	public @ResponseBody String persistCatTreeStructure(@RequestBody CatTreeStructureType catTreeStr){
 		if(catTreeStr != null){
 			catTreeStrDao.persistCatTreeStructureType(catTreeStr);
 			return "salvato";
@@ -225,12 +220,12 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/getByRef" , method = RequestMethod.POST)
-	public @ResponseBody Contact getByRef(@RequestBody	Contact contact){
+	public @ResponseBody Contact getByRef(@RequestBody Contact contact){
 		Contact contactOut = null;
 		try{
 			contactOut = contactDao.getByRef(contact.getId());
-			}catch(Exception e){
-				e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return contactOut;
 	}
@@ -256,13 +251,7 @@ public class MainController {
 		}
 	    	return "Inviata Correttamente";
 	}
-//	@RequestMapping()
-//	public @ResponseBody Template getTemplate(@PathVariable("id") int id, @PathVariable("idServizio")int idServizio,
-//										@PathVariable("channel")int channel, @PathVariable("branch")int branch){
-//		Template template = null;
-//		return template;
-//	}
-//	
+
 	/*
 	 * TODO: DA SPOSTARE IN UNA CLASSE BEAN CONFIGURATION
 	 */
