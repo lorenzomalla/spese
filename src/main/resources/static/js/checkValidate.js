@@ -54,7 +54,7 @@ function validazione() {
 		rules : {
 			codiceFiscale : {
 				required : true,
-				regx: /(^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1})|(^[0-9]{11})$/
+				regx: /(^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1})|(^[0-9]{11})$/i
 			},
 			email : {
 				required : true,
