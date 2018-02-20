@@ -1,6 +1,5 @@
 function formValidation() {
 	var isValid = false;
-	validazione();
 	if (grecaptcha.getResponse() != "") {
 		$.ajax({
 			async : false,
