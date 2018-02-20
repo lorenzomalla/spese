@@ -60,7 +60,7 @@ function validazione() {
 				required : true,
 				email : true
 			},
-			privacy-policy: {
+			privacyPolicy: {
 				required: true,
 				equalTo: "#privacy-yes"
 			}
