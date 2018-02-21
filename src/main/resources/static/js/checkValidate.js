@@ -24,25 +24,8 @@ function formValidation() {
 	} else {
 		isValid = false;
 	}
-	// if ($('#form-registrazione').valid()) {
-	// validazione();
-	// if ($('#email').val() != "") {
-	// $('#email').css("border-color", "#ced4da");
-	// } else {
-	// $('#email').css("border-color", "#FF0000");
-	// }
-	// if ($('#codiceFiscale').val() != "") {
-	// $('#codiceFiscale').css("border-color", "#ced4da");
-	// } else {
-	// $('#codiceFiscale').css("border-color", "#FF0000");
-	// }
-	// if ($('#problema').val() != "") {
-	// $('#problema').css("border-color", "#ced4da");
-	// } else {
-	// $('#problema').css("border-color", "#FF0000");
-	// }
-	// }
-	return isValid && $('#form-registrazione').valid();
+
+	return isValid && $('#form').valid();
 }
 
 function validazione() {
@@ -54,9 +37,9 @@ function validazione() {
 			console.log(responseText);
 		}
 	};
-	$('#form-registrazione').ajaxForm(options); 
+	$('#form').ajaxForm(options); 
 	
-	$('#form-registrazione')
+	$('#form')
 			.validate(
 					{
 						errorPlacement : function(error, element) {
@@ -71,13 +54,25 @@ function validazione() {
 								required : true,
 								regx : /(^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1})|(^[0-9]{11})$/i
 							},
+							ragioneSociale: {
+								required : true
+							},
 							email : {
 								required : true,
 								email : true
 							},
+							telefono: {
+								required : true
+							},
+							richiesta: {
+								required : true
+							},
 							privacyPolicy : {
 								required : true,
 								equalTo : "#privacy-yes"
+							},
+							fasciaOraria: {
+								required:true
 							}
 						},
 						messages : {
@@ -85,13 +80,25 @@ function validazione() {
 								required : "Campo obbligatorio.",
 								regx : "Inserire una Partita Iva o un Codice Fiscale corretto."
 							},
+							ragioneSociale : {
+								required : "Campo obbligatorio."
+							},
 							email : {
 								required : "Campo obbligatorio.",
 								email : "L'email non è in un formato corretto."
 							},
+							telefono : {
+								required : "Campo obbligatorio.",
+							},
+							richiesta : {
+								required : "Campo obbligatorio.",
+							},
 							privacyPolicy : {
 								required : "Campo obbligatorio.",
 								equalTo : "Accettare il trattamento."
+							},
+							fasciaOraria: {
+								required : "Campo obbligatorio."
 							}
 						}
 					});
