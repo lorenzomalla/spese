@@ -161,6 +161,9 @@ function getCards() {
 						if(answer.title=='Web' && contatti.web!="NULL"){
 							createCard(element.id, answer.image, answer.title, answer.description);
 						}
+						if(answer.title=='Richiamami' && contatti.callback!="NULL"){
+							createCard(element.id, answer.image, answer.title, answer.description);
+						}
 					}else{
 						createCard(element.id, answer.image, answer.title, answer.description);
 					}
