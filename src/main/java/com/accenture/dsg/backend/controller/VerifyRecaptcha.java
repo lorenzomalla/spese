@@ -15,25 +15,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Controller
 public class VerifyRecaptcha {
 	
-	private static final String URL = "https://www.google.com/recaptcha/api/siteverify";
-//	
-//	@Value("${secret}")
-//	private String secretKey;
-//	
-//	@Value("${key}")
-//	private String key;
-//	
-//	@RequestMapping(value="/validationCheck" , method=RequestMethod.POST)
-//	public void checkValidate(@RequestParam String g_recaptcha_response) throws UnirestException{
-//		try{
-//		HttpResponse<JsonNode> response = Unirest.post(URL).header("content-type", "application/json").header("cache-control", "no-cache")
-//   				.body("{ secret: '"+key+"', response: '"+g_recaptcha_response+"'}")
-//					 .asJson(); 
-//		response.toString();
-//		}catch(Exception e){
-//			e.printStackTrace();
-//		}
-//	}
 	    private static class RecaptchaResponse {
 	        @JsonProperty("success")
 	        private boolean success;

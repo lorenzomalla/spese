@@ -49,6 +49,13 @@ function validazione() {
 	$.validator.addMethod("regx", function(value, element, regexpr) {
 		return regexpr.test(value);
 	});
+	var options = {
+		success : function(responseText, statusText, xhr, $form) {
+			console.log(responseText);
+		}
+	};
+	$('#form-registrazione').ajaxForm(options); 
+	
 	$('#form-registrazione')
 			.validate(
 					{
