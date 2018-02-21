@@ -231,7 +231,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/sendEmail",method = RequestMethod.POST)
-	public String doSendEmail(HttpServletRequest request) {
+	public @ResponseBody String doSendEmail(HttpServletRequest request) {
 		try{
 		    String recipientAddress = request.getParameter("recipient");
 		    String subject = request.getParameter("subject");
