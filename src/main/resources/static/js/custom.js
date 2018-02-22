@@ -130,11 +130,11 @@ function getCards() {
 			var templateMarkup = template.markup;
 			console.log(contatti);
 			if(!!contatti){
-				templateMarkup = templateMarkup.replace("#email#",contatti.email);
-				templateMarkup = templateMarkup.replace("#phone#", contatti.phone);
-				templateMarkup = templateMarkup.replace("#fax#", contatti.fax);
-				templateMarkup = templateMarkup.replace("#web#", contatti.web);
-				templateMarkup = templateMarkup.replace("#bcc#", contatti.bcc);
+				templateMarkup = templateMarkup.replace(/#email#/g,contatti.email);
+				templateMarkup = templateMarkup.replace(/#phone#/g, contatti.phone);
+				templateMarkup = templateMarkup.replace(/#fax#/g, contatti.fax);
+				templateMarkup = templateMarkup.replace(/#web#/g, contatti.web);
+				templateMarkup = templateMarkup.replace(/#bcc#/g, contatti.bcc);
 			}
 			$("#template").html(templateMarkup);
 		} else {

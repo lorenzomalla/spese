@@ -44,7 +44,9 @@ function validazione() {
 					{
 						errorPlacement : function(error, element) {
 							if (element.attr("name") == "privacyPolicy") {
-								error.insertAfter($("#privacyPolicyYes"));
+								error.insertAfter($("#privacyPolicyError"));
+							} else if (element.attr("name") == "fasciaOraria") {
+								error.insertAfter($("#fasciaOrariaError"));
 							} else {
 								error.insertAfter(element);
 							}
