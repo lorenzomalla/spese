@@ -25,7 +25,7 @@ function select2init() {
 //		        }else{
 //		            $('#button-select').prop('disabled',true);
 //		        }
-			    consol.log("DATA ID", data.id);
+			    console.log("DATA ID", data.id);
 			    var result = setContatti(data.id);
 		    });
 		},
