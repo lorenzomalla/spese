@@ -39,6 +39,8 @@ public class Contact implements Serializable {
 	
 	private String callback;
 	
+	private String infoCallback;
+	
 	public Contact() {
 	}
 
@@ -136,6 +138,14 @@ public class Contact implements Serializable {
 
 	public void setCallback(String callback) {
 		this.callback = callback;
+	}
+
+	public String getInfoCallback() {
+		return infoCallback;
+	}
+
+	public void setInfoCallback(String infoCallback) {
+		this.infoCallback = infoCallback;
 	}
 
 }
