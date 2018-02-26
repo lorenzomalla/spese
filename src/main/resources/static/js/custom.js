@@ -50,7 +50,8 @@ function setContatti(name){
 			contatti.web=data.web;
 			contatti.bcc=data.bcc;
 			contatti.callback=data.callback;
-			console.log(contatti);
+			contatti.infoCallback=data.infoCallback;
+			console.log("CONTATTI BY REF", contatti);
 			
 			if(name!=null && name!="" ){
 	        	document.servizio = name;
@@ -149,21 +150,30 @@ function getCards() {
 				console.log("SERVIZIO --> "+servizio);
 				if(!!answer) {
 					if(servizio>0){
-						if(answer.title=='Telefono' && contatti.phone!="NULL"){
+						if(answer.id==12 && contatti.phone!="NULL"){
 							createCard(element.id, answer.image, answer.title, answer.description);
 						}
-						if(answer.title=='Email' && contatti.email!="NULL"){
+						if(answer.id==13 && contatti.email!="NULL"){
 							createCard(element.id, answer.image, answer.title, answer.description);
 						}
-						if(answer.title=='Fax' && contatti.fax!="NULL"){
+						if(answer.id==14 && contatti.callback!="NULL"){
 							createCard(element.id, answer.image, answer.title, answer.description);
 						}
-						if(answer.title=='Web' && contatti.web!="NULL"){
-							createCard(element.id, answer.image, answer.title, answer.description);
-						}
-						if(answer.title=='Richiamami' && contatti.callback!="NULL"){
-							createCard(element.id, answer.image, answer.title, answer.description);
-						}
+//						if(answer.title=='Telefono' && contatti.phone!="NULL"){
+//							createCard(element.id, answer.image, answer.title, answer.description);
+//						}
+//						if(answer.title=='Email' && contatti.email!="NULL"){
+//							createCard(element.id, answer.image, answer.title, answer.description);
+//						}
+//						if(answer.title=='Fax' && contatti.fax!="NULL"){
+//							createCard(element.id, answer.image, answer.title, answer.description);
+//						}
+//						if(answer.title=='Web' && contatti.web!="NULL"){
+//							createCard(element.id, answer.image, answer.title, answer.description);
+//						}
+//						if(answer.title=='Richiamami' && contatti.callback!="NULL"){
+//							createCard(element.id, answer.image, answer.title, answer.description);
+//						}
 					}else{
 						createCard(element.id, answer.image, answer.title, answer.description);
 					}
