@@ -71,7 +71,7 @@ public class MainController {
 	@Autowired
 	private ContactDao contactDao;
 	
-	@RequestMapping(value="/login", method = RequestMethod.GET)
+	@RequestMapping(value="./login", method = RequestMethod.GET)
 	public String login(){
 		return "login";
 	}
@@ -106,14 +106,14 @@ public class MainController {
 			return "errato";
 	}
 	
-	@RequestMapping(value="/getAllList", method = RequestMethod.GET)
+	@RequestMapping(value="./getAllList", method = RequestMethod.GET)
 	public @ResponseBody List<TreeStructure> getAllList(){
 		List<TreeStructure> list = dao.getAllLista();
 		list.toString();
 		return list;
 	}
 	
-	@RequestMapping(value="/getTree", method = RequestMethod.GET)
+	@RequestMapping(value="./getTree", method = RequestMethod.GET)
 	public @ResponseBody TreeStructure getTree(){
 		TreeStructure tree = dao.getTree();
 		Set<TreeStructure> listaVuota = null;
@@ -121,7 +121,7 @@ public class MainController {
 		return tree;
 	}
 	
-	@RequestMapping(value="/getNodeById/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="./getNodeById/{id}", method = RequestMethod.GET)
 	public @ResponseBody TreeStructure getFindById(@PathVariable("id") int id){
 		TreeStructure tree = dao.getFindById(id);
 		if(!tree.getTreeStructures().isEmpty()){	
@@ -133,7 +133,7 @@ public class MainController {
 		return tree;
 	}
 	
-	@RequestMapping(value="/addTree" , method = RequestMethod.POST)
+	@RequestMapping(value="./addTree" , method = RequestMethod.POST)
 	public @ResponseBody String persistTreeStructure(@RequestBody TreeStructure tree){
 		if(tree != null){
 			dao.persistTreeStructure(tree);
@@ -142,7 +142,7 @@ public class MainController {
 			return "Errore";
 	}
 
-	@RequestMapping(value="/persistAnswer" , method = RequestMethod.POST)
+	@RequestMapping(value="./persistAnswer" , method = RequestMethod.POST)
 	public @ResponseBody String persistAnswer(@RequestBody Answer answer){
 		if(answer != null){
 			answerDao.persistAnswers(answer);
@@ -151,7 +151,7 @@ public class MainController {
 			return "errore";
 	}
 	
-	@RequestMapping(value="/persistQuestion" , method = RequestMethod.POST)
+	@RequestMapping(value="./persistQuestion" , method = RequestMethod.POST)
 	public @ResponseBody String persistQuestion(@RequestBody Question question){
 		if(question != null){
 			questionDao.persistQuestions(question);
@@ -160,7 +160,7 @@ public class MainController {
 			return "Errore";
 	}
 	
-//	@RequestMapping(value="/persistCatTempl" , method = RequestMethod.POST)
+//	@RequestMapping(value="./persistCatTempl" , method = RequestMethod.POST)
 //	public @ResponseBody String persistCatTemplate(@RequestBody	CatTemplate catTempl){
 //		if(catTempl != null){
 //			catTemplDao.persistCatTemplate(catTempl);
@@ -169,7 +169,7 @@ public class MainController {
 //			return "errore";
 //	}
 	
-	@RequestMapping(value="/persistTemplate" , method = RequestMethod.POST)
+	@RequestMapping(value="./persistTemplate" , method = RequestMethod.POST)
 	public @ResponseBody String persistTemplate(@RequestBody Template template){
 		if(template != null){
 			templDao.persistTemplate(template);
@@ -178,7 +178,7 @@ public class MainController {
 			return "errore";
 	}
 	
-	@RequestMapping(value="/persistTemplAttr" , method = RequestMethod.POST)
+	@RequestMapping(value="./persistTemplAttr" , method = RequestMethod.POST)
 	public @ResponseBody String persistTemplAttr(@RequestBody TemplateAttribute templAttr){
 		if(templAttr != null){
 			templAttrDao.persistTemplateAttribute(templAttr);
@@ -187,7 +187,7 @@ public class MainController {
 			return "errore";
 	}
 	
-	@RequestMapping(value="/persistCatTreeStructure" , method = RequestMethod.POST)
+	@RequestMapping(value="./persistCatTreeStructure" , method = RequestMethod.POST)
 	public @ResponseBody String persistCatTreeStructure(@RequestBody CatTreeStructureType catTreeStr){
 		if(catTreeStr != null){
 			catTreeStrDao.persistCatTreeStructureType(catTreeStr);
@@ -196,7 +196,7 @@ public class MainController {
 			return "errore";
 	}
 	
-	@RequestMapping(value="/persistContact" , method = RequestMethod.POST)
+	@RequestMapping(value="./persistContact" , method = RequestMethod.POST)
 	public @ResponseBody String persistContact(@RequestBody	Contact contact){
 		if(contact != null){
 			contactDao.persist(contact);
@@ -205,21 +205,21 @@ public class MainController {
 			return "errore";
 	}
 	
-	@RequestMapping(value="/findOptions" , method = RequestMethod.GET)
+	@RequestMapping(value="./findOptions" , method = RequestMethod.GET)
 	public @ResponseBody List<Contact> getFindAll(){
 		List<Contact> list = contactDao.getAllList();
 		list.toString();
 		return list;
 	}
 	
-	@RequestMapping(value="/findOptions/{branch}" , method = RequestMethod.GET)
+	@RequestMapping(value="./findOptions/{branch}" , method = RequestMethod.GET)
 	public @ResponseBody List<Contact> getFindByBranch(@PathVariable("branch") String branch){
 		List<Contact> list = contactDao.getByBranch(branch);
 		list.toString();
 		return list;
 	}
 	
-	@RequestMapping(value="/getByRef" , method = RequestMethod.POST)
+	@RequestMapping(value="./getByRef" , method = RequestMethod.POST)
 	public @ResponseBody Contact getByRef(@RequestBody Contact contact){
 		Contact contactOut = null;
 		try{
@@ -230,7 +230,7 @@ public class MainController {
 		return contactOut;
 	}
 	
-	@RequestMapping(value="/sendEmail",method = RequestMethod.POST)
+	@RequestMapping(value="./sendEmail",method = RequestMethod.POST)
 	public @ResponseBody String doSendEmail(HttpServletRequest request) {
 		try{
 		    String recipientAddress = request.getParameter("recipient");
