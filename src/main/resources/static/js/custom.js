@@ -22,7 +22,7 @@ function getUrlParameter(sParam) {
     }
 };
 
-function setContatti(name){
+function setContatti(name, _async){
 	//var branch = getUrlParameter('path');
 	//console.log("-------> branch:"+branch+" --- option:"+name);
 
@@ -39,6 +39,7 @@ function setContatti(name){
 	$.ajax({
 		type: "POST",
 		url: "/getByRef",
+		async: _async,
   		contentType:"application/json; charset=utf-8",
 		data: '{"id": '+name+'}',
 		success: function(data){
@@ -74,11 +75,6 @@ $(document).ready(function() {
     });
 		
 	getCards();
-
-	var servizio = getUrlParameter('servizio');
-	if(servizio!=null){
-		setContatti(servizio);
-	}
 	
 	$("#cardList").on("click", ".card-column", function(event) {
 		event.stopPropagation();
@@ -139,7 +135,14 @@ function getCards() {
 		if(!!template) {
 			var templateMarkup = template.markup;
 			console.log(contatti);
+			
+			var servizio = getUrlParameter('servizio');
+			if(servizio!=null){
+				setContatti(servizio, false);
+			}
+			
 			if(!!contatti){
+				
 				templateMarkup = templateMarkup.replace(/#email#/g,contatti.email);
 				templateMarkup = templateMarkup.replace(/#phone#/g, contatti.phone);
 				templateMarkup = templateMarkup.replace(/#fax#/g, contatti.fax);
