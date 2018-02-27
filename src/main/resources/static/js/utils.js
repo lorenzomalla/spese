@@ -84,7 +84,8 @@ function select2init() {
 //	    	window.location.href = document.redirecturl;
 //	    }
 //		window.location.href = "https://dgs-backend.herokuapp.com/?path=9&servizio="+document.servizio;
-		history.pushState({ url: "/" }, "/", "?path=12&servizio="+document.servizio);
+		var path = document.servizio>=215?12:16;
+		history.pushState({ url: "/" }, "/", "?path="+path+"&servizio="+document.servizio);
 		getCards();
 	});
 }	 	
