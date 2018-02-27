@@ -74,6 +74,11 @@ $(document).ready(function() {
     });
 		
 	getCards();
+
+	var servizio = getUrlParameter('servizio');
+	if(servizio!=null){
+		setContatti(servizio);
+	}
 	
 	$("#cardList").on("click", ".card-column", function(event) {
 		event.stopPropagation();
