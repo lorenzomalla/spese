@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.accenture.dgs</groupId>
-	<artifactId>dgs-backend</artifactId>
-	<version>0.1.1</version>
+	<artifactId>dgs-supporto</artifactId>
+	<version>0.2.1</version>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
