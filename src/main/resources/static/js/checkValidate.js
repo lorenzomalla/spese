@@ -39,6 +39,8 @@ function validazione() {
 	};
 	$('#form').ajaxForm(options); 
 	
+	var richiestaRequired = $("#richiesta").attr("data-required");
+	
 	$('#form')
 			.validate(
 					{
@@ -56,6 +58,12 @@ function validazione() {
 								required : true,
 								regx : /(^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1})|(^[0-9]{11})$/i
 							},
+							name: {
+								required : true
+							},
+							surname: {
+								required : true
+							},
 							ragioneSociale: {
 								required : true
 							},
@@ -67,7 +75,7 @@ function validazione() {
 								required : true
 							},
 							richiesta: {
-								required : true
+								required : richiestaRequired
 							},
 							privacyPolicy : {
 								required : true,
@@ -80,7 +88,13 @@ function validazione() {
 						messages : {
 							codiceFiscale : {
 								required : "Campo obbligatorio.",
-								regx : "Inserire una Partita Iva o un Codice Fiscale corretto."
+								regx : "Inserire una Partita Iva o un Codice Fiscale valido."
+							},
+							name : {
+								required : "Campo obbligatorio."
+							},
+							surname : {
+								required : "Campo obbligatorio."
 							},
 							ragioneSociale : {
 								required : "Campo obbligatorio."
