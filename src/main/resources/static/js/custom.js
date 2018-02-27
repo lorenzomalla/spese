@@ -127,6 +127,10 @@ function getCards() {
 		console.log(data);
 		var question = data.questions[0];
 		var template = data.template[0];
+		if(!!question) {
+			$("#question").text(question.pageTitle);
+			$("#question-subtitle").text(question.pageSubtitle);			
+		}
 		if(!!template) {
 			var templateMarkup = template.markup;
 			console.log(contatti);
@@ -141,10 +145,6 @@ function getCards() {
 			}
 			$("#template").html(templateMarkup);
 		} else {
-			if(!!question) {
-				$("#question").text(question.pageTitle);
-				$("#question-subtitle").text(question.pageSubtitle);			
-			}
 			$.each(data.treeStructures, function(index, element) {
 				var answer = element.answers[0];
 				var servizio = getUrlParameter("servizio");
