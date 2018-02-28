@@ -139,6 +139,8 @@ function getCards() {
 			var servizio = getUrlParameter('servizio');
 			if(servizio!=null){
 				setContatti(servizio, false);
+				$("#servizioform").remove();
+				$("#form").append("<input type='hidden' id='servizioform'  name='servizio' value='"+servizio+"' />");
 			}
 			
 			if(!!contatti){

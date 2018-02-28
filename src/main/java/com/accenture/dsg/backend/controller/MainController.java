@@ -230,26 +230,64 @@ public class MainController {
 		return contactOut;
 	}
 	
-	@RequestMapping(value="/sendEmail",method = RequestMethod.POST)
+	@RequestMapping(value = "/sendEmail", method = RequestMethod.POST)
 	public @ResponseBody String doSendEmail(HttpServletRequest request) {
-		try{
-		    String recipientAddress = request.getParameter("recipient");
-		    String subject = request.getParameter("subject");
-		    String message = request.getParameter("message");
-		     
-		    System.out.println("To: " + recipientAddress);
-		    System.out.println("Subject: " + subject);
-		    System.out.println("Message: " + message);
-		     
-		    SimpleMailMessage email = new SimpleMailMessage();
-		    email.setTo(recipientAddress);
-		    email.setSubject(subject);
-		    email.setText(message);
-		    mailSender.send(email);
-			}catch(Exception e){
-				e.printStackTrace();
+		try {
+			String formType = request.getParameter("form-type");
+			String recipientAddress = request.getParameter("emailTo");
+			String subject = request.getParameter("subject");
+			String bcc = request.getParameter("bcc");
+			String body = "QUESTA EMAIL E’ STATA GENERATA A SEGUITO DI UNA RICHIESTA EFFETTUATA DAL CLIENTE SUL PORTALE DI SUPPORTO TIM DIGITAL STORE. SI PREGA DI NON RISPONDERE DIRETTAMENTE A QUESTO INDIRIZZO EMAIL MA DI UTILIZZARE I RIFERIMENTI INDICATI DI SEGUITO .";
+			if (formType.equals("form1")) {
+				body += "NOME=#nome#\n";
+				body += "COGNOME=#cognome#\n";
+				body += "P.IVA o C.F. =#codiceFiscale#\n";
+				body += "RAGIONE SOCIALE=#ragioneSociale#\n";
+				body += "EMAIL=#email#\n";
+				body += "TELEFONO=#telefono#\n";
+				body += "RICHIESTA=#richiesta#\n";
+			} else if (formType.equals("form2")) {
+				body += "EMAIL=#email#\n";
+				body += "RICHIESTA=#richiesta#\n";
+			} else if (formType.equals("form3")) {
+				body += "TELEFONO=#telefono#\n";
+				body += "NOME=#nome#\n";
+				body += "COGNOME=#cognome#\n";
+				body += "P.IVA o C.F. =#codice fiscale o partita iva#\n";
+				body += "RAGIONE SOCIALE=#ragione sociale#\n";
+				body += "EMAIL=#email#\n";
+				body += "FASCIA ORARIA  IN CUI PREFERISCE ESSERE RICONTATTATO=#fasciaOraria#\n";
+				body += "RICHIESTA=#richiesta#\n";
+			} else if (formType.equals("form4")) {
+				body += "TELEFONO=#telefono#\n";
+				body += "FASCIA ORARIA  IN CUI PREFERISCE ESSERE RICONTATTATO=#fasciaOraria#\n";
+				body += "RICHIESTA=#richiesta#\n";
+			}
+			body = body.replace("#nome#", request.getParameter("name"))
+					.replace("#cognome#", request.getParameter("surname"))
+					.replace("#codiceFiscale#", request.getParameter("codiceFiscale"))
+					.replace("#ragioneSociale#", request.getParameter("ragioneSociale"))
+					.replace("#email#", request.getParameter("email"))
+					.replace("#telefono#", request.getParameter("telefono"))
+					.replace("#richiesta#", request.getParameter("richiesta"))
+					.replace("#fasciaOraria#", request.getParameter("fasciaOraria"));
+			System.out.println("To: " + recipientAddress);
+			System.out.println("Subject: " + subject);
+			System.out.println("Message: " + body);
+
+			SimpleMailMessage email = new SimpleMailMessage();
+			email.setTo(recipientAddress);
+			email.setSubject(subject);
+			if (!"".equals(bcc)) {
+				email.setBcc(bcc);
+			}
+			email.setText(body);
+			mailSender.send(email);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
 		}
-	    	return "Inviata Correttamente";
+		return "Inviata Correttamente";
 	}
 
 	/*
