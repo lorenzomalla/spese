@@ -163,10 +163,10 @@ function getCards() {
 						if(answer.id==12 && contatti.phone!="NULL"){
 							createCard(element.id, answer.image, answer.title, answer.description);
 						}
-						if((answer.id==13 || answer.id==16) && contatti.email!="NULL"){
+						if((answer.id==13 || answer.id==16 || answer.id==18) && contatti.email!="NULL"){
 							createCard(element.id, answer.image, answer.title, answer.description);
 						}
-						if((answer.id==14 || answer.id==17) && contatti.callback!="NULL"){
+						if((answer.id==14 || answer.id==17 || answer.id==19) && contatti.callback!="NULL"){
 							createCard(element.id, answer.image, answer.title, answer.description);
 						}
 //						if(answer.title=='Telefono' && contatti.phone!="NULL"){
