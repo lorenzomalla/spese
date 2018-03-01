@@ -154,6 +154,10 @@ function getCards() {
 				templateMarkup = templateMarkup.replace(/#callback#/g, contatti.callback);
 			}
 			$("#template").html(templateMarkup);
+			if(servizio!=null){
+				$("#servizioform").remove();
+				$("#form").append("<input type='hidden' id='servizioform'  name='servizio' value='"+servizio+"' />");
+			}
 		} else {
 			$.each(data.treeStructures, function(index, element) {
 				var answer = element.answers[0];
