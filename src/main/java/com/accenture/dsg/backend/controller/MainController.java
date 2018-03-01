@@ -358,7 +358,7 @@ public class MainController {
 #spring.mail.properties.mail.smtp.starttls.required=true
 	 * 
 	 */
-	 @Bean
+//	 @Bean
 	    public JavaMailSender getJavaMailSender() {
 	        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 	        mailSender.setHost(mailHost);
