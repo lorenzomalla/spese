@@ -41,6 +41,30 @@ import com.accenture.dsg.backend.model.User;
 
 @Controller 
 public class MainController {
+	// Mail Configuration
+	@Value("${spring.mail.from}")
+	private String mailFrom;
+	@Value("${spring.mail.host}")
+	private String mailHost;
+	@Value("${spring.mail.username}")
+	private String mailUsername;
+	@Value("${spring.mail.password}")
+	private String mailPassword;
+	@Value("${spring.mail.debug}")
+	private String mailDebug;
+	@Value("${spring.mail.properties.mail.transport.protocol}")
+	private String mailTransportProtocol;
+	@Value("${spring.mail.properties.mail.smtp.port}")
+	private String mailSmtpPort;
+	@Value("${spring.mail.properties.mail.smtp.auth}")
+	private String mailSmtpAuth;
+	@Value("${spring.mail.properties.mail.smtp.starttls.enable}")
+	private String mailSmtpStartTLSEnable;
+	@Value("${spring.mail.properties.mail.smtp.starttls.required}")
+	private String mailSmtpStartTLSRequired;
+	@Value("${secret}")
+	private String recaptchaSecretKey;
+	
 	
 	@Autowired 
 	private UsersDao userDao;
@@ -73,30 +97,6 @@ public class MainController {
 	private ContactDao contactDao;
 	
 
-	// Mail Configuration
-	@Value("${spring.mail.from}")
-	private String mailFrom;
-	@Value("${spring.mail.host}")
-	private String mailHost;
-	@Value("${spring.mail.username}")
-	private String mailUsername;
-	@Value("${spring.mail.password}")
-	private String mailPassword;
-	@Value("${spring.mail.debug}")
-	private String mailDebug;
-	@Value("${spring.mail.properties.mail.transport.protocol}")
-	private String mailTransportProtocol;
-	@Value("${spring.mail.properties.mail.smtp.port}")
-	private String mailSmtpPort;
-	@Value("${spring.mail.properties.mail.smtp.auth}")
-	private String mailSmtpAuth;
-	@Value("${spring.mail.properties.mail.smtp.starttls.enable}")
-	private String mailSmtpStartTLSEnable;
-	@Value("${spring.mail.properties.mail.smtp.starttls.required}")
-	private String mailSmtpStartTLSRequired;
-    @Value("${secret}")
-    private String recaptchaSecretKey;
-	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String login(){
 		return "login";
