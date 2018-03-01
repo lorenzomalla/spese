@@ -44,24 +44,6 @@ public class MainController {
 	// Mail Configuration
 	@Value("${spring.mail.from}")
 	private String mailFrom;
-	@Value("${spring.mail.host}")
-	private String mailHost;
-	@Value("${spring.mail.username}")
-	private String mailUsername;
-	@Value("${spring.mail.password}")
-	private String mailPassword;
-	@Value("${spring.mail.debug}")
-	private String mailDebug;
-	@Value("${spring.mail.properties.mail.transport.protocol}")
-	private String mailTransportProtocol;
-	@Value("${spring.mail.properties.mail.smtp.port}")
-	private String mailSmtpPort;
-	@Value("${spring.mail.properties.mail.smtp.auth}")
-	private String mailSmtpAuth;
-	@Value("${spring.mail.properties.mail.smtp.starttls.enable}")
-	private String mailSmtpStartTLSEnable;
-	@Value("${spring.mail.properties.mail.smtp.starttls.required}")
-	private String mailSmtpStartTLSRequired;
 	@Value("${secret}")
 	private String recaptchaSecretKey;
 	
@@ -361,18 +343,18 @@ public class MainController {
 	@Bean
 	public JavaMailSender getJavaMailSender() {
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-		mailSender.setHost(mailHost);
-		mailSender.setPort(Integer.valueOf(mailSmtpPort));
-
-		mailSender.setUsername(mailUsername);
-		mailSender.setPassword(mailPassword);
+//		mailSender.setHost(mailHost);
+//		mailSender.setPort(Integer.valueOf(mailSmtpPort));
+//
+//		mailSender.setUsername(mailUsername);
+//		mailSender.setPassword(mailPassword);
 
 		Properties props = mailSender.getJavaMailProperties();
-		props.put("mail.transport.protocol", mailTransportProtocol);
-		props.put("mail.smtp.auth", mailSmtpAuth);
-		props.put("mail.smtp.starttls.enable", mailSmtpStartTLSEnable);
-		props.put("mail.smtp.starttls.required", mailSmtpStartTLSRequired);
-		props.put("mail.debug", mailDebug);
+//		props.put("mail.transport.protocol", mailTransportProtocol);
+//		props.put("mail.smtp.auth", mailSmtpAuth);
+//		props.put("mail.smtp.starttls.enable", mailSmtpStartTLSEnable);
+//		props.put("mail.smtp.starttls.required", mailSmtpStartTLSRequired);
+//		props.put("mail.debug", mailDebug);
 
 		return mailSender;
 	}

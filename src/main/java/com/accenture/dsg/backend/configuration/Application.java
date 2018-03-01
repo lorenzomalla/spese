@@ -16,29 +16,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 exclude = org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class)
 public class Application extends SpringBootServletInitializer {
 
-    @Value("${proxyHost}")
-    private static String proxyHost;
-    @Value("${proxyPort}")
-    private static String proxyPort;
-    @Value("${nonProxyHosts}")
-    private static String nonProxyHosts;
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(Application.class);
 	}
 
     public static void main(String[] args) {
-//    	if(!"".equals(proxyHost)) {
-//    		System.setProperty("http.proxyHost", proxyHost);
-//    	}
-//    	if(!"".equals(proxyPort)) {
-//    		System.setProperty("http.proxyPort", proxyPort);
-//    	}
-//    	if(!"".equals(nonProxyHosts)) {
-//    		System.setProperty("http.nonProxyHosts", nonProxyHosts);
-//    	}
-        
-         
         SpringApplication.run(Application.class, args);
     }
 //    @EnableWebSecurity
