@@ -358,23 +358,23 @@ public class MainController {
 #spring.mail.properties.mail.smtp.starttls.required=true
 	 * 
 	 */
-//	 @Bean
-	    public JavaMailSender getJavaMailSender() {
-	        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-	        mailSender.setHost(mailHost);
-	        mailSender.setPort(Integer.valueOf(mailSmtpPort));
+	@Bean
+	public JavaMailSender getJavaMailSender() {
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		mailSender.setHost(mailHost);
+		mailSender.setPort(Integer.valueOf(mailSmtpPort));
 
-	        mailSender.setUsername(mailUsername);
-	        mailSender.setPassword(mailPassword);
+		mailSender.setUsername(mailUsername);
+		mailSender.setPassword(mailPassword);
 
-	        Properties props = mailSender.getJavaMailProperties();
-	        props.put("mail.transport.protocol", mailTransportProtocol);
-	        props.put("mail.smtp.auth", mailSmtpAuth);
-	        props.put("mail.smtp.starttls.enable", mailSmtpStartTLSEnable);
-	        props.put("mail.smtp.starttls.required", mailSmtpStartTLSRequired);
-	        props.put("mail.debug", mailDebug);
+		Properties props = mailSender.getJavaMailProperties();
+		props.put("mail.transport.protocol", mailTransportProtocol);
+		props.put("mail.smtp.auth", mailSmtpAuth);
+		props.put("mail.smtp.starttls.enable", mailSmtpStartTLSEnable);
+		props.put("mail.smtp.starttls.required", mailSmtpStartTLSRequired);
+		props.put("mail.debug", mailDebug);
 
-	        return mailSender;
-	    }
-	
+		return mailSender;
+	}
+
 }
