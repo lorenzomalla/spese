@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
 		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
@@ -67,5 +68,6 @@
 				<div class="col-6 text-right">Partita IVA: 00488410010</div>
 			</div>
 		</div>
+		<span class="d-none" id="captchakey" th:text="${captchakey}"></span>
 	</body>
 </html>

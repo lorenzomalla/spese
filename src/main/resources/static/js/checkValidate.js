@@ -34,7 +34,10 @@ function validazione() {
 	});
 	var options = {
 		success : function(responseText, statusText, xhr, $form) {
-			console.log(responseText);
+			if(responseText=="success") {
+				history.pushState({ url: "/" }, "/", "?path=21&servizio="+document.servizio);
+				getCards();			
+			}
 		}
 	};
 	$('#form').ajaxForm(options); 
