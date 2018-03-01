@@ -28,15 +28,15 @@ public class Application extends SpringBootServletInitializer {
 	}
 
     public static void main(String[] args) {
-    	if(!"".equals(proxyHost)) {
-    		System.setProperty("http.proxyHost", proxyHost);
-    	}
-    	if(!"".equals(proxyPort)) {
-    		System.setProperty("http.proxyPort", proxyPort);
-    	}
-    	if(!"".equals(nonProxyHosts)) {
-    		System.setProperty("http.nonProxyHosts", nonProxyHosts);
-    	}
+//    	if(!"".equals(proxyHost)) {
+//    		System.setProperty("http.proxyHost", proxyHost);
+//    	}
+//    	if(!"".equals(proxyPort)) {
+//    		System.setProperty("http.proxyPort", proxyPort);
+//    	}
+//    	if(!"".equals(nonProxyHosts)) {
+//    		System.setProperty("http.nonProxyHosts", nonProxyHosts);
+//    	}
         
          
         SpringApplication.run(Application.class, args);
