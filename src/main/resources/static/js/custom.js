@@ -153,6 +153,7 @@ function getCards() {
 				templateMarkup = templateMarkup.replace(/#infoCallback#/g, contatti.infoCallback);
 				templateMarkup = templateMarkup.replace(/#callback#/g, contatti.callback);
 				templateMarkup = templateMarkup.replace(/#captcha#/g, $("#captchakey").text());
+				templateMarkup = templateMarkup.replace(/#privacyPdf#/g, $("#privacyPdf").text());
 			}
 			$("#template").html(templateMarkup);
 			if(servizio!=null){

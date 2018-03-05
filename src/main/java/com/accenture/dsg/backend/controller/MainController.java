@@ -44,9 +44,10 @@ public class MainController {
 	// Mail Configuration
 	@Value("${spring.mail.from}")
 	private String mailFrom;
-	@Value("${secret}")
-	private String recaptchaSecretKey;
-	
+	@Value("${sitekey}")
+	private String recaptchaSiteKey;
+	@Value("${privacy.pdf}")
+	private String privacyPdf;
 	
 	@Autowired 
 	private UsersDao userDao;
@@ -91,7 +92,8 @@ public class MainController {
 	
 	@RequestMapping(value={"/","/home"},method = RequestMethod.GET)
 	public String homepage(Model model){
-		model.addAttribute("captchakey", recaptchaSecretKey);
+		model.addAttribute("captchakey", recaptchaSiteKey);
+		model.addAttribute("privacyPdf", privacyPdf);
 		return "home";
 	}
 	
@@ -324,39 +326,5 @@ public class MainController {
 		}
 		return "success";
 	}
-
-	/*
-	 * TODO: DA SPOSTARE IN UNA CLASSE BEAN CONFIGURATION
-	 * 
-## Mail Configuration
-#spring.mail.host=host
-#spring.mail.username=username
-#spring.mail.password=password
-#spring.mail.debug=true
-#spring.mail.properties.mail.transport.protocol=smtp
-#spring.mail.properties.mail.smtp.port=25
-#spring.mail.properties.mail.smtp.auth=true
-#spring.mail.properties.mail.smtp.starttls.enable=true
-#spring.mail.properties.mail.smtp.starttls.required=true
-	 * 
-	 */
-	@Bean
-	public JavaMailSender getJavaMailSender() {
-		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-//		mailSender.setHost(mailHost);
-//		mailSender.setPort(Integer.valueOf(mailSmtpPort));
-//
-//		mailSender.setUsername(mailUsername);
-//		mailSender.setPassword(mailPassword);
-
-		Properties props = mailSender.getJavaMailProperties();
-//		props.put("mail.transport.protocol", mailTransportProtocol);
-//		props.put("mail.smtp.auth", mailSmtpAuth);
-//		props.put("mail.smtp.starttls.enable", mailSmtpStartTLSEnable);
-//		props.put("mail.smtp.starttls.required", mailSmtpStartTLSRequired);
-//		props.put("mail.debug", mailDebug);
-
-		return mailSender;
-	}
-
+	
 }
