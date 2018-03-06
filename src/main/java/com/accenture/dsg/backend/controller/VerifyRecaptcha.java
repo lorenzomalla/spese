@@ -3,7 +3,6 @@ package com.accenture.dsg.backend.controller;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.Proxy.Type;
-import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.accenture.dsg.backend.model.RecaptchaResponse;
 
 @Controller
 public class VerifyRecaptcha {
@@ -24,18 +23,6 @@ public class VerifyRecaptcha {
 	private String proxyPort;
 	@Value("${nonProxyHosts}")
 	private String nonProxyHosts;
-
-	private class RecaptchaResponse {
-		@JsonProperty("success")
-		private boolean success;
-		@JsonProperty("error-codes")
-		private Collection<String> errorCodes;
-		
-		@Override
-		public String toString() {
-			return success + " " + errorCodes;
-		}
-	}
 
 	// RECUPERO L'URL NEL FILE DI PROPERTIES
 	@Value("${url}")
@@ -60,7 +47,7 @@ System.out.println(request);
 		RecaptchaResponse recaptchaResponse = restTemplate.postForEntity(
 				request, null, RecaptchaResponse.class).getBody();
 		System.out.println(recaptchaResponse);
-		if (recaptchaResponse.success == true) {
+		if (recaptchaResponse.isSuccess()) {
 			return true;
 		} else {
 			return false;

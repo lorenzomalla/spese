@@ -15,14 +15,17 @@ function formValidation() {
 					isValid = true;
 				} else {
 					isValid = false;
+					grecaptcha.reset();
 				}
 			},
 			error : function(response) {
 				isValid = false;
+				grecaptcha.reset();
 			}
 		});
 	} else {
 		isValid = false;
+		grecaptcha.reset();
 	}
 
 	return isValid && $('#form').valid();
@@ -37,7 +40,14 @@ function validazione() {
 			if(responseText=="success") {
 				history.pushState({ url: "/" }, "/", "?path=21&servizio="+document.servizio);
 				getCards();			
+			} else {
+				history.pushState({ url: "/" }, "/", "?path=22&servizio="+document.servizio);
+				getCards();
 			}
+		},
+		error : function() {
+			history.pushState({ url: "/" }, "/", "?path=22&servizio="+document.servizio);
+			getCards();
 		}
 	};
 	$('#form').ajaxForm(options); 

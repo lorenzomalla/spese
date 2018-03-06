@@ -48,6 +48,10 @@ public class MainController {
 	private String recaptchaSiteKey;
 	@Value("${privacy.pdf}")
 	private String privacyPdf;
+	@Value("${email.accesso}")
+	private String emailAccesso;
+	@Value("${email.commerciali.no}")
+	private String emailCommercialiNo;
 	
 	@Autowired 
 	private UsersDao userDao;
@@ -247,7 +251,7 @@ public class MainController {
 		Contact mailContact = null;
 		int servizioInt = -1;
 		String servizioSub = "";
-		if(!"".equals(servizio)) {
+		if(servizio != null && !"".equals(servizio)) {
 			Contact c = new Contact();
 			servizioInt = Integer.parseInt(servizio);
 			c.setId(servizioInt);
@@ -255,18 +259,30 @@ public class MainController {
 			servizioSub = " - servizio "+mailContact.getoOption();
 		}
 		
+		String formType = request.getParameter("form-type");
 		String tipoAssistenza = servizioInt<=107?"TECNICA":servizioInt>=215?"COMMERCIALE":"AMMINISTRATIVA";
+		String recipientAddress = request.getParameter("emailTo");
+		boolean emailSetted = false;
+		if(servizioInt==-1) {
+			tipoAssistenza = "COMMERCIALE";
+			if (formType.equals("form1")) {
+				// problema accesso
+				recipientAddress = emailAccesso;
+				tipoAssistenza = "ACCESSO";
+			} else if (formType.equals("form2") || formType.equals("form4")) {
+				recipientAddress = emailCommercialiNo;
+				emailSetted = true;
+			}  
+		}
 		
 		try {
-			String formType = request.getParameter("form-type");
-			String recipientAddress = request.getParameter("emailTo");
-			String subject = "Lead TDS – assistenza "+tipoAssistenza+" -  ricontattare via #canale#"+ servizioSub; 
+			String subject = "Lead TDS – assistenza "+tipoAssistenza+" - ricontattare via #canale#"+ servizioSub; 
 			String bcc = request.getParameter("bcc");
-			String body = "QUESTA EMAIL E’ STATA GENERATA A SEGUITO DI UNA RICHIESTA EFFETTUATA DAL CLIENTE SUL PORTALE DI SUPPORTO TIM DIGITAL STORE. SI PREGA DI NON RISPONDERE DIRETTAMENTE A QUESTO INDIRIZZO EMAIL MA DI UTILIZZARE I RIFERIMENTI INDICATI DI SEGUITO .";
+			String body = "QUESTA EMAIL E’ STATA GENERATA A SEGUITO DI UNA RICHIESTA EFFETTUATA DAL CLIENTE SUL PORTALE DI SUPPORTO TIM DIGITAL STORE. SI PREGA DI NON RISPONDERE DIRETTAMENTE A QUESTO INDIRIZZO EMAIL MA DI UTILIZZARE I RIFERIMENTI INDICATI DI SEGUITO.\n";
 			if (formType.equals("form1")) {
 				body += "NOME=#nome#\n";
 				body += "COGNOME=#cognome#\n";
-				body += "P.IVA o C.F. =#codiceFiscale#\n";
+				body += "P.IVA o C.F.=#codiceFiscale#\n";
 				body += "RAGIONE SOCIALE=#ragioneSociale#\n";
 				body += "EMAIL=#email#\n";
 				body += "TELEFONO=#telefono#\n";
@@ -280,31 +296,34 @@ public class MainController {
 				body += "TELEFONO=#telefono#\n";
 				body += "NOME=#nome#\n";
 				body += "COGNOME=#cognome#\n";
-				body += "P.IVA o C.F. =#codice fiscale o partita iva#\n";
-				body += "RAGIONE SOCIALE=#ragione sociale#\n";
+				body += "P.IVA o C.F.=#codiceFiscale#\n";
+				body += "RAGIONE SOCIALE=#ragioneSociale#\n";
 				body += "EMAIL=#email#\n";
-				body += "FASCIA ORARIA  IN CUI PREFERISCE ESSERE RICONTATTATO=#fasciaOraria#\n";
+				body += "FASCIA ORARIA IN CUI PREFERISCE ESSERE RICONTATTATO=#fasciaOraria#\n";
 				body += "RICHIESTA=#richiesta#\n";
 				subject = subject.replace("#canale#", "TELEFONO");
 				recipientAddress = mailContact.getCallback();
 			} else if (formType.equals("form4")) {
 				body += "TELEFONO=#telefono#\n";
-				body += "FASCIA ORARIA  IN CUI PREFERISCE ESSERE RICONTATTATO=#fasciaOraria#\n";
+				body += "FASCIA ORARIA IN CUI PREFERISCE ESSERE RICONTATTATO=#fasciaOraria#\n";
 				body += "RICHIESTA=#richiesta#\n";
 				subject = subject.replace("#canale#", "TELEFONO");
-				recipientAddress = mailContact.getCallback();
+				if(!emailSetted) {
+					recipientAddress = mailContact.getCallback();
+				}
 			}
 			
-			body = body.replace("#nome#", request.getParameter("name"))
-					.replace("#cognome#", request.getParameter("surname"))
-					.replace("#codiceFiscale#", request.getParameter("codiceFiscale"))
-					.replace("#ragioneSociale#", request.getParameter("ragioneSociale"))
-					.replace("#email#", request.getParameter("email"))
-					.replace("#telefono#", request.getParameter("telefono"))
-					.replace("#richiesta#", request.getParameter("richiesta"));
+			body = body.replace("#nome#", request.getParameter("name")!=null?request.getParameter("name"):"")
+					.replace("#cognome#", request.getParameter("surname")!=null?request.getParameter("surname"):"")
+					.replace("#codiceFiscale#", request.getParameter("codiceFiscale")!=null?request.getParameter("codiceFiscale"):"")
+					.replace("#ragioneSociale#", request.getParameter("ragioneSociale")!=null?request.getParameter("ragioneSociale"):"")
+					.replace("#email#", request.getParameter("email")!=null?request.getParameter("email"):"")
+					.replace("#telefono#", request.getParameter("telefono")!=null?request.getParameter("telefono"):"")
+					.replace("#richiesta#", request.getParameter("richiesta")!=null?request.getParameter("richiesta"):"");
 			
 			if(request.getParameterValues("fasciaOraria")!= null) {
-				body = body.replace("#fasciaOraria#", request.getParameterValues("fasciaOraria").toString());
+				String str = String.join(", ", request.getParameterValues("fasciaOraria"));
+				body = body.replace("#fasciaOraria#", str );
 			}
 			
 			System.out.println("To: " + recipientAddress);

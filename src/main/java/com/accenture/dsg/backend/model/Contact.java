@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table(name="contatti")
 @NamedQueries({
 	@NamedQuery(name="Contact.findAll", query="SELECT c FROM Contact c"),
-	@NamedQuery(name="Contact.getByBranch", query="SELECT c FROM Contact c WHERE c.branch= :branch"),
+	@NamedQuery(name="Contact.getByBranch", query="SELECT c FROM Contact c WHERE c.branch= :branch order by c.option"),
 	@NamedQuery(name="Contact.getByRef", query="SELECT c FROM Contact c WHERE c.id= :id"),
 })
 public class Contact implements Serializable {

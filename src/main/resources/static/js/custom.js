@@ -36,37 +36,39 @@ function setContatti(name, _async){
 		contatti.web=data.bcc;
 	});
 	*/
-	$.ajax({
-		type: "POST",
-		url: "/getByRef",
-		async: _async,
-  		contentType:"application/json; charset=utf-8",
-		data: '{"id": '+name+'}',
-		success: function(data){
-			contatti = {};
-			console.log(data);
-			contatti.email=data.email;
-			contatti.phone=data.phone;
-			contatti.fax=data.fax;
-			contatti.web=data.web;
-			contatti.bcc=data.bcc;
-			contatti.callback=data.callback;
-			contatti.infoCallback=data.infoCallback;
-			console.log("CONTATTI BY REF", contatti);
-			
-			if(name!=null && name!="" ){
-	        	document.servizio = name;
-	        	$('#button-select').prop('disabled',false);
-	        }else{
-	            $('#button-select').prop('disabled',true);
-	        }
-			
-		},
-		error: function(data){
-			console.log("Errore nella richiesta",data);
-			contatti={};
-		}
-	});
+	if(!!name) {
+		$.ajax({
+			type: "POST",
+			url: "/getByRef",
+			async: _async,
+	  		contentType:"application/json; charset=utf-8",
+			data: '{"id": '+name+'}',
+			success: function(data){
+				contatti = {};
+				console.log(data);
+				contatti.email=data.email;
+				contatti.phone=data.phone;
+				contatti.fax=data.fax;
+				contatti.web=data.web;
+				contatti.bcc=data.bcc;
+				contatti.callback=data.callback;
+				contatti.infoCallback=data.infoCallback;
+				console.log("CONTATTI BY REF", contatti);
+				
+				if(name!=null && name!="" ){
+		        	document.servizio = name;
+		        	$('#button-select').prop('disabled',false);
+		        }else{
+		            $('#button-select').prop('disabled',true);
+		        }
+				
+			},
+			error: function(data){
+				console.log("Errore nella richiesta",data);
+				contatti={};
+			}
+		});
+	}
 };
 
 $(document).ready(function() {
@@ -162,19 +164,24 @@ function getCards() {
 			}
 		} else {
 			$.each(data.treeStructures, function(index, element) {
+				var servizio = getUrlParameter('servizio');
+				if(servizio!=null && $.isEmptyObject(contatti)){
+					setContatti(servizio, false);
+				}
+				
 				var answer = element.answers[0];
 				var servizio = getUrlParameter("servizio");
 				console.log("CONTATTI --> "+String(contatti));
 				console.log("SERVIZIO --> "+servizio);
 				if(!!answer) {
 					if(servizio>0){
-						if(answer.id==12 && contatti.phone!="NULL"){
+						if(answer.id==12 && contatti.phone!="null"){
 							createCard(element.id, answer.image, answer.title, answer.description);
 						}
-						if((answer.id==13 || answer.id==16 || answer.id==18) && contatti.email!="NULL"){
+						if((answer.id==13 || answer.id==16 || answer.id==18) && contatti.email!="null"){
 							createCard(element.id, answer.image, answer.title, answer.description);
 						}
-						if((answer.id==14 || answer.id==17 || answer.id==19) && contatti.callback!="NULL"){
+						if((answer.id==14 || answer.id==17 || answer.id==19) && contatti.callback!="null"){
 							createCard(element.id, answer.image, answer.title, answer.description);
 						}
 //						if(answer.title=='Telefono' && contatti.phone!="NULL"){
