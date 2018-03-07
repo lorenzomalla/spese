@@ -32,7 +32,6 @@ public class ContactDaoImpl implements ContactDao{
 		Contact singleContact =  em.createNamedQuery("Contact.getByRef",Contact.class)
 				.setParameter("id", id)
 				.getSingleResult();
-		System.out.println(singleContact.toString());
 		return singleContact;
 	}
 

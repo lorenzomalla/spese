@@ -23,19 +23,6 @@ function getUrlParameter(sParam) {
 };
 
 function setContatti(name, _async){
-	//var branch = getUrlParameter('path');
-	//console.log("-------> branch:"+branch+" --- option:"+name);
-
-	/*
-	$.post("/getByRef", {"branch":"1", "option":"Self Virtual Server"}, function(data) {
-		console.log(data);
-		contatti.email=data.email;
-		contatti.phone=data.phone;
-		contatti.fax=data.fax;
-		contatti.web=data.web;
-		contatti.web=data.bcc;
-	});
-	*/
 	if(!!name) {
 		$.ajax({
 			type: "POST",
@@ -45,7 +32,6 @@ function setContatti(name, _async){
 			data: '{"id": '+name+'}',
 			success: function(data){
 				contatti = {};
-				console.log(data);
 				contatti.email=data.email;
 				contatti.phone=data.phone;
 				contatti.fax=data.fax;
@@ -53,7 +39,6 @@ function setContatti(name, _async){
 				contatti.bcc=data.bcc;
 				contatti.callback=data.callback;
 				contatti.infoCallback=data.infoCallback;
-				console.log("CONTATTI BY REF", contatti);
 				
 				if(name!=null && name!="" ){
 		        	document.servizio = name;
@@ -64,7 +49,6 @@ function setContatti(name, _async){
 				
 			},
 			error: function(data){
-				console.log("Errore nella richiesta",data);
 				contatti={};
 			}
 		});
@@ -84,7 +68,6 @@ $(document).ready(function() {
 		var servizio = getUrlParameter('servizio');
 		var tipoassistenza = getUrlParameter('tipoassistenza');
 		var channel = getUrlParameter('channel');
-//		alert("called " + id);	
 		var historypushurl = "?path="+id;
 		if(servizio!=null){
 			historypushurl += "&servizio="+servizio;
@@ -96,7 +79,6 @@ $(document).ready(function() {
 		}
 		history.pushState({ url: "/" }, "/", historypushurl);
 		getCards();
-//		alert(id);
 	});
 		
 });
@@ -127,7 +109,6 @@ function getCards() {
     }
 	
 	$.get("/getNodeById/"+params["path"], function(data) {
-		console.log(data);
 		var question = data.questions[0];
 		var template = data.template[0];
 		if(!!question) {
@@ -136,7 +117,6 @@ function getCards() {
 		}
 		if(!!template) {
 			var templateMarkup = template.markup;
-			console.log(contatti);
 			
 			var servizio = getUrlParameter('servizio');
 			if(servizio!=null){
@@ -171,8 +151,6 @@ function getCards() {
 				
 				var answer = element.answers[0];
 				var servizio = getUrlParameter("servizio");
-				console.log("CONTATTI --> "+String(contatti));
-				console.log("SERVIZIO --> "+servizio);
 				if(!!answer) {
 					if(servizio>0){
 						if(answer.id==12 && contatti.phone!="null"){
@@ -184,21 +162,6 @@ function getCards() {
 						if((answer.id==14 || answer.id==17 || answer.id==19) && contatti.callback!="null"){
 							createCard(element.id, answer.image, answer.title, answer.description);
 						}
-//						if(answer.title=='Telefono' && contatti.phone!="NULL"){
-//							createCard(element.id, answer.image, answer.title, answer.description);
-//						}
-//						if(answer.title=='Email' && contatti.email!="NULL"){
-//							createCard(element.id, answer.image, answer.title, answer.description);
-//						}
-//						if(answer.title=='Fax' && contatti.fax!="NULL"){
-//							createCard(element.id, answer.image, answer.title, answer.description);
-//						}
-//						if(answer.title=='Web' && contatti.web!="NULL"){
-//							createCard(element.id, answer.image, answer.title, answer.description);
-//						}
-//						if(answer.title=='Richiamami' && contatti.callback!="NULL"){
-//							createCard(element.id, answer.image, answer.title, answer.description);
-//						}
 					}else{
 						createCard(element.id, answer.image, answer.title, answer.description);
 					}
@@ -208,20 +171,9 @@ function getCards() {
 		}
 	});
 	
-//	for(i=0; i<getRandomInt(1, 6); i++) {
-//		createCard(i, "ico:fa-wrench", "Domanda "+i,"Risposta"+i);
-//	}
-}
 
 function change(state) {
 	getCards();
-//    if(state === null) {
-//    	$("#backButton").removeClass("d-block").addClass("d-none");
-//		$("#logo-row").addClass("d-md-flex");
-//    } else {
-//    	$("#backButton").removeClass("d-none").addClass("d-block");
-//		$("#logo-row").removeClass("d-md-flex");
-//    }
 }
 
 function createCard(id, imageOrIcon, title, description) {

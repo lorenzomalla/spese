@@ -43,10 +43,8 @@ public class VerifyRecaptcha {
 		RestTemplate restTemplate = new RestTemplate(requestFactory);
 		// COSTRUISCO L'URL CONCATENANDO LA SECRET E LA RESPONSE
 		String request =  recaptchaUrl + "?secret=" + recaptchaSecretKey + "&response=" + response;
-System.out.println(request);
 		RecaptchaResponse recaptchaResponse = restTemplate.postForEntity(
 				request, null, RecaptchaResponse.class).getBody();
-		System.out.println(recaptchaResponse);
 		if (recaptchaResponse.isSuccess()) {
 			return true;
 		} else {
