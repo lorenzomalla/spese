@@ -1,31 +1,39 @@
 function formValidation() {
 	var isValid = false;
-	if (!!grecaptcha && grecaptcha.getResponse() != "") {
-		$.ajax({
-			async : false,
-			type : "POST",
-			url : "/validationCheck",
-			ContentType : "application/json",
-			dataType : "json",
-			data : {
-				response : grecaptcha.getResponse(),
-			},
-			success : function(response) {
-				if (response) {
-					isValid = true;
-				} else {
+	try {
+		if (!!grecaptcha && grecaptcha.getResponse() != "") {
+			$.ajax({
+				async : false,
+				type : "POST",
+				url : "/validationCheck",
+				ContentType : "application/json",
+				dataType : "json",
+				data : {
+					response : grecaptcha.getResponse(),
+				},
+				success : function(response) {
+					if (response) {
+						isValid = true;
+					} else {
+						isValid = false;
+						grecaptcha.reset();
+						disableButton("#continue");
+					}
+				},
+				error : function(response) {
 					isValid = false;
 					grecaptcha.reset();
+					disableButton("#continue");
 				}
-			},
-			error : function(response) {
-				isValid = false;
-				grecaptcha.reset();
-			}
-		});
-	} else {
-		isValid = false;
+			});
+		} else {
+			isValid = false;
+			grecaptcha.reset();
+			disableButton("#continue");
+		}
+	} catch(e) {
 		grecaptcha.reset();
+		disableButton("#continue");
 	}
 
 	return isValid && $('#form').valid();

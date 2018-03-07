@@ -206,10 +206,15 @@ function captchaExpiredCallback() {
 }
 
 function captchaCallback() {
-	if(grecaptcha.getResponse().length==0) {
+	try {
+		if(grecaptcha.getResponse().length==0) {
+			disableButton("#continue");
+		} else {
+			enableButton("#continue");
+		}
+	} catch(e) {
+		grecaptcha.reset();
 		disableButton("#continue");
-	} else {
-		enableButton("#continue");
 	}
 }
 
