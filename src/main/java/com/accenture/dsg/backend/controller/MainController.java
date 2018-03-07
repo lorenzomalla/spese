@@ -1,16 +1,13 @@
 package com.accenture.dsg.backend.controller;
 import java.util.List;
-import java.util.Properties;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -326,19 +323,40 @@ public class MainController {
 				body = body.replace("#fasciaOraria#", str );
 			}
 			
-			System.out.println("To: " + recipientAddress);
+			System.out.println("To: *" + recipientAddress+"*");
+			
 			System.out.println("Subject: " + subject);
 			System.out.println("Message: " + body);
+			System.out.println("from: " + mailFrom);
 
 			SimpleMailMessage email = new SimpleMailMessage();
+			
 			email.setFrom(mailFrom);
 			email.setTo(recipientAddress);
 			email.setSubject(subject);
-			if (!"".equals(bcc)) {
-				email.setBcc(bcc);
-			}
+			System.out.println(bcc);
+			System.out.println(bcc==null);
+			if (bcc != null && !bcc.equals("undefined")) {
+				email.setBcc(bcc.split(";"));
+			}				 
+
 			email.setText(body);
 			mailSender.send(email);
+//			
+//			MimeMessage mimeMessage = mailSender.createMimeMessage();
+//            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+//            
+//		      mimeMessageHelper.setFrom(mailFrom);
+//		      mimeMessageHelper.setTo(recipientAddress);
+//		      mimeMessageHelper.setSubject(subject);
+//		      if (!"".equals(bcc)) {
+//		            mimeMessageHelper.setBcc(bcc);
+//		            }
+//		      mimeMessageHelper.setText(body);
+//		      mailSender.send(mimeMessageHelper.getMimeMessage());
+
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
