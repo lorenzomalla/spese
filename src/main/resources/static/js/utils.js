@@ -13,13 +13,17 @@ function select2init() {
 				//Prende l'oggetto 
 				$(select).append("<option value='"+value.id+"'>"+value.oOption+"</option>");				
 			});
+			$('.js-example-basic-single').on('change',function(e){
+				var data=$(this).val();
+				var result = setContatti(data, true);
+//				var data=e.params.data;
+//				var result = setContatti(data.id, true);
+			});
 			$('.js-example-basic-single').select2({
 					width: '100%',	
 					theme:'classic'
-			}).on('select2:select',function(e){
-			    var data=e.params.data;
-			    var result = setContatti(data.id, true);
-		    });
+			});
+			
 		},
 		error: function(){
 		}

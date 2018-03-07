@@ -101,10 +101,14 @@ function getCards() {
 	}
 	
     if(params["path"] == rootNodeId) {
-    	$("#backButton").removeClass("d-block").addClass("d-none");
+//    	$("#backButton").removeClass("d-block").addClass("d-none");
+    	$(".home-back").removeClass("d-none").addClass("d-block");
+    	$(".other-back").removeClass("d-block").addClass("d-none");
 		$("#logo-row").addClass("d-md-flex");
     } else {
-    	$("#backButton").removeClass("d-none").addClass("d-block");
+//    	$("#backButton").removeClass("d-none").addClass("d-block");
+    	$(".other-back").removeClass("d-none").addClass("d-block");
+    	$(".home-back").removeClass("d-block").addClass("d-none");
 		$("#logo-row").removeClass("d-md-flex");
     }
 	
@@ -138,6 +142,7 @@ function getCards() {
 				templateMarkup = templateMarkup.replace(/#privacyPdf#/g, $("#privacyPdf").text());
 			}
 			$("#template").html(templateMarkup);
+			disableButton("#continue");
 			if(servizio!=null){
 				$("#servizioform").remove();
 				$("#form").append("<input type='hidden' id='servizioform'  name='servizio' value='"+servizio+"' />");
