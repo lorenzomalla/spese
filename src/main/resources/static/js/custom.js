@@ -170,7 +170,7 @@ function getCards() {
 			});
 		}
 	});
-	
+}
 
 function change(state) {
 	getCards();
@@ -215,3 +215,4 @@ function disableButton(selector) {
 function enableButton(selector) {
 	$(selector).removeAttr("disabled");
 }
+
