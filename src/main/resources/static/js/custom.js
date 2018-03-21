@@ -55,6 +55,17 @@ function setContatti(name, _async){
 	}
 };
 
+var widgetId = -1;
+var onloadCallback = function() {
+    widgetId = grecaptcha.render('example1', {
+      'sitekey' : $("#captchakey").text(),
+      'theme' : 'light',
+      'callback': captchaCallback,
+      'expired-callback': captchaExpiredCallback,
+      'error-callback': captchaErrorCallback
+    });
+  };
+
 $(document).ready(function() {
 	$(window).on("popstate", function(e) {
         change(e.originalEvent.state);
@@ -138,7 +149,7 @@ function getCards() {
 				templateMarkup = templateMarkup.replace(/#bcc#/g, contatti.bcc);
 				templateMarkup = templateMarkup.replace(/#infoCallback#/g, contatti.infoCallback);
 				templateMarkup = templateMarkup.replace(/#callback#/g, contatti.callback);
-				templateMarkup = templateMarkup.replace(/#captcha#/g, $("#captchakey").text());
+//				templateMarkup = templateMarkup.replace(/#captcha#/g, $("#captchakey").text());
 				templateMarkup = templateMarkup.replace(/#privacyPdf#/g, $("#privacyPdf").text());
 			}
 			$("#template").html(templateMarkup);
@@ -204,16 +215,20 @@ function createCard(id, imageOrIcon, title, description) {
 function captchaExpiredCallback() {
 	disableButton("#continue");
 }
+function captchaErrorCallback() {
+	grecaptcha.reset(widgetId);
+	disableButton("#continue");
+}
 
 function captchaCallback() {
 	try {
-		if(grecaptcha.getResponse().length==0) {
+		if(grecaptcha.getResponse(widgetId).length==0) {
 			disableButton("#continue");
 		} else {
 			enableButton("#continue");
 		}
 	} catch(e) {
-		grecaptcha.reset();
+		grecaptcha.reset(widgetId);
 		disableButton("#continue");
 	}
 }

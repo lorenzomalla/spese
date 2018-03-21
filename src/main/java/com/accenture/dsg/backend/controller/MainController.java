@@ -320,6 +320,7 @@ public class MainController {
 				subject = subject.replace("#canale#", "TELEFONO");
 				recipientAddress = mailContact.getCallback();
 			} else if (formType.equals("form4")) {
+				body += "EMAIL=#email#\n";
 				body += "TELEFONO=#telefono#\n";
 				body += "FASCIA ORARIA IN CUI PREFERISCE ESSERE RICONTATTATO=#fasciaOraria#\n";
 				body += "RICHIESTA=#richiesta#\n";

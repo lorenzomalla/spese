@@ -31,7 +31,7 @@
 		</div>	
 		<div class='row'>
 			<div class='col-12 col-md-6 offset-md-3 form-group text-center'>
-		  	 	<div id='captcha' class='g-recaptcha' data-sitekey='#captcha#' data-callback='captchaCallback' data-expired-callback='captchaExpiredCallback'></div>
+		  	 	<div id='captcha' class='g-recaptcha'></div>
 			</div>
 		</div>
 		<div class='row'>
@@ -50,7 +50,7 @@
 		<input type='hidden' id='emailTo'  name='emailTo' value='#email#' />
 		<input type='hidden' id='callback'  name='callback' value='#callback#' />
 	</form>
-	<script src='https://www.google.com/recaptcha/api.js' async='async' defer='defer'></script>
+	<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async='async' defer='defer'></script>
 	<script src='js/jquery.form.js'></script>
 	
 	<script>
