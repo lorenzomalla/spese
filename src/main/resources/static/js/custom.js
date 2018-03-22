@@ -57,7 +57,7 @@ function setContatti(name, _async){
 
 var widgetId = -1;
 var onloadCallback = function() {
-    widgetId = grecaptcha.render('example1', {
+    widgetId = grecaptcha.render('captcha', {
       'sitekey' : $("#captchakey").text(),
       'theme' : 'light',
       'callback': captchaCallback,
