@@ -1,7 +1,7 @@
 function formValidation() {
 	var isValid = false;
 	try {
-		if (!!grecaptcha && grecaptcha.getResponse() != "") {
+		if (!!grecaptcha && grecaptcha.getResponse(widgetId) != "") {
 			$.ajax({
 				async : false,
 				type : "POST",
@@ -9,30 +9,30 @@ function formValidation() {
 				ContentType : "application/json",
 				dataType : "json",
 				data : {
-					response : grecaptcha.getResponse(),
+					response : grecaptcha.getResponse(widgetId),
 				},
 				success : function(response) {
 					if (response) {
 						isValid = true;
 					} else {
 						isValid = false;
-						grecaptcha.reset();
+						grecaptcha.reset(widgetId);
 						disableButton("#continue");
 					}
 				},
 				error : function(response) {
 					isValid = false;
-					grecaptcha.reset();
+					grecaptcha.reset(widgetId);
 					disableButton("#continue");
 				}
 			});
 		} else {
 			isValid = false;
-			grecaptcha.reset();
+			grecaptcha.reset(widgetId);
 			disableButton("#continue");
 		}
 	} catch(e) {
-		grecaptcha.reset();
+		grecaptcha.reset(widgetId);
 		disableButton("#continue");
 	}
 
