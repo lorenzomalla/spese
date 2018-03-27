@@ -11,7 +11,7 @@ function select2init() {
 			var select = $('#singleselect');
 			$.each(response,function(key,value){
 				//Prende l'oggetto 
-				$(select).append("<option value='"+value.id+"'>"+value.oOption+"</option>");				
+				$(select).append("<option value='"+value.id+"' data-branch='"+value.branch+"'>"+value.oOption+"</option>");				
 			});
 			$('.js-example-basic-single').on('change',function(e){
 				var data=$(this).val();
@@ -29,7 +29,13 @@ function select2init() {
 		}
 	}); 
 	$('#button-select').click(function(){
-		var path = document.servizio>=215?16:12;
+//		var path = document.servizio>=215?16:12;
+		var path = -1;
+		if($('.js-example-basic-single option:selected').data("branch")==$("#branch-commerciale").text()) {
+			path = 16;
+		} else {
+			path = 12;
+		}
 		history.pushState({ url: "/" }, "/", "?path="+path+"&servizio="+document.servizio);
 		getCards();
 	});

@@ -58,6 +58,12 @@ public class MainController {
 	private boolean googleAnalyticsEnabled;
 	@Value("${google.analytics.code}")
 	private String googleAnalyticsCode;
+	@Value("${branch.tecnico}")
+	private String branchTecnico;
+	@Value("${branch.amministrativo}")
+	private String branchAmministrativo;
+	@Value("${branch.commerciale}")
+	private String branchCommerciale;
 
 	@Autowired
 	private UsersDao userDao;
@@ -105,6 +111,9 @@ public class MainController {
 		model.addAttribute("privacyPdf", privacyPdf);
 		model.addAttribute("googleAnalyticsEnabled", googleAnalyticsEnabled);
 		model.addAttribute("googleAnalyticsCode", googleAnalyticsCode);
+		model.addAttribute("branchTecnico", branchTecnico);
+		model.addAttribute("branchAmministrativo", branchAmministrativo);
+		model.addAttribute("branchCommerciale", branchCommerciale);
 		return "home";
 	}
 
