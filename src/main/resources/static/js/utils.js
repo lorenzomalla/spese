@@ -30,14 +30,16 @@ function select2init() {
 	}); 
 	$('#button-select').click(function(){
 //		var path = document.servizio>=215?16:12;
-		var path = -1;
-		if($('.js-example-basic-single option:selected').data("branch")==$("#branch-commerciale").text()) {
-			path = 16;
-		} else {
-			path = 12;
+		if($('.js-example-basic-single').val()!="") {
+			var path = -1;
+			if($('.js-example-basic-single option:selected').data("branch")==$("#branch-commerciale").text()) {
+				path = 16;
+			} else {
+				path = 12;
+			}
+			history.pushState({ url: "/" }, "/", "?path="+path+"&servizio="+document.servizio);
+			getCards();
 		}
-		history.pushState({ url: "/" }, "/", "?path="+path+"&servizio="+document.servizio);
-		getCards();
 	});
 }
 
