@@ -272,17 +272,23 @@ public class MainController {
 		Contact mailContact = null;
 		int servizioInt = -1;
 		String servizioSub = "";
+		String tipoAssistenza = "";
 		if (servizio != null && !"".equals(servizio)) {
 			Contact c = new Contact();
 			servizioInt = Integer.parseInt(servizio);
 			c.setId(servizioInt);
 			mailContact = getByRef(c);
 			servizioSub = " - servizio " + mailContact.getoOption();
+			if(mailContact.getBranch().equalsIgnoreCase(branchTecnico)) {
+				tipoAssistenza = "TECNICA";
+			} else if(mailContact.getBranch().equalsIgnoreCase(branchCommerciale)) {
+				tipoAssistenza = "COMMERCIALE";
+			} else if(mailContact.getBranch().equalsIgnoreCase(branchAmministrativo)) {
+				tipoAssistenza = "AMMINISTRATIVA";
+			} 
 		}
 
 		String formType = request.getParameter("form-type");
-		String tipoAssistenza = servizioInt <= 107 ? "TECNICA"
-				: servizioInt >= 215 ? "COMMERCIALE" : "AMMINISTRATIVA";
 		String recipientAddress = request.getParameter("emailTo");
 		String bcc = request.getParameter("bcc");
 		boolean emailSetted = false;
