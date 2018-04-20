@@ -15,7 +15,7 @@
 
 	<properties>
 		<!-- Stand-alone RESTFul application for testing only -->
-		<start-class>io.pivotal.microservices.services.Main</start-class>
+		<start-class>com.java.configuration.Application</start-class>
 		<maven.compiler.source>1.8</maven.compiler.source>
     	<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
