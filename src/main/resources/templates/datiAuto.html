@@ -1,0 +1,54 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Gestione Spese-Inserimento auto</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<script src="/js/validationForm.js"></script>
+
+</head>
+<body>
+<form method="POST" action="/persistAuto" id="form">
+<div class="col-12">
+ <div class="container">
+		<h1 class="col-12 text-center pt-3">Inserisci la tua auto</h1>
+		<div class="row">
+			<div class="col-12 col-md-6 offset-md-3 form-group">
+				<label for="nome">Modello</label> 
+				<input type="text" class="form-control" name="modello" placeholder="Renault,Mercedes,Audi.." id="modello"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-md-6 offset-md-3 form-group">
+				<label for="colore">Colore</label>
+				<input type="text" class="form-control" name="colore" placeholder="Nero,Bianco,Rosso..." id="colore"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-md-6 offset-md-3 form-group">
+				<label for="cilindrata">Cilindrata</label>
+				<input type="text" class="form-control" name="cilindrata" placeholder="1500,2000,3000..." id="cilindrata"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2 offset-md-3 text-center pt-4">
+				<button class="btn btn-success" id="btnInsert">Inserisci la macchina</button>
+			</div>
+			<div class="col-2 text-center pt-4">
+				<a href="/"><input type="button" id="btnHome" class="btn btn-success" value="Ritorna in homepage"/></a>
+			</div>
+			<div class="col-2 mr-2 text-center pt-4">
+				<a href="#"><input class="btn btn-success" id="btnDisplay" value="Visualizza macchina"/></a>
+			</div>
+		</div>
+ </div>
+ </div>
+</form>
+</body>
+</html>

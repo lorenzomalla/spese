@@ -1,0 +1,52 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"/>
+	</head>
+<body>
+<div class="col-12">
+	<div class="container">
+    
+    <div class="row">
+        <div class="col-12 text-center pt-3">
+			<img src="/img/homepage.png" alt="Home"/>
+        </div>
+	</div>
+	<div class="row pt-5">
+		<h1 class="col-12 text-center pt-3">Benvenuto , scegli un'opzione.</h1>
+	</div>
+	<div class="row">
+		<div class="col-6 pt-5 text-center">
+			<div class="card text-white bg-success mx-auto" style="max-width: 25rem;">
+			  <div class="card-header"><span><i class="fas fa-cart-arrow-down"></i></span>Spesa</div>
+			  	<div class="card-body">
+			    	<h5 class="card-title">Gestisci la spesa</h5>
+			    	<p class="card-text">Qui potrai tenere traccia delle tue uscite mensili.
+			  		<a href="/spesa">Clicca qui</a> per andare nella pagina di riferimento.</p>
+			  	</div>
+			</div>
+		</div>
+		<div class="col-6 pt-5 text-center">
+			<div class="card text-white bg-danger mx-auto" style="max-width: 25rem;">
+			  <div class="card-header"><span><i class="fas fa-car"></i></span>Autovetture</div>
+			  	<div class="card-body">
+			    	<h5 class="card-title">Inserisci un veicolo</h5>
+			    	<p class="card-text">Qui potrai inserire un'auto e farne riferimento per le spese mensili.
+			  		<a href="/auto">Clicca qui</a> per andare nella pagina di riferimento.</p>
+			  	</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+</div>
+	
+</body>
+</html>

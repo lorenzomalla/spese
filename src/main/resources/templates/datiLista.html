@@ -1,0 +1,60 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"/>
+		<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+		<script src="/js/listaSpesa.js"></script>
+		<link rel="stylesheet" href="css/style.css"/>
+		
+		
+</head>
+<body>
+<div class="col-12">
+	<div class="container">
+			<div class="row">
+				<h2 class="col-12 text-center">Qui potrai visualizzare tutte le tue uscite.<i class="fas fa-credit-card"></i></h2>
+			</div>
+			<div class="row">
+				<div class="col-12 pt-2">
+					<input class="form-control pt-3" id="searchInput" type="text" placeholder="Filtra.."/> 
+					<span class="glyphicon glyphicon-search form-control-feedback" id="iconSearch"></span>
+				</div>
+			</div>
+		<div class="row">
+			<div class="col-12 pt-3 ">
+			<table class="table table-striped" id="content">
+					<thead class="table-dark">
+						<tr>
+							<th>Data</th>
+							<th>Descrizione</th>
+							<th>Importo</th>
+						</tr>
+					</thead>
+				<tbody>
+					<!-- CONTENT -->
+				</tbody>
+				</table>
+			</div>
+		</div>
+			<!-- <div class="row">
+				<div class="col-12 text-center">
+					<a href="/">
+						<button class="btn btn-primary">Ritorna in home</button>
+					</a>
+				</div>
+			</div> -->
+	</div>
+</div>
+</body>
+</html>

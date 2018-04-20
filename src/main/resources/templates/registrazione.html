@@ -1,0 +1,69 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"/>
+		<script type="text/javascript" src="js/checkValidate.js"></script>
+	</head>
+<body>
+<div class='col-12'>	
+	<form id='form' action='/registrati' method='POST'>
+		<div class='row'>
+			<div class='col-12 col-md-6 offset-md-3 form-group'>
+				<h3>Registrazione</h3>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-12 col-md-6 offset-md-3 form-group'>
+			 	<label for='telefono'>Nome<span class='mandatoryField'>*</span></label> 
+				<input type='text' class='form-control' name='nome' id='nome'/>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-12 col-md-6 offset-md-3 form-group'>
+			  	<label for='richiesta'>Cognome<span class='mandatoryField'>*</span></label>
+			  	<input class='form-control' name='cognome' id='cognome'/>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-12 col-md-6 offset-md-3 form-group'>
+			  	<label for='richiesta'>Telefono<span class='mandatoryField'>*</span></label>
+			  	<input class='form-control' name='telefono' id='telefono'/>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-12 col-md-6 offset-md-3 form-group'>
+			  	<label for='richiesta'>E-mail<span class='mandatoryField'>*</span></label>
+			  	<input class='form-control' name='email' id='email'/>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-12 col-md-6 offset-md-3 form-group'>
+			  	<label for='richiesta'>Password<span class='mandatoryField'>*</span></label>
+			  	<input class='form-control' name='password' id='password'/>
+			</div>
+		</div>
+		<div class='row'>
+		  	<div class='col-12 text-center form-group'>
+			  <input type='submit' id='continue' class='btn btn-danger' value='Continua' />
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-12 text-left form-group'>
+		  		<span class='mandatoryField'>*</span>campi obbligatori
+			</div>
+		</div>
+	</form>
+	<script src='js/jquery.form.js'></script>
+	<script>
+	validazione();
+	</script>
+</div>	
+</body>
+</html>

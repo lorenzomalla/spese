@@ -1,45 +1,54 @@
-var servizio='';
+$(document).ready(function() {
+	$('#datepicker').datepicker({
+        uiLibrary: 'bootstrap4',
+    	format: 'yyyy/mm/dd',
+    	startDate: '-3d'
+    });
+	
+	$('#btnSave').click(function(){
+		validazione();
+	})
+});
 
-function select2init() {
-	var branch = getUrlParameter("path");
-	$.ajax({
-		type: "GET",
-		url: "/findOptions/"+branch,
-		ContentType: "application/json",
-		dataType: "json",
-		success: function(response){
-			var select = $('#singleselect');
-			$.each(response,function(key,value){
-				//Prende l'oggetto 
-				$(select).append("<option value='"+value.id+"' data-branch='"+value.branch+"'>"+value.oOption+"</option>");				
-			});
-			$('.js-example-basic-single').on('change',function(e){
-				var data=$(this).val();
-				var result = setContatti(data, true);
-//				var data=e.params.data;
-//				var result = setContatti(data.id, true);
-			});
-			$('.js-example-basic-single').select2({
-					width: '100%',	
-					theme:'classic'
-			});
-			
-		},
-		error: function(){
-		}
-	}); 
-	$('#button-select').click(function(){
-//		var path = document.servizio>=215?16:12;
-		if($('.js-example-basic-single').val()!="") {
-			var path = -1;
-			if($('.js-example-basic-single option:selected').data("branch")==$("#branch-commerciale").text()) {
-				path = 16;
-			} else {
-				path = 12;
-			}
-			history.pushState({ url: "/" }, "/", "?path="+path+"&servizio="+document.servizio);
-			getCards();
-		}
+function clearDate(){
+	$('#btnDelete').click(function(){
+		$('#importo').val("");
+		$('#datepicker').val("");
+		$('#descrizione').val("");
 	});
 }
 
+function validazione() {
+	$.validator.addMethod("regx", function(value, element, regexpr) {
+		return regexpr.test(value);
+	});
+	$('#form')
+				.validate({
+						rules : {
+							importo: {
+								required : true,
+								regx : "^(0|(([1-9]{1}|[1-9]{1}[0-9]{1}|[1-9]{1}[0-9]{2}){1}(\\ [0-9]{3}){0,}))?([.](([0-9]{0,2})|\\-\\-))?([\\ ]{0,1})$"
+							},
+							data :{
+								required : true,
+								regx : "^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$"
+							},
+							descrizione: {
+								required : true
+							}
+						},
+						messages : {
+							data :{
+								required : "",
+								regx : ""
+							},
+							importo : {
+								required : "Campo obbligatorio.",
+									regx : "Importo errato."
+							},
+							descrizione : {
+								required : "Campo obbligatorio."
+							}
+						}
+					});
+}
