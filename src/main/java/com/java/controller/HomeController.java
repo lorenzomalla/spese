@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 
-	@RequestMapping(value={"/","/home"},method = RequestMethod.POST)
+	@RequestMapping(value={"/","/home"},method = {RequestMethod.GET,RequestMethod.POST})
 	public String home(){
 		return "index";
 	}
